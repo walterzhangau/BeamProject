@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\evanl\.android\build-cache\7bdadfb7e0a3592893e82dfd0bba827949b1c0c2\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\evanl\AndroidStudioProjects\HouseLannisterLBSServer\Beam\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_20999e925fd0c29383b86099239a2b4fcf408c9f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evanl\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\evanl\AndroidStudioProjects\HouseLannisterLBSServer\Beam\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_ad2bf19963eff392c903c6575db9a6883dd0e40b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evanl\AndroidStudioProjects\Beam\Beam\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\evanl\AndroidStudioProjects\Beam\Beam\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5e299b8c95dfd0bc49d0863c41ec984f9e3800de\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evanl\AndroidStudioProjects\Beam\Beam\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="4c231f40dccefd64e7b387487b89adc48be68e60">
+        <dex dex="C:\Users\evanl\AndroidStudioProjects\Beam\Beam\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_37c05d6d04beebb6d17b5735d766e20856ef3262\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evanl\AndroidStudioProjects\HouseLannisterLBSServer\Beam\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\evanl\AndroidStudioProjects\HouseLannisterLBSServer\Beam\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_dca7dcb9ac1428355a744a5c954f1ddb33de3f5e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evanl\AndroidStudioProjects\HouseLannisterLBSServer\Beam\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="8d4e4ffb4c816aef9ad571823b7436f5f15b5194">
+        <dex dex="C:\Users\evanl\AndroidStudioProjects\HouseLannisterLBSServer\Beam\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_1b3ceb81937133ae80f3286b34fa49269c07834e\classes.dex" />
+    </item>
+
+</items>

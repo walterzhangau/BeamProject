@@ -1,6 +1,6 @@
 package com.example.grace.myapplication;
 /** Evan **/
-
+/** Walter **/
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

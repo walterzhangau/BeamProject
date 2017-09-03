@@ -8,17 +8,20 @@ PORT = 8889 #non-privileged port
 try:
     #create an AF_INET, TCP socket
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    print "Socket created"
 except socket.error, msg:
         print 'Failed to create socket. Error code: ' + str(msg[0]) + ', Error Message: ' + msg[1]
         sys.exit();
 
 try:
     s.bind((HOST, PORT))
+    print "socket bound on: " + HOST + "," + str(PORT)
 except socket.error, msg:
     print 'Bind failed. Error Code: ' + str(msg[0]) + ', Message: ' + msg[1]
     sys.exit()
 
 s.listen(2)
+print "listening..."
 
 
 #thread to handle client connections:
@@ -27,10 +30,13 @@ def clientthread(conn):
     while True:
         data = conn.recv(1024)
         
-        reply = 'OK...' + data
-        if not data:
+        print data.strip() + ": this is the data"
+        if (data.strip() == "sendMeData"):
+            print "here i am"
+            conn.send("lat:45.24/lon:32.45\n")
+        else:
             break
-        conn.sendall(reply)
+        conn.sendall("bye")
 
     #came out of loop, close connection
     conn.close()

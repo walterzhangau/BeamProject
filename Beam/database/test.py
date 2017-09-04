@@ -1,32 +1,29 @@
-from datetime import datetime  
-from flask import render_template  
-import MySQLdb as mdb
-  
-import pypyodbc  
-  
-from datetime  import datetime  
-  
-from flask  import render_template, redirect, request  
- 
- 
- 
-# creating connection Object which will contain SQL Server Connection  
-connection = pypyodbc.connect('Driver={SQL Server};Server=.;Database=tscelsi;uid=tscelsi;pwd=tscelsi_2017')# Creating Cursor  
-  
-cursor = connection.cursor()  
-cursor.execute("SELECT * FROM Customer")  
-s = "<table style='border:1px solid red'>"  
-for row in cursor:  
-    s = s + "<tr>"  
-for x in row:  
-    s = s + "<td>" + str(x) + "</td>"  
-s = s + "</tr>"  
-  
-  
-connection.close()  
-  
-@app.route('/')  
-@app.route('/home')  
-def home():  
-  
-    return "<html><body>" + s + "</body></html>"
+import mysql.connector
+import json
+cnx = mysql.connector.connect(user= 'tscelsi', password= 'tscelsi_2017',
+                              host='info20003db.eng.unimelb.edu.au',
+                              database='tscelsi')
+
+
+cursor = cnx.cursor()
+
+query = ("SELECT * from users")
+
+
+
+cursor.execute(query)
+data= {}
+
+for (id,username, phone,email,password,first_name,last_name) in cursor:
+  print("{}, {} ,{}, {} ,{}, {} ".format(id,username, phone,email,password,first_name,last_name))
+  data.update({id:username})
+
+
+json_data = json.dumps(data)
+
+print(json_data)
+
+for x in range(0, 3):
+  print x
+cursor.close()
+cnx.close()

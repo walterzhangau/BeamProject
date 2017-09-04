@@ -11,7 +11,7 @@ import java.net.Socket;
  */
 
 public class DBAccess {
-    String hostName = "192.168.1.12";
+    String hostName = "localhost";
     int portNumber = 8889;
     String fromServer, fromUser="sendMeData";
     String returnMsg;

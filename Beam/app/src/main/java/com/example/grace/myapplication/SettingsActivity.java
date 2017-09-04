@@ -152,6 +152,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         // Otherwise defer to system default behavior.
         super.onBackPressed();
     }
+
     @Override
     public boolean onIsMultiPane() {
         return isXLargeTablet(this);

@@ -75,6 +75,13 @@ public class NavigationBarActivity extends AppCompatActivity
             return true;
         }
 
+        if (id == R.id.title_activity_friends) {
+            Intent intent = new Intent(NavigationBarActivity.this, FriendsActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

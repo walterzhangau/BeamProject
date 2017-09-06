@@ -27,7 +27,8 @@
 
 
     <string name="pref_title_remember_login">Remember login</string>
-    <string name="pref_description_remember_login">Toggle whether Beam app remembers your login details
+    <string name="pref_description_remember_login">Toggle whether Beam app remembers your login
+        details
     </string>
 
     <string name="pref_title_nickname">Personal nickname</string>
@@ -99,6 +100,12 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_friends">FriendsActivity</string>
     <string name="large_text">
+        "Tom\n\n"
+        "Grace\n\n"
+        "Walter\n\n"
+        "Muhummus\n\n"
+
+
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/HouseLannister.iml" filepath="$PROJECT_DIR$/.idea/HouseLannister.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HouseLannister.iml" filepath="$PROJECT_DIR$/.idea/modules/HouseLannister.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jackson-core-asl-1.9.13/jackson-core-asl-1.9.13.iml" filepath="$PROJECT_DIR$/.idea/modules/jackson-core-asl-1.9.13/jackson-core-asl-1.9.13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jackson-mapper-asl-1.9.10/jackson-mapper-asl-1.9.10.iml" filepath="$PROJECT_DIR$/.idea/modules/jackson-mapper-asl-1.9.10/jackson-mapper-asl-1.9.10.iml" />
     </modules>
   </component>
 </project>

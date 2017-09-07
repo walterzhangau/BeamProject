@@ -26,6 +26,38 @@ public class Message {
         //THIS USER ID
 
     }
+
+    public int getSenderID() {
+        return senderID;
+    }
+
+    public void setSenderID(int senderID) {
+        this.senderID = senderID;
+    }
+
+    public int getReceiverID() {
+        return receiverID;
+    }
+
+    public void setReceiverID(int receiverID) {
+        this.receiverID = receiverID;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
 }
 
 

@@ -98,7 +98,16 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="action_friends">Friends</string>
+    <string name="action_messaging">Messaging</string>
+
+    <string name="message_input_hint">Type Here Please</string>
+
+    <string name="message_input">Messaging</string>
+    <string name="message_button">Messaging</string>
     <string name="title_activity_friends">FriendsActivity</string>
+    <string name="title_activity_messaging">MessagingActivity</string>
+    <string name="button_text">Send</string>
     <string name="large_text">
         "Tom\n\n"
         "Grace\n\n"

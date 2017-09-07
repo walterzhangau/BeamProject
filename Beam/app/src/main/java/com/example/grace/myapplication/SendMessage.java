@@ -13,12 +13,12 @@ public class SendMessage{
     private Timestamp timestamp;
 
     //create new message object
-    Message message = new Message(senderID, receiverID, message_body, timestamp);
+    //Message message = new Message(senderID, receiverID, message_body, timestamp);
 
     //leave this space for converting from Java to JSON
 
     //1. Convert object to JSON string
-    Gson gson = new Gson();
-    String json = gson.toJson(staff);
-        System.out.println(json);
+    //Gson gson = new Gson();
+    //String json = gson.toJson(staff);
+    //    System.out.println(json);
 }

@@ -35,9 +35,8 @@ def clientthread(conn):
 	cursor.execute(query)
 	data = conn.recv(1024)
 	print (data.strip() + ": this is the data")
-	if (data.strip() == "sendMeData"):
-		
-		
+
+    if (data.strip() == "sendMeData"):
 		
 		data= {}
 		for (a,username, phone,email,password,first_name,last_name) in cursor:
@@ -46,7 +45,13 @@ def clientthread(conn):
 		
 		json_data = json.dumps(data)
 		conn.send(json_data)
-		
+
+     if (data.strip() == "sendMeData"):
+         
+         
+         
+         
+         
 	conn.sendall("bye")
 	cursor.close()
 	cnx.close()

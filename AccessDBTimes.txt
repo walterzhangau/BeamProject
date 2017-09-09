@@ -1,0 +1,21 @@
+Please add everytime you need to access the databse
+
+- Login Page
+  - user signup
+  - user login
+
+- Main Menu
+  - update your current location
+
+- Friends List
+  - Add friend
+  - list all friends
+  - Delete Friend **
+  
+- Beam Screen
+  - Locations of all Friends
+  
+- Chat Screen
+  - Find previous messages between user and friend 
+  - add new messages to DB
+  

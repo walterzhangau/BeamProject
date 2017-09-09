@@ -3,138 +3,165 @@
 
     <item
         is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/0775e680bbd8a14826477d16a9583349c761e166/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_dcc105cfbe1ab3e215d25b2df3d7fc055f68e77e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/65d9a61b83f9f7fdf6a0c4893c351670f2c924bf/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_70b1109f3841b4de74c36f5137c260ef4f18759f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/e31579b6647a09150e7d4d363eb86434efc9d742/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_a88473f43f83b75b87bb78d0755268fb57b36e19.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/f70a059576560435f7c5faadeb11b60f51e376f7/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_7064c4315516bf4d146db1f4fb5ffbfe96c17ace.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/abc7e97705268de15dd19ec611eebd19873c0e06/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_2923f022ee12dff2892372edc2f77548d6230ce6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/70b64106420a03ef4f2bfce12fbb4460128a3997/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="9935891f23923f39d002087085d9696568a9f657">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_bed4a4b9e35e714668abe0367d8b9db0b559d54c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/f735603e6488e53c1eb43ccd4742736191fb1741/output/jars/classes.jar"
+        jar="/home/haziq/.android/build-cache/b4f1185ec5fbbbc9ba1d5ed2b46a17fe8a14d0d9/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
         sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_20db3a0bf5f214b049d94a523871eba97dac9cbc.jar" />
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_c37182d9d4e3cfff1143d3a9670779748d6f8602.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/b0eb8422e9a9e23263acf953527f0b5964963ee2/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="952944218ecedea1554a513dec0c14d570642843">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_4874cef38d1e6f043a1c816ca348c7ea91cd08d0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="023ee503b631f69511e335a061ea008f8da60f40">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/support-annotations-26.0.0-alpha1_cdd4c4357691cd2e1a66a684731af8930f9e5ed6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/7b09e60337a442e06272df88dff258665a1cd013/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_600d9a9fa66808d5f92b7afaa84e6b80fedf5def.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/4256f0458d88a8ef27d12b5ba83451799ef1d55c/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_5199e09621234f30d3d57d680f451f78b6870536.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_211373f2861992f957da38b5d8d2118f64971db4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/fa522ecccc57da272bfa523a32b6fc932a10a74f/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_1b66f08ee14877eb2dfbed429e18425056c89c43.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/8eba5ab09d82c4de10f2c81b2e999575d5034791/output/jars/classes.jar"
+        jar="/home/haziq/.android/build-cache/16ac5fc01620a24c83803ad708982d83c0d77230/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
         sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_56ccdfd857e6b88ce45122ffd5eea3fcc6561d4b.jar" />
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_b0babd015a8b4bdd7b03e753dd694436ac36f3ab.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/walterzhang/.android/build-cache/bea7e654a28228178c259fa8294cd4fd428715b0/output/jars/classes.jar"
+        jar="/home/haziq/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.7.3/1499b854ae9f370409792db5af1b552dc7d9682f/jackson-core-2.7.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="1499b854ae9f370409792db5af1b552dc7d9682f">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/jackson-core-2.7.3_094de900ed552bac78fec438cda00125be231631.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.7.3/e250c11c1329c7b6b62442a9743befad78be553c/jackson-annotations-2.7.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e250c11c1329c7b6b62442a9743befad78be553c">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.7.3_e3d5f779142489e2b3ecd0fdb061cecc6f5cac12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/5e154591f65f98f8f8fe860c24536e5794cfe341/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_d920048f8dc8b7eb18a7d9ed20b5e83824ba1241.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/4411fd20ac0953b9681ea04330552a85d596593f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_c8a09a7926e5587df21a546235eeb8169515a0ec.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/15e7c7e4cc96be895b86f24e3e6ca65eb15286d2/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_747ee0c8e62ff9501fa764820d942a34c5a2cc09.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/92e05d8b0b2cdcb8de481713e6973a8f25fee424/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_79c01cd1846599ab548cedb5b43ac32c39486a92.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/04817773ac599f5b20150c11e210168e069f6a40/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_5481f63e9148aa7c7f0ffe112e76e3c02f1ed1d8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/b3abdf4517bf1a1a2e493451724ed3e33f8c77e1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_17cceafb1ed33e983ccec6d801a3d2f2cb5c8060.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/2ee7f1f9226e1b8291322124e944807ea22978ef/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_e9eaa295b924e33673cc00e81b1881520ef51e9a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/12db34dd1f28cd3a4ebcabb51132802c27c569c6/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="952944218ecedea1554a513dec0c14d570642843">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_9ef13dc0eded1d8e0464e149466600b06f9655f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/support-annotations-26.0.0-alpha1_ac530d72b83cc1c77b5b5d3ef4bba9d2bc910973.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/47fe02e802f4e60d128f6b1de8e54e26b8633f28/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_442aca7371143b4313dc77d778bf159893120f24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.7.3/f12e6cd05cbaecd74d16e685d45b627732939e42/jackson-databind-2.7.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f12e6cd05cbaecd74d16e685d45b627732939e42">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/jackson-databind-2.7.3_7236ad760ff428a6d0c56c0b5cdcc03423704af7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/fe2a7c5b8f253609c84c55f8d2e59858eafa3353/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
         sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="/Users/walterzhang/Documents/2017 Sem 2/IT Project/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_8b66c601186edd17a09ac35849487c18ad838445.jar" />
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_7c937e959be43323a6023ee678cf8f8d53c94684.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_8852e5bc3026b2ba22a24046b9c690ed5844e47c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/haziq/.android/build-cache/6c05041d2fef230e406d8d1d608d15cdf6bcce46/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="/home/haziq/StudioProjects/HouseLannister/Beam/app/build/intermediates/pre-dexed/debug/classes_dce550ca793b4024e2e0e756ca28da814783cec2.jar" />
     </item>
 
 </items>

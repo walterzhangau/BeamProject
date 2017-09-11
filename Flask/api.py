@@ -45,7 +45,35 @@ class CreateUser(Resource):
         except Exception as e:
             return {'error': str(e)}
         
+class Login(Resource):
+    def post(self):
+        try:
+            # Parse the arguments
+            parser = reqparse.RequestParser()
+            parser.add_argument('email', type=str, help='Email address thats loggin in')
+            parser.add_argument('password', type=str, help='Password to match Email')
+            args = parser.parse_args()
+
+            
+            _userEmail = args['email']
+            _userPassword = args['password']
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('spUserLogin',(_userEmail,_userPassword))
+            data = cursor.fetchall()
+            print data[0][0] == "Success"
+            if data[0][0] == "Success":
+                conn.commit()
+                return {'StatusCode':'201','Message': 'Login success'}
+            else:
+                return {'StatusCode':'1001','Message':"Wrong Username and Password"}
+
+        except Exception as e:
+            return {'error': str(e)}
+        
 api.add_resource(CreateUser, '/CreateUser')
+api.add_resource(Login, '/Login')
 
 if __name__ == '__main__':
     app.run(debug=True)

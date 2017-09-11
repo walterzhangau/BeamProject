@@ -1,8 +1,12 @@
 Please add everytime you need to access the databse
 
 - Login Page
-  - user signup
+  - user signup 
+	- success status code 200
+	- user exists status code 1000
   - user login
+	- success status code 201
+	- wrong username/password status code 1001
 
 - Main Menu
   - update your current location

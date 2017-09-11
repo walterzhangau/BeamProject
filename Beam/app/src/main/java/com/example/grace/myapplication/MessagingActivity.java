@@ -7,11 +7,17 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 
 public class MessagingActivity extends AppCompatActivity {
 
+    TextView message_text_view;
+    Button message_button_view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +36,18 @@ public class MessagingActivity extends AppCompatActivity {
             }
 
 
+        });
+
+
+        message_button_view   = (Button)   findViewById(R.id.message_button);
+        message_text_view   = (TextView) findViewById(R.id.message_input);
+
+        message_button_view.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String toPrint = message_text_view.getText().toString();
+
+                Log.v("Text Message",toPrint);
+            }
         });
         setupActionBar();
     }

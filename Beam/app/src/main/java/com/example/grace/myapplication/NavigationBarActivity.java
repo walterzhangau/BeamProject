@@ -54,7 +54,7 @@ public class NavigationBarActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_bar, menu);
         return true;
@@ -77,6 +77,13 @@ public class NavigationBarActivity extends AppCompatActivity
 
         if (id == R.id.title_activity_friends) {
             Intent intent = new Intent(NavigationBarActivity.this, FriendsActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+
+        if (id == R.id.title_activity_messaging) {
+            Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
             startActivity(intent);
             finish();
             return true;

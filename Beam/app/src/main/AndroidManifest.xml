@@ -58,9 +58,15 @@
             android:name=".FriendsActivity"
             android:label="@string/title_activity_friends"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MessagingActivity"
+            android:label="@string/title_activity_messaging"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".ARActivity" android:configChanges="screenSize|orientation">
 
         </activity>
+
     </application>
 
 </manifest>

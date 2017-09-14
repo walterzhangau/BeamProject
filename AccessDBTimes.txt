@@ -1,0 +1,25 @@
+Please add everytime you need to access the databse
+
+- Login Page
+  - user signup 
+	- success status code 200
+	- user exists status code 1000
+  - user login
+	- success status code 201
+	- wrong username/password status code 1001
+
+- Main Menu
+  - update your current location
+
+- Friends List
+  - Add friend
+  - list all friends
+  - Delete Friend **
+  
+- Beam Screen
+  - Locations of all Friends
+  
+- Chat Screen
+  - Find previous messages between user and friend 
+  - add new messages to DB
+  

@@ -40,6 +40,8 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+    DBAccess instance = new DBAccess();
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -156,6 +158,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+
+
+
+
 
         boolean cancel = false;
         View focusView = null;

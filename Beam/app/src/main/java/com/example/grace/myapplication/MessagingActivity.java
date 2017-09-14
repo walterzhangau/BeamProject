@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 public class MessagingActivity extends AppCompatActivity {
 
     TextView message_text_view;
@@ -45,8 +44,9 @@ public class MessagingActivity extends AppCompatActivity {
         message_button_view.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String toPrint = message_text_view.getText().toString();
+                Message msg = new Message (1, 2, toPrint);
 
-                Log.v("Text Message",toPrint);
+
             }
         });
         setupActionBar();

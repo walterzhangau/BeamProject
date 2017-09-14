@@ -10,7 +10,6 @@ public class SendMessage{
     private int senderID;
     private int receiverID;
     private String message_body;
-    private Timestamp timestamp;
 
     //create new message object
     //Message message = new Message(senderID, receiverID, message_body, timestamp);

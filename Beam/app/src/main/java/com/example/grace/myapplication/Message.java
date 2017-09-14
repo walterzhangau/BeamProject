@@ -42,20 +42,13 @@ public class Message {
     }
 
     public String getMessage() {
-        return message;
+        return messageBody;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.messageBody = messageBody;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
     public String getMessageBody() {
         return messageBody;
     }

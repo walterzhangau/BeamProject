@@ -1,40 +1,31 @@
-CREATE TABLE IF NOT EXISTS   `tscelsi`.`tblUser`  (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `UserName` VARCHAR(16) NOT NULL,
-  `phone` VARCHAR(16) NULL,
-  `email` VARCHAR(255) NULL,
-  `Password` VARCHAR(40) NOT NULL,
-  `first_name` VARCHAR(20) NULL,
-  `last_name` VARCHAR(20) NULL,
-
-PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
 DELIMITER $$
 USE `tscelsi`$$
 
 CREATE PROCEDURE `spCreateUser` (
 IN p_Username varchar(50),
-IN p_Password varchar(50)
+IN p_Password varchar(50),
+IN p_Email varchar(50)
 )
 BEGIN
 
-if ( select exists (select 1 from tblUser where UserName = p_username) ) THEN
+if ( select exists (select 1 from `tscelsi`.`tblUsers` where username = p_Username) ) THEN
 
     select 'Username Exists !!';
 
 ELSE
 
-insert into tblUser
+insert into `tscelsi`.`tblUsers`
 (
-    UserName,
-    Password
+    username,
+    password,
+    email
+
 )
 values
 (
     p_Username,
-    p_Password
+    p_Password,
+    p_Email
 );
 
 END IF;
@@ -43,21 +34,17 @@ END$$
 
 DELIMITER ;
 
-select * from tblUser;
-CALL spCreateUser("Grace","paswordboi68");
-
-CALL spUserLogin("evan","12345");
 
 DELIMITER $$
 USE `tscelsi`$$
 
 CREATE PROCEDURE `spUserLogin` (
-IN p_Username varchar(50),
+IN p_Email varchar(50),
 IN p_Password varchar(50)
 )
 BEGIN
 
-if ( select exists (select 1 from tblUser where UserName = p_username AND Password = p_password ) ) THEN
+if ( select exists (select 1 from tblUsers where email = p_Email AND password = p_Password ) ) THEN
 
     select 'Success';
 

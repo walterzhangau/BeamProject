@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.grace.myapplication.MessagingActivity">
+    tools:context="com.example.grace.myapplication.com.example.grace.messaging.MessagingActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

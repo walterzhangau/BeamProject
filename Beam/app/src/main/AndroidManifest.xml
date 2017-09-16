@@ -59,7 +59,7 @@
             android:label="@string/title_activity_friends"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MessagingActivity"
+            android:name="com.example.grace.messaging.MessagingActivity"
             android:label="@string/title_activity_messaging"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -68,5 +68,5 @@
         </activity>
 
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

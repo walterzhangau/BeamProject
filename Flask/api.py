@@ -110,8 +110,6 @@ class ListFriendRequests(Resource):
             parser = reqparse.RequestParser()
             parser.add_argument('email', type=str, help='friend requests')
             args = parser.parse_args()
-
-            
             _userEmail = args['email']
             
             conn = mysql.connect()
@@ -132,10 +130,6 @@ class ListFriendRequests(Resource):
         except Exception as e:
             return {'error': str(e)}
         
-
-        
-        
-
 class SendFriendRequest(Resource):
     def post(self):
         try:
@@ -189,12 +183,105 @@ class AcceptFriendRequest(Resource):
 
         except Exception as e:
             return {'error': str(e)}
+
+class UpdateLocation(Resource):
+    def post(self):
+        try:
+            # Parse the arguments
+            parser = reqparse.RequestParser()
+            parser.add_argument('email', type=str, help='Email address of user who is sending request')
+            parser.add_argument('location', type=str, help='Location of user')
+            args = parser.parse_args()
+
+            
+            _userEmail = args['email']
+            _userLocation = args['location']
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('spUpdateLocation',(_userEmail,_userLocation))
+            data = cursor.fetchall()
+            
+            if data == ():
+                conn.commit()
+                return {'StatusCode':'204','Message': 'Updated Location'}
+            else:
+                return {'StatusCode':'1004','Message':"Error"}
+
+        except Exception as e:
+            return {'error': str(e)}
+        
+        
+        
+class ListAllFriendLocations(Resource):
+    def post(self):
+        try:
+            # Parse the arguments
+            parser = reqparse.RequestParser()
+            parser.add_argument('email', type=str, help='Email address for friends location')
+            args = parser.parse_args()
+
+            
+            _userEmail = args['email']
+            
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('spListAllFriendLocations', [_userEmail] )
+            data = cursor.fetchall()
+            
+            if len(data) is not 0:
+                conn.commit()
+                friend_list = {}
+                for (ids, location) in data:
+                    friend_list.update({ids:location})
+                
+                return friend_list
+            else:
+                return {'StatusCode':'1005','Message':"NO FRIEND LOCATION"}
+
+        except Exception as e:
+            return {'error': str(e)}
+        
+class FriendLocation(Resource):
+    def post(self):
+        try:
+            # Parse the arguments
+            parser = reqparse.RequestParser()
+            parser.add_argument('user', type=str, help='user to find location of')
+            args = parser.parse_args()
+
+            
+            _userUser = args['user']
+            
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('spFriendLocation', [_userUser] )
+            data = cursor.fetchall()
+            print data
+            if len(data) is not 0:
+                
+                conn.commit()
+                friend_list = {}
+                for (ids, location) in data:
+                    friend_list.update({ids:location})
+                
+                return friend_list
+            else:
+                return {'StatusCode':'1005','Message':"NO Location"}
+
+        except Exception as e:
+            return {'error': str(e)}
+
 api.add_resource(CreateUser, '/CreateUser')
 api.add_resource(Login, '/Login')
 api.add_resource(ListFriends, '/ListFriends')
 api.add_resource(ListFriendRequests, '/ListFriendRequests')
 api.add_resource(SendFriendRequest, '/SendFriendRequest')
 api.add_resource(AcceptFriendRequest, '/AcceptFriendRequest')
+api.add_resource(UpdateLocation, '/UpdateLocation')
+api.add_resource(ListAllFriendLocations, '/ListAllFriendLocations')
+api.add_resource(FriendLocation, '/FriendLocation')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

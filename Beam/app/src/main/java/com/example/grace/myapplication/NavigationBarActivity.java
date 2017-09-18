@@ -14,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.grace.messaging.MessagingActivity;
+//import com.example.grace.messaging.MessagingActivity;
 
 public class NavigationBarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -84,8 +84,15 @@ public class NavigationBarActivity extends AppCompatActivity
             return true;
         }
 
-        if (id == R.id.title_activity_messaging) {
-            Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
+        //if (id == R.id.title_activity_messaging) {
+        //    Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
+        //    startActivity(intent);
+        //    finish();
+        //    return true;
+        // }
+
+        if (id == R.id.title_accountCreation) {
+            Intent intent = new Intent(NavigationBarActivity.this, AccountCreation.class);
             startActivity(intent);
             finish();
             return true;

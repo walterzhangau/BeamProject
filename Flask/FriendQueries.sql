@@ -115,4 +115,4 @@ where (user_one_id = (select user_id from `tscelsi`.`tblUsers` where email = "ev
 call spListFriends("grace@gmail.com");
 call spListFriendRequests("grace@gmail.com");
 call spSendFriendRequest("evan@gmail.com", "georgee" );
-     
+call ListAllFriendLocations("grace@gmail.com");

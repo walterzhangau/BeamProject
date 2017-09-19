@@ -209,10 +209,16 @@
     <string name = "title_accountCreation">AccountCreation</string>
     <string name = "action_accountCreation">AccountCreation</string>
 
-    <string name = "accountCreation_input_Username">Username</string>
-    <string name = "accountCreation_input_Email">Email</string>
-    <string name = "accountCreation_input_Password">Password</string>
+    <string name = "accountCreation_input_Username_hint">Username</string>
+    <string name = "accountCreation_input_Email_hint">Email</string>
+    <string name = "accountCreation_input_Password_hint">Password</string>
 
-    <string name = "accountCreation_Button">Submit</string>
+    <string name = "accountCreation_Button_text">Submit</string>
+    <string name = "accountCreation_Button">accountCreation_Button</string>
+
+    <string name = "accountCreation_input_Username">accountCreation_Username</string>
+    <string name = "accountCreation_input_Email">accountCreation_Email</string>
+    <string name = "accountCreation_input_Password1">accountCreation_Password1</string>
+    <string name = "accountCreation_input_Password2">accountCreation_Password2</string>
 
 </resources>

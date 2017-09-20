@@ -4,15 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id= "@+id/title_accountCreation"
-
     tools:context="com.example.grace.myapplication.AccountCreation"
+
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
 
+
     <EditText
         android:id="@+id/accountCreation_Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/accountCreation_input_Username_hint"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="61dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/accountCreation_Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="@string/accountCreation_input_Email_hint"
+        tools:layout_constraint_top_toBottomof="@+id/accountCreation_Email"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="57dp"
+        app:layout_constraintTop_toBottomOf="@+id/accountCreation_Username"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <EditText
+        android:id="@+id/accountCreation_Password1"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="@string/accountCreation_input_Password_hint"
+
+
+        tools:layout_constraint_top_toBottomof="parent"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/accountCreation_Email"
+        android:layout_marginTop="54dp"
+        app:layout_constraintTop_toBottomOf="@+id/accountCreation_Email"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/accountCreation_Email" />
+
+    <EditText
+        android:id="@+id/accountCreation_Password2"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:ems="10"
@@ -21,83 +71,30 @@
         tools:layout_constraint_top_toBottomof="parent"
 
 
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        android:layout_marginTop="108dp"
+        app:layout_constraintRight_toRightOf="@+id/accountCreation_Password1"
+        android:layout_marginTop="19dp"
         app:layout_constraintTop_toBottomOf="@+id/accountCreation_Password1"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintHorizontal_bias="0.502" />
+        app:layout_constraintLeft_toLeftOf="@+id/accountCreation_Password1" />
 
-
-    <EditText
-        android:id="@+id/accountCreation_Email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="58dp"
-        android:layout_marginTop="60dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/accountCreation_input_Username_hint"
-        app:layout_constraintBottom_toTopOf="@+id/accountCreation_Password1"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraint_top_toBottomof="@+id/editText" />
-
-    <EditText
-        android:id="@+id/accountCreation_Password1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="161dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="@string/accountCreation_input_Email_hint"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraint_top_toBottomof="@+id/accountCreation_Email" />
-
-    <EditText
-        android:id="@+id/accountCreation_Password2"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="54dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="@string/accountCreation_input_Password_hint"
-
-
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountCreation_Password1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraint_top_toBottomof="parent" />
 
     <Button
         android:id="@+id/accountCreation_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/accountCreation_Button_text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        android:layout_marginTop="42dp"
-        app:layout_constraintTop_toBottomOf="@+id/accountCreation_Username"
-        tools:layout_constraintLeft_creator="1" />
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="77dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="74dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/accountCreation_Password2" />
 
 
 </android.support.constraint.ConstraintLayout>

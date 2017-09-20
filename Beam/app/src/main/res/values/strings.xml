@@ -100,6 +100,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_friends">Friends</string>
     <string name="action_messaging">Messaging</string>
+    <string name="action_accountCreation">AccountCreation</string>
 
     <string name="message_input_hint">Type Here Please</string>
 
@@ -107,24 +108,24 @@
     <string name="message_button">Message_button</string>
     <string name="title_activity_friends">FriendsActivity</string>
     <string name="title_activity_messaging">MessagingActivity</string>
+    <string name="title_activity_accountCreation">AccountCreationActivity</string>
+
     <string name="button_text">Send</string>
 
 
-    <string name = "accountCreationUsername">Username</string>
-    <string name = "title_accountCreation">AccountCreation</string>
-    <string name = "action_accountCreation">AccountCreation</string>
+    <string name= "accountCreationUsername">Username</string>
 
-    <string name = "accountCreation_input_Username_hint">Username</string>
-    <string name = "accountCreation_input_Email_hint">Email</string>
-    <string name = "accountCreation_input_Password_hint">Password</string>
+    <string name="accountCreation_input_Username_hint">Username</string>
+    <string name="accountCreation_input_Email_hint">Email</string>
+    <string name="accountCreation_input_Password_hint">Password</string>
 
-    <string name = "accountCreation_Button_text">Submit</string>
-    <string name = "accountCreation_Button">accountCreation_Button</string>
+    <string name="accountCreation_Button_text">Submit</string>
+    <string name="accountCreation_Button">accountCreation_Button</string>
 
-    <string name = "accountCreation_input_Username">accountCreation_Username</string>
-    <string name = "accountCreation_input_Email">accountCreation_Email</string>
-    <string name = "accountCreation_input_Password1">accountCreation_Password1</string>
-    <string name = "accountCreation_input_Password2">accountCreation_Password2</string>
+    <string name="accountCreation_input_Username">accountCreation_input_Username</string>
+    <string name="accountCreation_input_Email">accountCreation_input_Email</string>
+    <string name="accountCreation_input_Password1">accountCreation_input_Password1</string>
+    <string name="accountCreation_input_Password2">accountCreation_input_Password2</string>
 
     <string name="table_heading_1"><b>Friend</b></string>
     <string name="table_heading_2"><b>Visibility</b></string>
@@ -132,7 +133,7 @@
     <string name="table_4">Visible</string>
 
 
-    <string name = "message_button_text">Message</string>>
-    <string name = "beam_button_text">Beam</string>>
-    <string name = "block_button_text">Block</string>>
+    <string name= "message_button_text">Message</string>>
+    <string name= "beam_button_text">Beam</string>>
+    <string name= "block_button_text">Block</string>>
 </resources>

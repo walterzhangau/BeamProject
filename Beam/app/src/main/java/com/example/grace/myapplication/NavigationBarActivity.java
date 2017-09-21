@@ -91,6 +91,14 @@ public class NavigationBarActivity extends AppCompatActivity
             return true;
         }
 
+        if (id == R.id.title_activity_messaging) {
+            Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 

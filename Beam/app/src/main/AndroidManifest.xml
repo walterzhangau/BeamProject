@@ -59,7 +59,11 @@
             android:label="@string/title_activity_friends"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.grace.messaging.MessagingActivity"
+            android:name=".AccountCreation"
+            android:label="@string/title_activity_friends"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MessagingActivity"
             android:label="@string/title_activity_messaging"
             android:theme="@style/AppTheme.NoActionBar" />
 

@@ -13,8 +13,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_settings">Settings</string>
-
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
@@ -106,6 +104,8 @@
 
     <string name="message_input">Message_input</string>
     <string name="message_button">Message_button</string>
+
+    <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_friends">FriendsActivity</string>
     <string name="title_activity_messaging">MessagingActivity</string>
     <string name="title_activity_accountCreation">AccountCreationActivity</string>

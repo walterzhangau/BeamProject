@@ -142,14 +142,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         Intent intent = new Intent(SettingsActivity.this, NavigationBarActivity.class);
         startActivity(intent);
         finish();
-        /**if (mWebView.canGoBack()) {
-            mWebView.goBack();
-            return;**/
-
-
-
-
-        // Otherwise defer to system default behavior.
         super.onBackPressed();
     }
 

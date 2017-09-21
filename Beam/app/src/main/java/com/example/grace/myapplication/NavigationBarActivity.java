@@ -58,7 +58,9 @@ public class NavigationBarActivity extends AppCompatActivity
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        menu.clear();
         getMenuInflater().inflate(R.menu.navigation_bar, menu);
+
         return true;
     }
 

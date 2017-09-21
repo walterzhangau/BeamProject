@@ -60,8 +60,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AccountCreation"
-            android:label="@string/title_activity_friends"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_friends"/>
         <activity
             android:name=".MessagingActivity"
             android:label="@string/title_activity_messaging"

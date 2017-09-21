@@ -1,11 +1,11 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO
-# from flask.ext.mysql import MySQL
+# from flaskext.mysql import MySQL
 
 # mysql = MySQL()
 app = Flask(__name__)
 
-# MySQL configurations
+# # MySQL configurations
 # app.config['MYSQL_DATABASE_USER'] = 'tscelsi'
 # app.config['MYSQL_DATABASE_PASSWORD'] = 'tscelsi_2017'
 # app.config['MYSQL_DATABASE_DB'] = 'tscelsi'
@@ -14,10 +14,15 @@ app = Flask(__name__)
 
 # mysql.init_app(app)
 socketio = SocketIO(app)
+global textMessage
 
-@socketio.on('userMessage')
-def handle_json(userMessage):
-	print('received json: ' + str(userMessage))
+@socketio.on('received')
+def handle_recieved(received):
+	textMessage = str(received)
+
+@socketio.on('message')
+def handle_message(message):
+	send(textMessage, json=True)
 
 if __name__ == '__main__':
     socketio.run(app)

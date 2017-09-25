@@ -22,7 +22,7 @@ def handle_recieved(received):
 
 @socketio.on('message')
 def handle_message(message):
-	send(textMessage, json=True)
+	send("Hello")
 
 if __name__ == '__main__':
     socketio.run(app)

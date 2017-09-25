@@ -28,7 +28,6 @@ public class MessagingActivity extends AppCompatActivity {
     TextView message_text_view;
     Button message_button_view;
     Socket bSocket;
-    //SocketConnection bSocketConn = new SocketConnection(bSocket);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +41,8 @@ public class MessagingActivity extends AppCompatActivity {
                 System.out.println("Connection not established");
             }
             //Connect to socket
-            bSocket.on(Socket.EVENT_CONNECT,onReceiving);
-            bSocket.on("message", onReceiving);
             bSocket.connect();
+            bSocket.on("message", onReceiving);
         }
 
 
@@ -83,29 +81,13 @@ public class MessagingActivity extends AppCompatActivity {
         setupActionBar();
     }
 
-
+    //Emitter code sourced from https://github.com/nkzawa/socket.io-android-chat, adapted for this project
     private Emitter.Listener onReceiving = new Emitter.Listener() {
         @Override
-        public void call(final Object args) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    JSONObject data = (JSONObject) args[0];
-//                    String username;
-                    String message;
-                    try {
-//                      username = data.getString("senderID");
-                        message = data.getString("message");
-                    } catch (JSONException e) {
-                        return;
-                    }
-
-                    // add the message to view
-                    System.out.println(message);
-                }
-            });
+        public void call(final Object... args) {
+            System.out.println("Inside Emitter");
         }
-    }
+    };
 
 
     private void setupActionBar() {
@@ -116,6 +98,14 @@ public class MessagingActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        bSocket.disconnect();
+        bSocket.off("message", onReceiving);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

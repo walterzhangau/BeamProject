@@ -18,6 +18,10 @@ import com.example.grace.myapplication.R;
 import com.example.grace.util.JsonUtil;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
+import com.github.nkzawa.emitter.Emitter;
+
+import org.json.JSONObject;
+import org.json.JSONException;
 
 public class MessagingActivity extends AppCompatActivity {
 
@@ -29,18 +33,20 @@ public class MessagingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         {
-//      Open the socket
+            // Open the socket
             try {
-                bSocket = IO.socket("http://127.0.0.1:5000");
+                bSocket = IO.socket("http://10.0.2.2:5000");
 
                 System.out.println("Connection established");
+            } catch (java.net.URISyntaxException e) {
+                System.out.println("Connection not established");
             }
-            catch (java.net.URISyntaxException e)
-            {
-                System.out.println("Connection not established");}
             //Connect to socket
+            bSocket.on(Socket.EVENT_CONNECT,onReceiving);
+            bSocket.on("message", onReceiving);
             bSocket.connect();
         }
+
 
         setContentView(R.layout.activity_messaging);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -70,9 +76,7 @@ public class MessagingActivity extends AppCompatActivity {
                 //      Turn the data in a JSON object
                 String jsonMessage = JsonUtil.covertJavaToJson(msg);
                 //      Send the message as a JSON object
-                bSocket.emit("userMessage", jsonMessage);
-
-
+                bSocket.emit("received", jsonMessage);
 
             }
         });
@@ -80,7 +84,28 @@ public class MessagingActivity extends AppCompatActivity {
     }
 
 
+    private Emitter.Listener onReceiving = new Emitter.Listener() {
+        @Override
+        public void call(final Object args) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    JSONObject data = (JSONObject) args[0];
+//                    String username;
+                    String message;
+                    try {
+//                      username = data.getString("senderID");
+                        message = data.getString("message");
+                    } catch (JSONException e) {
+                        return;
+                    }
 
+                    // add the message to view
+                    System.out.println(message);
+                }
+            });
+        }
+    }
 
 
     private void setupActionBar() {

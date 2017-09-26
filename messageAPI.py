@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-from flask_socketio import SocketIO
+from flask import Flask, render_template, request, session
+from flask_socketio import SocketIO, send, emit
 # from flaskext.mysql import MySQL
 
 # mysql = MySQL()
@@ -17,12 +17,10 @@ socketio = SocketIO(app)
 global textMessage
 
 @socketio.on('received')
-def handle_recieved(received):
-	textMessage = str(received)
-
-@socketio.on('message')
-def handle_message(message):
-	send("Hello")
+def handle_received(received):
+	print(str(received))
+	room = request.sid
+	emit(received, room = room)
 
 if __name__ == '__main__':
     socketio.run(app)

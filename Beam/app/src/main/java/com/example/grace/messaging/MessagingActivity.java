@@ -42,7 +42,7 @@ public class MessagingActivity extends AppCompatActivity {
             }
             //Connect to socket
             bSocket.connect();
-            bSocket.on("message", onReceiving);
+            bSocket.on("received", onReceiving);
         }
 
 
@@ -50,18 +50,6 @@ public class MessagingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-
-            }
-
-
-        });
 
 
         message_button_view   = (Button)   findViewById(R.id.message_button);
@@ -74,8 +62,7 @@ public class MessagingActivity extends AppCompatActivity {
                 //      Turn the data in a JSON object
                 String jsonMessage = JsonUtil.covertJavaToJson(msg);
                 //      Send the message as a JSON object
-                bSocket.emit("received", jsonMessage);
-
+                bSocket.send(jsonMessage);
             }
         });
         setupActionBar();
@@ -105,7 +92,7 @@ public class MessagingActivity extends AppCompatActivity {
         super.onDestroy();
 
         bSocket.disconnect();
-        bSocket.off("message", onReceiving);
+//        bSocket.off("received", onReceiving);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

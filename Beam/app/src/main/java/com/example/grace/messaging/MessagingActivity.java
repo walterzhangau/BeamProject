@@ -28,6 +28,7 @@ public class MessagingActivity extends AppCompatActivity {
     TextView message_text_view;
     Button message_button_view;
     Socket bSocket;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class MessagingActivity extends AppCompatActivity {
             }
             //Connect to socket
             bSocket.connect();
-            bSocket.on("received", onReceiving);
+            bSocket.on("message", onReceiving);
         }
 
 
@@ -58,7 +59,7 @@ public class MessagingActivity extends AppCompatActivity {
         message_button_view.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String toPrint = message_text_view.getText().toString();
-                Message msg = new Message (1, 2, toPrint);
+                Message msg = new Message ("Grace", 2, toPrint);
                 //      Turn the data in a JSON object
                 String jsonMessage = JsonUtil.covertJavaToJson(msg);
                 //      Send the message as a JSON object
@@ -73,6 +74,17 @@ public class MessagingActivity extends AppCompatActivity {
         @Override
         public void call(final Object... args) {
             System.out.println("Inside Emitter");
+            JSONObject data;
+            String message;
+
+            try {
+                data = new JSONObject((String) args[0]);
+                message = data.getString("message");
+                System.out.println(message);
+            } catch (JSONException e) {
+                return;
+            }
+
         }
     };
 
@@ -92,7 +104,7 @@ public class MessagingActivity extends AppCompatActivity {
         super.onDestroy();
 
         bSocket.disconnect();
-//        bSocket.off("received", onReceiving);
+        bSocket.off("message", onReceiving);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

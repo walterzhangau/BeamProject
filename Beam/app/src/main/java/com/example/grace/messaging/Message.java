@@ -8,12 +8,12 @@ package com.example.grace.messaging;
 
 public class Message {
 
-    private int senderID;
+    private String senderID;
     private int receiverID;
     private String messageBody;
 
 
-    public Message(int senderID, int receiverID, String messageBody){
+    public Message(String senderID, int receiverID, String messageBody){
         this.senderID = senderID;
         this.receiverID = receiverID;
         this.messageBody = messageBody;
@@ -25,11 +25,11 @@ public class Message {
 
     }
 
-    public int getSenderID() {
+    public String getSenderID() {
         return senderID;
     }
 
-    public void setSenderID(int senderID) {
+    public void setSenderID(String senderID) {
         this.senderID = senderID;
     }
 

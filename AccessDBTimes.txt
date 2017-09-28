@@ -10,16 +10,31 @@ Please add everytime you need to access the databse
 
 - Main Menu
   - update your current location
+	- success status code 204
+	- wrong username/password status code 1001
 
 - Friends List
-  - Add friend
+  
   - list all friends
+	- User id and Username
+	- Error 1002 no friends
+  - list all friends requests
+	- User id and Username
+	- Error 1003 no friend requests
+  - Send friends requests
+	- Success status code 202
+	- Error 1004 no friend requests
+	- Other error is duplicate entry 
+  - Accept Friend Request
+	- Success status code 203
   - Delete Friend **
   
 - Beam Screen
   - Locations of all Friends
+	- Error 1004 no friend locations / friends
+  - Single Friend Location
+	- Error 1005 no location of friend
   
 - Chat Screen
   - Find previous messages between user and friend 
   - add new messages to DB
-  

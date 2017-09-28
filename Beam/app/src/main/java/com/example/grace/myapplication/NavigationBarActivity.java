@@ -14,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.grace.messaging.MessagingActivity;
+//import com.example.grace.messaging.MessagingActivity;
 
 public class NavigationBarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,7 +58,9 @@ public class NavigationBarActivity extends AppCompatActivity
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        menu.clear();
         getMenuInflater().inflate(R.menu.navigation_bar, menu);
+
         return true;
     }
 
@@ -84,12 +86,20 @@ public class NavigationBarActivity extends AppCompatActivity
             return true;
         }
 
+        if (id == R.id.title_activity_accountCreation) {
+            Intent intent = new Intent(NavigationBarActivity.this, AccountCreation.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+
         if (id == R.id.title_activity_messaging) {
             Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
             startActivity(intent);
             finish();
             return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }

@@ -5,17 +5,24 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/title_activity_friends"
         android:orderInCategory="100"
         android:title="@string/action_friends"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/title_activity_accountCreation"
+        android:orderInCategory="100"
+        android:title="@string/action_accountCreation"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/title_activity_messaging"
         android:orderInCategory="100"
         android:title="@string/action_messaging"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
+
 </menu>

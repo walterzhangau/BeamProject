@@ -2,49 +2,60 @@ package com.example.grace.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.grace.messaging.ChatMessage;
+import com.example.grace.messaging.MessageAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MessagingActivity extends AppCompatActivity {
 
     TextView message_text_view;
     Button message_button_view;
+    private List<ChatMessage> chatMessages;
+    private ArrayAdapter<ChatMessage> adapter;
+    ListView MessagelistView;
+    boolean isMine = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        chatMessages = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-
-            }
-
-
-        });
-
+        MessagelistView = (ListView) findViewById(R.id.list_msg);
+        adapter = new MessageAdapter(this, R.layout.item_chat_left, chatMessages);
+        MessagelistView.setAdapter(adapter);
 
         message_button_view   = (Button)   findViewById(R.id.message_button);
         message_text_view   = (TextView) findViewById(R.id.message_input);
 
+
+
         message_button_view.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String toPrint = message_text_view.getText().toString();
+
+                chatMessages.add(new ChatMessage(message_text_view.getText().toString(), isMine));
+                adapter.notifyDataSetChanged();
+                message_text_view.setText("");
+                isMine =!isMine;
+
 
                 Log.v("Text Message",toPrint);
             }
@@ -75,8 +86,6 @@ public class MessagingActivity extends AppCompatActivity {
     }
 
 
-
-    //Add button listening here
 
 
 

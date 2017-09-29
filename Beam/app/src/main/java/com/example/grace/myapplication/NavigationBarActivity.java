@@ -75,7 +75,7 @@ public class NavigationBarActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             Intent intent = new Intent(NavigationBarActivity.this, SettingsActivity.class);
             startActivity(intent);
-            finish();
+            //finish();
             return true;
         }
 

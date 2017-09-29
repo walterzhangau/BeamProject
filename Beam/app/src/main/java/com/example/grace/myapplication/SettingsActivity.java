@@ -137,13 +137,13 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      * {@inheritDoc}
      */
 
-    @Override
+    /**@Override
     public void onBackPressed() {
         Intent intent = new Intent(SettingsActivity.this, NavigationBarActivity.class);
         startActivity(intent);
         finish();
         super.onBackPressed();
-    }
+    }**/
 
     @Override
     public boolean onIsMultiPane() {

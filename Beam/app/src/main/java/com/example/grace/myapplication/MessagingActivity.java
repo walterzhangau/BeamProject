@@ -74,6 +74,7 @@ public class MessagingActivity extends AppCompatActivity {
 
         message_button_view.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                //Get the text from the input and save in message
                 String toPrint = message_text_view.getText().toString();
                 Message msg = new Message("Grace", 2, toPrint);
                 chatMessages.add(new ChatMessage(toPrint, isMine));
@@ -97,6 +98,7 @@ public class MessagingActivity extends AppCompatActivity {
             String message;
 
             try {
+                //Get the message from JSON data and save in messages array
                 data = new JSONObject((String) args[0]);
                 message = data.getString("message");
                 chatMessages.add(new ChatMessage(message, !isMine));

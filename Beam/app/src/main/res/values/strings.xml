@@ -44,19 +44,19 @@
         <item>-1</item>
     </string-array>
 
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
+    <!-- Example settings for Beam -->
+    <string name="pref_header_beam">Beam</string>
 
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
+    <string name="pref_title_beam_colour">Beam colour</string>
+    <string-array name="pref_beam_colour_titles">
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Purple</item>
     </string-array>
-    <string-array name="pref_sync_frequency_values">
+    <string-array name="pref_beam_colour_values">
         <item>15</item>
         <item>30</item>
         <item>60</item>
@@ -79,7 +79,7 @@
 
     <string-array name="multi_select_list_preference_default_value" />
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_title_beam_settings">System beam settings</string>
 
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>

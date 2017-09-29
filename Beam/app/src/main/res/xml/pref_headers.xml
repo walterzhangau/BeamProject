@@ -13,8 +13,8 @@
         android:title="@string/pref_header_notifications" />
 
     <header
-        android:fragment="com.example.grace.myapplication.SettingsActivity$DataSyncPreferenceFragment"
-        android:icon="@drawable/ic_sync_black_24dp"
-        android:title="@string/pref_header_data_sync" />
+        android:fragment="com.example.grace.myapplication.SettingsActivity$BeamPreferenceFragment"
+        android:icon="@drawable/ic_beam"
+        android:title="@string/pref_header_beam" />
 
 </preference-headers>

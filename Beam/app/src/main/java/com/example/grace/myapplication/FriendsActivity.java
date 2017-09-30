@@ -61,14 +61,16 @@ public class FriendsActivity extends AppCompatActivity {
             row.setLayoutParams(lp);
 
             TextView qty = new TextView(this);
-            qty.setText("Johnson");
+            String FirstName = "Johnson";
+            qty.setText(FirstName);
 
             TextView second = new TextView(this);
-            second.setText(Integer.toString(i));
+            String SecondName = Integer.toString(i);
+            second.setText(SecondName);
 
             row.addView(qty);
             row.addView(second);
-            row.addView(messageButton());
+            row.addView(messageButton(FirstName, SecondName));
             row.addView(beamButton());
             row.addView(blockButton());
             tableLayoutA.addView(row,i);
@@ -77,14 +79,23 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
-    private Button messageButton(){
 
+    //Button to open messaging for each friend
+    private Button messageButton(final String FirstName, final String SecondName){
 
         Button messageFriend = new Button(this);
         messageFriend.setText(R.string.message_button_text);
         messageFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent intent = new Intent(FriendsActivity.this, MessagingActivity.class);
+
+                // Inform messaging activity of recipients name
+                intent.putExtra("FIRST_NAME",  (FirstName));
+                intent.putExtra("SECOND_NAME", (SecondName));
+                startActivity(intent);
+                finish();
 
             }
         });
@@ -117,6 +128,8 @@ public class FriendsActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
 
             }
         });

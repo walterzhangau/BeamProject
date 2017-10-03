@@ -49,15 +49,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-
-
 
 
     /**
@@ -334,31 +325,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            showProgress(false);
 
             String correct = "";
             try {
@@ -371,11 +337,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
             catch(Exception e){
                 e.printStackTrace();
+            }
+
+            if (correct.equals("Login success")) {
+                return true;
 
             }
-            if (success && correct.equals("Login success")) {
-                System.out.println("HERE IT IS");
+            else{
 
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            mAuthTask = null;
+            showProgress(false);
+
+
+            if (success) {
                 Intent intent = new Intent(LoginActivity.this, NavigationBarActivity.class);
                 startActivity(intent);
                 finish();

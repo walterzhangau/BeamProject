@@ -1,9 +1,6 @@
 package com.example.grace.servercommunication;
 
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -11,12 +8,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.grace.myapplication.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,9 +47,12 @@ public class ServerConnection {
                 JSONObject obj = null;
                 try {
                     obj = new JSONObject(response);
+                    JSONResponse.SetResponse(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
                 String statusCode = null;
                 try {
                     statusCode = obj.getString("StatusCode");
@@ -62,7 +60,6 @@ public class ServerConnection {
                     e.printStackTrace();
                 }
                 System.out.println(statusCode);
-
             }
 
 

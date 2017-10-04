@@ -1,2 +1,0 @@
-configurations.maybeCreate("default")
-artifacts.add("default", file('jackson-mapper-asl-1.9.10.jar'))

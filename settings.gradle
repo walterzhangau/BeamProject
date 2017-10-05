@@ -1,1 +1,0 @@
-include ':jackson-core-asl-1.9.13', ':jackson-mapper-asl-1.9.10'

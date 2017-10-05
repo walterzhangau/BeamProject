@@ -1,4 +1,5 @@
 
+
 #Start of Java gitignore
 
 # Compiled class file
@@ -231,3 +232,6 @@ Beam/.idea/libraries/vtd_xml_2_11.xml
 Would skip repository Beam/volley/
 <<<<<<< HEAD
 .idea/modules/s
+Beam/.idea/libraries/android_android_26.xml
+Beam/.idea/libraries/volley_1_0_0.xml
+Beam/.idea/vcs.xml

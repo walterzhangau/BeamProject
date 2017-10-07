@@ -143,7 +143,7 @@ public class FriendsActivity extends AppCompatActivity {
 
             row.addView(qty);
             row.addView(messageButton(FirstName, Status));
-            row.addView(beamButton());
+            row.addView(beamButton(Status));
             row.addView(blockButton());
             tableLayoutA.addView(row,i);
 
@@ -151,13 +151,21 @@ public class FriendsActivity extends AppCompatActivity {
 
         TableRow header= new TableRow(this);
         header.setLayoutParams(lp);
-        TextView first_name  = new TextView(this);                                                                                                                                                                        new TextView(this);
-        TextView second_name = new TextView(this);
-        first_name.setText("First name   ");
-        second_name.setText("Second name");
 
-        header.addView(first_name);
-        header.addView(second_name);
+        TextView username  = new TextView(this);                                                                                                                                                                        new TextView(this);
+        TextView message = new TextView(this);
+        TextView beam = new TextView(this);
+        TextView block = new TextView(this);
+
+        username.setText("Username   ");
+        message.setText("Message");
+        beam.setText("Beam");
+        block.setText("Block");
+
+        header.addView(username);
+        header.addView(message);
+        header.addView(beam);
+        header.addView(block);
         tableLayoutA.addView(header, 0);
 
 
@@ -204,17 +212,20 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
-    private Button beamButton(){
-
+    private Button beamButton(int Status){
 
         Button button = new Button(this);
-        button.setText(R.string.beam_button_text);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
+        if(Status == FRIEND) {
+            button.setText(R.string.beam_button_text);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
+        }
 
         return button;
 

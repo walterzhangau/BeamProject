@@ -81,6 +81,8 @@ public class NavigationBarActivity extends AppCompatActivity
 
         if (id == R.id.title_activity_friends) {
             Intent intent = new Intent(NavigationBarActivity.this, FriendsActivity.class);
+
+            intent.putExtra("EMAIL" ,getIntent().getStringExtra("EMAIL"));
             startActivity(intent);
             finish();
             return true;

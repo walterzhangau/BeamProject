@@ -7,6 +7,20 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.grace.myapplication.FriendsActivity">
 
+    <ProgressBar
+        android:id="@+id/Friends_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+<LinearLayout
+    android:id = "@+id/friend_list_form"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -42,5 +56,5 @@
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_dialog_email" />
-
+</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

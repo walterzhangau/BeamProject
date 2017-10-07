@@ -23,8 +23,6 @@ import java.util.Map;
 public class ServerConnection {
 
 
-    private UserLoginTask mAuthTask = null;
-
 
     public String makeServerRequest(String urlAffix, final ArrayList<String> keyTags, final ArrayList<String> Keys, final int len, android.content.Context context) {
 
@@ -33,7 +31,7 @@ public class ServerConnection {
 
         final RequestQueue MyRequestQueue = Volley.newRequestQueue(context);
 
-        String url = "http://10.12.184.27:5000/" + urlAffix;
+        String url = "http://10.0.2.2:5000/" + urlAffix;
 
         System.out.println("The url is " + url);
         System.out.println("the affix is " + urlAffix);
@@ -41,7 +39,7 @@ public class ServerConnection {
         StringRequest MyStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("1");
+                System.out.println("Response Received");
                 System.out.println(response);
 
                 JSONObject obj = null;
@@ -67,7 +65,7 @@ public class ServerConnection {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //This code is executed if there is an error.
-                System.out.println("9999999");
+                System.out.println("Error in connecting to server");
                 if (error.getMessage() != null) {
                     Log.e("VOLLEY", error.getMessage());
                 }

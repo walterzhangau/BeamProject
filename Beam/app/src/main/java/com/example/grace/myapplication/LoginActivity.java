@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    public String email;
 
 
     @Override
@@ -156,7 +157,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        final String email = mEmailView.getText().toString();
+        email = mEmailView.getText().toString();
         final String password = mPasswordView.getText().toString();
 
 
@@ -350,6 +351,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 Intent intent = new Intent(LoginActivity.this, NavigationBarActivity.class);
+                intent.putExtra("EMAIL", email);
+                JSONResponse.response = null;
                 startActivity(intent);
                 finish();
             } else {

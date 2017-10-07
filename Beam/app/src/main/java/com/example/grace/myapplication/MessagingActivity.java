@@ -49,12 +49,11 @@ public class MessagingActivity extends AppCompatActivity {
 
         //Get message target
         String first_name = getIntent().getStringExtra("FIRST_NAME");
-        String second_name = getIntent().getStringExtra("SECOND_NAME");
 
 
         //Change button to display who recipient is if it has already been selected
         if (first_name != null ) {
-            message_button_view.setText("Send to " + first_name + " " + second_name);
+            message_button_view.setText("Send to " + first_name);
         }
 
         

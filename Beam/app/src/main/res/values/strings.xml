@@ -132,7 +132,7 @@
     <string name="table_3">Bobby Mc Bobface</string>
     <string name="table_4">Visible</string>
 
-
+    <string name= "friendRequest_button_text">Accept</string>>
     <string name= "message_button_text">Message</string>>
     <string name= "beam_button_text">Beam</string>>
     <string name= "block_button_text">Block</string>>

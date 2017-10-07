@@ -169,7 +169,7 @@ public class FriendsActivity extends AppCompatActivity {
         tableLayoutA.addView(header, 0);
 
 
-
+        JSONResponse.response = null;
     }
 
 

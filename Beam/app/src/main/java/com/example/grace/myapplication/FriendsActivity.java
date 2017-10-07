@@ -28,7 +28,8 @@ import java.util.Iterator;
 
 
 public class FriendsActivity extends AppCompatActivity {
-
+    final int PENDING = 2;
+    final int FRIEND = 3;
 
     private View mProgressView;
     private View mFriendsListForm;
@@ -90,14 +91,34 @@ public class FriendsActivity extends AppCompatActivity {
     }
 
     public void drawFriendsTable(){
-        Iterator<?> friend_names = null;
         String FirstName = null;
+        int Status = 0;
+
+        ArrayList<String>  friends  = new ArrayList<>();
+        String[] values;
+        ArrayList<Integer> statuses = new ArrayList<>();
 
         JSONObject response = JSONResponse.response;
         try {
-            friend_names = response.keys();
+            String responseString = response.toString();
+            responseString = responseString.replace("{",  "");
+            responseString = responseString.replace("}",  "");
+            responseString = responseString.replace("\"", "");
+            responseString = responseString.replace(":", ",");
+            values = responseString.split(",");
+            int j;
+            for(j=0; j < values.length; j +=2){
+                friends.add(values[j+1]);
+                statuses.add(Integer.parseInt(values[j]));
+            }
 
-        }catch(Exception e){}
+            System.out.println("The response for friends list is "+ responseString);
+
+        }catch(Exception e){
+            e.printStackTrace();
+
+        }
+
         TableLayout tableLayoutA;
         tableLayoutA= (TableLayout)findViewById(R.id.friends_table);
 
@@ -107,38 +128,32 @@ public class FriendsActivity extends AppCompatActivity {
 
 
 
-        int i = 0;
-        while (friend_names.hasNext()) {
-
-            TableRow row= new TableRow(this);
+        int i;
+        for (i = 0; i < friends.size(); i++){
+            TableRow row = new TableRow(this);
             row.setLayoutParams(lp);
 
             TextView qty = new TextView(this);
-            try {
-                FirstName = response.getString((String)friend_names.next());
-            }catch(Exception e){}
+
+            FirstName = friends.get(i);
+            Status    = statuses.get(i);
 
             qty.setText(FirstName);
 
-            TextView second = new TextView(this);
-            String SecondName = Integer.toString(i);
-            second.setText(SecondName);
 
             row.addView(qty);
-            row.addView(second);
-            row.addView(messageButton(FirstName, SecondName));
+            row.addView(messageButton(FirstName, Status));
             row.addView(beamButton());
             row.addView(blockButton());
             tableLayoutA.addView(row,i);
 
-            i++;
         }
 
         TableRow header= new TableRow(this);
         header.setLayoutParams(lp);
         TextView first_name  = new TextView(this);                                                                                                                                                                        new TextView(this);
         TextView second_name = new TextView(this);
-        first_name.setText("First name");
+        first_name.setText("First name   ");
         second_name.setText("Second name");
 
         header.addView(first_name);
@@ -150,25 +165,40 @@ public class FriendsActivity extends AppCompatActivity {
     }
 
 
+
     //Button to open messaging for each friend
-    private Button messageButton(final String FirstName, final String SecondName){
+    private Button messageButton(final String FirstName, final int Status){
 
-        Button messageFriend = new Button(this);
-        messageFriend.setText(R.string.message_button_text);
-        messageFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        Button messageFriend;
 
-                Intent intent = new Intent(FriendsActivity.this, MessagingActivity.class);
+        if(Status == FRIEND) {
+            messageFriend = new Button(this);
+            messageFriend.setText(R.string.message_button_text);
+            messageFriend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-                // Inform messaging activity of recipients name
-                intent.putExtra("FIRST_NAME",  (FirstName));
-                intent.putExtra("SECOND_NAME", (SecondName));
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(FriendsActivity.this, MessagingActivity.class);
 
-            }
-        });
+                    // Inform messaging activity of recipients name
+                    intent.putExtra("FIRST_NAME", (FirstName));
+                    startActivity(intent);
+                    finish();
+
+                }
+            });
+        }
+        else{
+            messageFriend = new Button(this);
+            messageFriend.setText(R.string.friendRequest_button_text);
+            messageFriend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
+        }
 
         return messageFriend;
 

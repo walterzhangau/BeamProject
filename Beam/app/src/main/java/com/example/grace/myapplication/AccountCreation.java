@@ -92,7 +92,7 @@ public class AccountCreation extends AppCompatActivity {
 
 
         ServerConnection serverConnection = new ServerConnection();
-        serverConnection.makeServerRequest("CreateUser", KeyTags, Keys, 3, this);
+        serverConnection.makeServerRequest("CreateUser", KeyTags, Keys, 3, this, true);
 
     }
 

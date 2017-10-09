@@ -24,7 +24,7 @@ public class ServerConnection {
 
 
 
-    public String makeServerRequest(String urlAffix, final ArrayList<String> keyTags, final ArrayList<String> Keys, final int len, android.content.Context context) {
+    public String makeServerRequest(String urlAffix, final ArrayList<String> keyTags, final ArrayList<String> Keys, final int len, android.content.Context context, final Boolean ignore_response) {
 
 
         // Store values at the time of the login attempt.
@@ -45,7 +45,9 @@ public class ServerConnection {
                 JSONObject obj = null;
                 try {
                     obj = new JSONObject(response);
-                    JSONResponse.SetResponse(response);
+                    if (!ignore_response) {
+                        JSONResponse.SetResponse(response);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

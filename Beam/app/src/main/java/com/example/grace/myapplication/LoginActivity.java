@@ -172,7 +172,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         Keys.add(password);
 
 
-        serverConnection.makeServerRequest("Login", KeyTags, Keys, 2,  this);
+        serverConnection.makeServerRequest("Login", KeyTags, Keys, 2,  this, false);
 
         boolean cancel = false;
         View focusView = null;

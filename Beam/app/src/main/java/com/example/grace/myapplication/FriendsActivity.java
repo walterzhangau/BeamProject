@@ -87,7 +87,7 @@ public class FriendsActivity extends AppCompatActivity {
         Keys.add(email);
         KeyTags.add("email");
 
-        serverConnection.makeServerRequest("ListFriends",KeyTags,Keys,1,this);
+        serverConnection.makeServerRequest("ListFriends",KeyTags,Keys,1,this, false);
 
 
         showProgress(true);
@@ -121,7 +121,7 @@ public class FriendsActivity extends AppCompatActivity {
                 KeyTags.add("user");
 
                 ServerConnection serverConnection = new ServerConnection();
-                serverConnection.makeServerRequest("SendFriendRequest", KeyTags, Keys, 2, FriendsActivity.this);
+                serverConnection.makeServerRequest("SendFriendRequest", KeyTags, Keys, 2, FriendsActivity.this, true);
 
 
 
@@ -132,6 +132,8 @@ public class FriendsActivity extends AppCompatActivity {
 
 
     }
+
+
 
     public void drawFriendsTable(){
         String FirstName = null;
@@ -261,7 +263,7 @@ public class FriendsActivity extends AppCompatActivity {
                     KeyTags.add("user");
 
                     ServerConnection serverConnection = new ServerConnection();
-                    serverConnection.makeServerRequest("AcceptFriendRequest", KeyTags, Keys, 2, FriendsActivity.this);
+                    serverConnection.makeServerRequest("AcceptFriendRequest", KeyTags, Keys, 2, FriendsActivity.this, true);
 
                 }
             });

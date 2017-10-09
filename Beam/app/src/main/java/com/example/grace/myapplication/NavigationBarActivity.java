@@ -87,12 +87,6 @@ public class NavigationBarActivity extends AppCompatActivity
             return true;
         }
 
-        if (id == R.id.title_activity_accountCreation) {
-            Intent intent = new Intent(NavigationBarActivity.this, AccountCreation.class);
-            startActivity(intent);
-            finish();
-            return true;
-        }
 
         if (id == R.id.title_activity_messaging) {
             Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);

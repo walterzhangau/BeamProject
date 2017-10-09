@@ -47,6 +47,21 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_friends" />
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+    <Button
+        android:id="@+id/add_friends_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/add_friend_text"/>
+
+    <EditText
+        android:id="@+id/add_friends_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_friend_input_hint" />
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

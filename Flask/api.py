@@ -93,8 +93,8 @@ class ListFriends(Resource):
             if len(data) is not 0:
                 conn.commit()
                 friend_list = {}
-                for (friend, ids) in data:
-                    friend_list.update({ids:friend})
+                for (user_id, friend, status) in data:
+                    friend_list.update({user_id:(friend,status)})
                 
                 return friend_list
             else:

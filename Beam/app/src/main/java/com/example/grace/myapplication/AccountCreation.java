@@ -38,6 +38,7 @@ public class AccountCreation extends AppCompatActivity {
         }
     }
 
+
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(AccountCreation.this, LoginActivity.class);
         startActivity(intent);

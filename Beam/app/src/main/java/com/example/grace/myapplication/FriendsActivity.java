@@ -12,6 +12,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -33,11 +34,16 @@ public class FriendsActivity extends AppCompatActivity {
     final int PENDING = 2;
     final int FRIEND = 3;
     final String NOFRIENDSERROR = "1002";
+    final String REQUESTSENT = "Friend Request Sent";
+
+    Button add_friend_button;
+    TextView add_friend_input;
 
 
     private View mProgressView;
     private View mFriendsListForm;
-    private FriendsListTask task;
+    private FriendsListTask friendsListTask;
+    private AddFriendTask addFriendTask;
     public String email;
 
 
@@ -91,8 +97,8 @@ public class FriendsActivity extends AppCompatActivity {
 
 
         showProgress(true);
-        task = new FriendsListTask();
-        task.execute();
+        friendsListTask = new FriendsListTask();
+        friendsListTask.execute();
 
 
 
@@ -102,8 +108,8 @@ public class FriendsActivity extends AppCompatActivity {
 
 
     public void setupAddFriends(){
-        Button add_friend_button = (Button)findViewById(R.id.add_friends_button);
-        final TextView add_friend_input = (TextView)findViewById(R.id.add_friends_input);
+        add_friend_button = (Button)findViewById(R.id.add_friends_button);
+        add_friend_input = (TextView)findViewById(R.id.add_friends_input);
         add_friend_button.setOnClickListener(new View.OnClickListener() {
             @Override
                     public void onClick(View view){
@@ -121,7 +127,12 @@ public class FriendsActivity extends AppCompatActivity {
                 KeyTags.add("user");
 
                 ServerConnection serverConnection = new ServerConnection();
-                serverConnection.makeServerRequest("SendFriendRequest", KeyTags, Keys, 2, FriendsActivity.this, true);
+                serverConnection.makeServerRequest("SendFriendRequest", KeyTags, Keys, 2, FriendsActivity.this, false);
+
+                showProgress(true);
+                addFriendTask = new AddFriendTask();
+                addFriendTask.execute();
+
 
 
 
@@ -355,13 +366,69 @@ public class FriendsActivity extends AppCompatActivity {
         protected void onPostExecute(final Boolean success) {
 
             drawFriendsTable();
-            task = null;
+            friendsListTask = null;
             showProgress(false);
         }
 
         @Override
         protected void onCancelled() {
-            task = null;
+            friendsListTask = null;
+            showProgress(false);
+        }
+    }
+
+    /**
+     * Represents an asynchronous addfriend task used to authenticate
+     * the user.
+     */
+    public class AddFriendTask extends AsyncTask<Void, Void, Boolean> {
+
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+
+            try {
+                while(JSONResponse.response == null) {
+                    Thread.sleep(20);
+                    Log.e("Wating", "waiting");
+                }
+
+            if (JSONResponse.response.getString("Message").equals(REQUESTSENT)){
+                        return true;
+
+            }
+            else{
+                        return false;
+                    }
+
+
+
+            }catch(Exception e){e.printStackTrace();}
+
+        return false;
+        }
+
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+
+            if(success){
+                add_friend_input.setText("Request Sent");
+
+            }
+            else{
+                add_friend_input.setText("User does not exist");
+
+            }
+
+            addFriendTask = null;
+            showProgress(false);
+            JSONResponse.response = null;
+        }
+
+        @Override
+        protected void onCancelled() {
+            addFriendTask = null;
             showProgress(false);
         }
     }

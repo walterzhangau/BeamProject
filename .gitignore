@@ -235,3 +235,5 @@ Would skip repository Beam/volley/
 Beam/.idea/libraries/android_android_26.xml
 Beam/.idea/libraries/volley_1_0_0.xml
 Beam/.idea/vcs.xml
+Flask/api.py~
+.idea/modules/

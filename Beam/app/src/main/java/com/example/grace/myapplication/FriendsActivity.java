@@ -249,6 +249,18 @@ public class FriendsActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
+                    ArrayList<String> Keys = new ArrayList<String>();
+                    ArrayList<String> KeyTags = new ArrayList<String>();
+
+                    Keys.add(email);
+                    KeyTags.add("email");
+
+                    Keys.add(FirstName);
+                    KeyTags.add("user");
+
+                    ServerConnection serverConnection = new ServerConnection();
+                    serverConnection.makeServerRequest("AcceptFriendRequest", KeyTags, Keys, 2, FriendsActivity.this);
+
                 }
             });
 

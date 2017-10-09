@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.example.grace.UserInformation.UserCredentials;
 import com.example.grace.servercommunication.*;
 
 import org.json.JSONArray;
@@ -43,7 +45,7 @@ public class FriendsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        email = getIntent().getStringExtra("EMAIL");
+        email = UserCredentials.email;
 
         setContentView(R.layout.activity_friends);
 

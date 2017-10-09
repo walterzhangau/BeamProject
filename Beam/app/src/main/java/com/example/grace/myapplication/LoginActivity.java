@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.os.AsyncTask;
 
+import com.example.grace.UserInformation.UserCredentials;
 import com.example.grace.servercommunication.*;
 
 import java.util.ArrayList;
@@ -351,11 +352,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 Intent intent = new Intent(LoginActivity.this, NavigationBarActivity.class);
-                intent.putExtra("EMAIL", email);
+                UserCredentials.email = email;
                 JSONResponse.response = null;
                 startActivity(intent);
+                System.out.println("The email is " + UserCredentials.email);
                 finish();
             } else {
+                JSONResponse.response = null;
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }

@@ -30,22 +30,29 @@ import java.util.Iterator;
 public class FriendsActivity extends AppCompatActivity {
     final int PENDING = 2;
     final int FRIEND = 3;
+    final String NOFRIENDSERROR = "1002";
+
 
     private View mProgressView;
     private View mFriendsListForm;
     private FriendsListTask task;
+    public String email;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        email = getIntent().getStringExtra("EMAIL");
+
         setContentView(R.layout.activity_friends);
 
 
         mProgressView = findViewById(R.id.Friends_progress);
         mFriendsListForm = findViewById(R.id.friend_list_form);
         setupFriendsTable();
+
+        setupAddFriends();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,6 +66,7 @@ public class FriendsActivity extends AppCompatActivity {
             }
         });
         setupActionBar();
+
     }
 
     private void setupFriendsTable(){
@@ -68,7 +76,6 @@ public class FriendsActivity extends AppCompatActivity {
         //Request friends data
 
 
-        String email = getIntent().getStringExtra("EMAIL");
         ServerConnection serverConnection = new ServerConnection();
 
 
@@ -90,6 +97,40 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
+
+
+    public void setupAddFriends(){
+        Button add_friend_button = (Button)findViewById(R.id.add_friends_button);
+        final TextView add_friend_input = (TextView)findViewById(R.id.add_friends_input);
+        add_friend_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+                    public void onClick(View view){
+                String add_friend_username = add_friend_input.getText().toString();
+
+                add_friend_input.setText("");
+
+                ArrayList<String> Keys = new ArrayList<String>();
+                ArrayList<String> KeyTags = new ArrayList<String>();
+
+                Keys.add(email);
+                KeyTags.add("email");
+
+                Keys.add(add_friend_username);
+                KeyTags.add("user");
+
+                ServerConnection serverConnection = new ServerConnection();
+                serverConnection.makeServerRequest("SendFriendRequest", KeyTags, Keys, 2, FriendsActivity.this);
+
+
+
+            }
+             });
+
+
+
+
+    }
+
     public void drawFriendsTable(){
         String FirstName = null;
         int Status = 0;
@@ -105,13 +146,18 @@ public class FriendsActivity extends AppCompatActivity {
             responseString = responseString.replace("}",  "");
             responseString = responseString.replace("\"", "");
             responseString = responseString.replace(":", ",");
+            responseString = responseString.replace("[", "");
+            responseString = responseString.replace("]", "");
             values = responseString.split(",");
             int j;
-            for(j=0; j < values.length; j +=2){
-                friends.add(values[j+1]);
-                statuses.add(Integer.parseInt(values[j]));
-            }
 
+            if(!values[1].equals(NOFRIENDSERROR)) {
+
+                for (j = 0; j < values.length; j += 3) {
+                    friends.add(values[j + 1]);
+                    statuses.add(Integer.parseInt(values[j + 2]));
+                }
+            }
             System.out.println("The response for friends list is "+ responseString);
 
         }catch(Exception e){

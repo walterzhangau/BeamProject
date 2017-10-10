@@ -2,12 +2,14 @@ package com.example.grace.myapplication;
 
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.net.wifi.hotspot2.pps.Credential;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -19,6 +21,8 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
+
+import com.example.grace.UserInformation.UserCredentials;
 
 import java.util.List;
 
@@ -77,7 +81,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     }
                 }
 
-            } else {
+            }
+
+            else {
                 // For all other preferences, set the summary to the value's
                 // simple string representation.
                 preference.setSummary(stringValue);
@@ -187,6 +193,21 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("nickname"));
+
+            Preference logout = findPreference(getString(R.string.logoutPreference));
+                logout.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        UserCredentials.email = null;
+                        Context context = preference.getContext();
+
+                        Intent intent = new Intent(context, LoginActivity.class);
+                        context.startActivity(intent);
+                        ((Activity)context).finish();
+                        return true;
+                    }
+                });
+
         }
 
         @Override
@@ -198,6 +219,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             }
             return super.onOptionsItemSelected(item);
         }
+
+
+
     }
 
     /**
@@ -259,4 +283,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             return super.onOptionsItemSelected(item);
         }
     }
+
+
 }

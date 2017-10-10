@@ -1,6 +1,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-     <SwitchPreference
+
+    <Preference
+        android:key="@string/logoutPreference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:defaultValue="true"
+        android:title="@string/pref_title_logout" />
+
+
+    <SwitchPreference
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:defaultValue="true"

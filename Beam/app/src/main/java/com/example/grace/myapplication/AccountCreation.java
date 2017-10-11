@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class AccountCreation extends AppCompatActivity {
 
     final String USERCREATED = "User creation success";
+    final String PASSWORDMISMATCH = "Passwords must match";
 
     TextView email_input;
     AccountCreationTask ACtask;
@@ -87,7 +88,7 @@ public class AccountCreation extends AppCompatActivity {
         email_input = (TextView) findViewById(R.id.accountCreation_Email);
         final TextView username_input = (TextView) findViewById(R.id.accountCreation_Username);
         final TextView password1_input = (TextView) findViewById(R.id.accountCreation_Password1);
-        TextView password2_input = (TextView) findViewById(R.id.accountCreation_Password2);
+        final TextView password2_input = (TextView) findViewById(R.id.accountCreation_Password2);
 
         AccountCreatedDisplay = findViewById(R.id.AccountCreation_display);
 
@@ -95,23 +96,32 @@ public class AccountCreation extends AppCompatActivity {
             public void onClick(View v) {
                 String username = username_input.getText().toString();
                 String email = email_input.getText().toString();
-                String password = password1_input.getText().toString();
+                String password1 = password1_input.getText().toString();
+                String password2 = password2_input.getText().toString();
 
 
-                ArrayList<String> KeyTags = new ArrayList<String>();
-                ArrayList<String> Keys = new ArrayList<String>();
+                if (password1.equals(password2)) {
+                    ArrayList<String> KeyTags = new ArrayList<String>();
+                    ArrayList<String> Keys = new ArrayList<String>();
 
-                KeyTags.add("username");
-                KeyTags.add("email");
-                KeyTags.add("password");
+                    KeyTags.add("username");
+                    KeyTags.add("email");
+                    KeyTags.add("password");
 
-                Keys.add(username);
-                Keys.add(email);
-                Keys.add(password);
+                    Keys.add(username);
+                    Keys.add(email);
+                    Keys.add(password1);
 
 
-                CreateAccount(KeyTags, Keys);
+                    CreateAccount(KeyTags, Keys);
+                }else{
+                    password1_input.setText("");
+                    password2_input.setText("");
 
+                    password1_input.setHint(PASSWORDMISMATCH);
+                    password2_input.setHint(PASSWORDMISMATCH);
+
+                }
 
 
             }

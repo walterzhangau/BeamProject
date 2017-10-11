@@ -8,4 +8,37 @@
     tools:context="com.example.grace.myapplication.NavigationBarActivity"
     tools:showIn="@layout/app_bar_navigation_bar">
 
+    <Button
+        android:id="@+id/settings_activity_button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/settings_activity_button_text"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/message_activity_button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/message_activity_button_text"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_activity_button"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/friends_activity_button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="@string/friends_activity_button_text"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message_activity_button"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+
+
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.grace.myapplication;
 
 import android.content.Intent;
+import android.media.audiofx.BassBoost;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 //import com.example.grace.messaging.MessagingActivity;
 
@@ -43,6 +45,49 @@ public class NavigationBarActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        SetupActivityButtons();
+    }
+
+    private void SetupActivityButtons(){
+
+        Button SettingsActivityButton = (Button)findViewById(R.id.settings_activity_button);
+        Button MessageActivityButton = (Button)findViewById(R.id.message_activity_button);
+        Button FriendsActivityButton = (Button)findViewById(R.id.friends_activity_button);
+
+
+        SettingsActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NavigationBarActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        MessageActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        FriendsActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NavigationBarActivity.this, FriendsActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+
+
+
     }
 
     @Override
@@ -64,40 +109,40 @@ public class NavigationBarActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(NavigationBarActivity.this, SettingsActivity.class);
-            startActivity(intent);
-            //finish();
-            return true;
-        }
-
-        if (id == R.id.title_activity_friends) {
-            Intent intent = new Intent(NavigationBarActivity.this, FriendsActivity.class);
-
-            startActivity(intent);
-            finish();
-            return true;
-        }
-
-
-        if (id == R.id.title_activity_messaging) {
-            Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
-            startActivity(intent);
-            finish();
-            return true;
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            Intent intent = new Intent(NavigationBarActivity.this, SettingsActivity.class);
+//            startActivity(intent);
+//            //finish();
+//            return true;
+//        }
+//
+//        if (id == R.id.title_activity_friends) {
+//            Intent intent = new Intent(NavigationBarActivity.this, FriendsActivity.class);
+//
+//            startActivity(intent);
+//            finish();
+//            return true;
+//        }
+//
+//
+//        if (id == R.id.title_activity_messaging) {
+//            Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
+//            startActivity(intent);
+//            finish();
+//            return true;
+//        }
+//
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

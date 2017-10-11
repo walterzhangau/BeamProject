@@ -275,6 +275,8 @@ public class FriendsActivity extends AppCompatActivity {
 
                     ServerConnection serverConnection = new ServerConnection();
                     serverConnection.makeServerRequest("AcceptFriendRequest", KeyTags, Keys, 2, FriendsActivity.this, true);
+                    finish();
+                    startActivity(getIntent());
 
                 }
             });

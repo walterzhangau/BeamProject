@@ -20,19 +20,19 @@ clients = []
 
 @socketio.on('message')
 def handle_received(received):
-	data = eval(received)
-	sender = 0
+	# data = eval(received)
+	# sender = 0
 	# print(data)
 	sessionID = request.sid
 	room = sessionID
-	clients.append((data['senderID'], sessionID),)
-	# print(clients)
-	for x in clients:
-		if clients[sender] == data['receiverID']:
-			room = clients[x].sessionID
-			break
-	#emit(received, room = room)
-	send(received, room = room)
+	# clients.append((data['senderID'], sessionID),)
+	# # print(clients)
+	# for x in clients:
+	# 	if clients[sender] == data['receiverID']:
+	# 		room = clients[x].sessionID
+			# break
+	# #emit(received, room = room)
+	socketio.send(received)
 
 if __name__ == '__main__':
     socketio.run(app)

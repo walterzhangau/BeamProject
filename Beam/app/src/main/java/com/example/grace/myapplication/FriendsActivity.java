@@ -204,7 +204,7 @@ public class FriendsActivity extends AppCompatActivity {
 
             row.addView(qty);
             row.addView(messageButton(FirstName, Status));
-            row.addView(beamButton(Status));
+            row.addView(beamButton(FirstName, Status));
             row.addView(blockButton());
             tableLayoutA.addView(row,i);
 
@@ -287,7 +287,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
-    private Button beamButton(int Status){
+    private Button beamButton(String friend_username,int Status){
 
         Button button = new Button(this);
 
@@ -296,6 +296,11 @@ public class FriendsActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    // Intent intent = new Intent(ARActivity.class)
+                    //intent.putExtra("user", friend_username)
+                    //start(intent)
+                    //finish();
 
                 }
             });

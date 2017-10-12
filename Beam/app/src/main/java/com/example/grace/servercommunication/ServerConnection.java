@@ -24,7 +24,7 @@ public class ServerConnection {
 
 
 
-    public String makeServerRequest(String urlAffix, final ArrayList<String> keyTags, final ArrayList<String> Keys, final int len, android.content.Context context, final Boolean ignore_response) {
+    public void makeServerRequest(String urlAffix, final ArrayList<String> keyTags, final ArrayList<String> Keys, final int len, android.content.Context context, final Boolean ignore_response) {
 
 
         // Store values at the time of the login attempt.
@@ -92,7 +92,6 @@ public class ServerConnection {
 
 
         MyRequestQueue.add(MyStringRequest);
-        return "";
     }
 
 }

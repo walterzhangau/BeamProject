@@ -23,7 +23,12 @@ import java.util.Map;
 public class ServerConnection {
 
 
-
+    // Sends a post to the server
+    //url affix, appened to the url of the server, e.g "Login", "CreateUser"
+    //KeyTags, unorderered array of keys for server e.g. "email", "friendstatus", location
+    //Keys, values of keys e.g. "evan@gmail.com", "pending", "123.1.24.2."
+    //len, length of keytags and keys arrays
+    //ignore_response, if false the response is stored in JSONResponse
     public void makeServerRequest(String urlAffix, final ArrayList<String> keyTags, final ArrayList<String> Keys, final int len, android.content.Context context, final Boolean ignore_response) {
 
 

@@ -6,16 +6,12 @@ IN p_Email varchar(50)
 )
 BEGIN
 
-select username, user_id from relationship 
-inner join tblUsers on relationship.user_two_id = tblUsers.user_id
-where user_one_id =( ( 
+select user_id,username, status from ((select distinct(user_one_id)as Users, status  from relationship where user_two_id = ( 
      select user_id from `tscelsi`.`tblUsers` 
-     where email = p_Email) 
-	 OR
-     user_two_id = ( 
+     where email = p_Email)) union 
+(select distinct(user_two_id), status from relationship where user_one_id = ( 
      select user_id from `tscelsi`.`tblUsers` 
-     where email = p_Email))
-and status = 3;
+     where email = p_Email)) order by Users) as A inner join `tscelsi`.`tblUsers` on A.Users = `tscelsi`.`tblUsers`.user_id;
 
 
 END$$
@@ -111,8 +107,16 @@ where (user_one_id = (select user_id from `tscelsi`.`tblUsers` where email = "ev
 	  And 
       user_one_id = (select user_id from `tscelsi`.`tblUsers` where username = "walternam"));
       
-
-call spListFriends("grace@gmail.com");
+select * from relationship 
+inner join tblUsers on relationship.user_two_id = tblUsers.user_id;
+call spListFriends("evan@gmail.com");
 call spListFriendRequests("grace@gmail.com");
 call spSendFriendRequest("evan@gmail.com", "georgee" );
 call ListAllFriendLocations("grace@gmail.com");
+
+
+
+(select distinct( user_one_id)as Users, status  from relationship where user_two_id = 3) union 
+(select distinct(user_two_id),status from relationship where user_one_id = 3) order by Users;
+
+select distinct(user_two_id) from relationship;

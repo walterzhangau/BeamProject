@@ -93,7 +93,13 @@ class ListFriends(Resource):
             if len(data) is not 0:
                 conn.commit()
                 friend_list = {}
+<<<<<<< Updated upstream
                 for (user_id, friend, status) in data:
+=======
+                for (user_id,friend, status) in data:
+                    print friend
+                    print status
+>>>>>>> Stashed changes
                     friend_list.update({user_id:(friend,status)})
                 
                 return friend_list
@@ -284,4 +290,8 @@ api.add_resource(FriendLocation, '/FriendLocation')
 
 
 if __name__ == '__main__':
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
     app.run(debug=True,host='0.0.0.0')

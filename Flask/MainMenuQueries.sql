@@ -3,13 +3,15 @@ USE `tscelsi`$$
 
 CREATE PROCEDURE `spUpdateLocation` (
 IN p_Email varchar(50),
-IN p_Location varchar(50)
+IN p_Latitude varchar(50),
+IN p_Longitude varchar(50)
 )
 BEGIN
 
-Update tblUsers Set `location`= p_Location
+Update tblUsers Set 
+`latitude`= p_Latitude,
+`longitude`= p_Longitude
 where email = p_Email;
-
 
 END$$
 
@@ -23,16 +25,14 @@ IN p_Email varchar(50)
 )
 BEGIN
 
-select username, location from relationship 
-inner join tblUsers on relationship.user_two_id = tblUsers.user_id
-where user_one_id =( ( 
+
+
+select username,longitude,latitude from ((select distinct(user_one_id)as Users, status  from relationship where user_two_id = ( 
      select user_id from `tscelsi`.`tblUsers` 
-     where email = p_Email) 
-	 OR
-     user_two_id = ( 
+     where email = p_Email) and status = 3) union 
+(select distinct(user_two_id), status from relationship where user_one_id = ( 
      select user_id from `tscelsi`.`tblUsers` 
-     where email = p_Email))
-and status = 3;
+     where email = p_Email) and status = 3) order by Users) as A inner join `tscelsi`.`tblUsers` on A.Users = `tscelsi`.`tblUsers`.user_id;
 
 
 END$$
@@ -47,13 +47,11 @@ IN p_User varchar(50)
 )
 BEGIN
 
-select username, location from `tscelsi`.`tblUsers`
+select username, longitude,latitude from `tscelsi`.`tblUsers`
 where username = p_User;
 
 END$$
 
 DELIMITER ;
 
-select * from tblUsers;
-drop procedure spFriendLocation;
-Call spFriendLocation("walternam")
+

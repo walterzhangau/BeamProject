@@ -89,15 +89,6 @@ END$$
 
 DELIMITER ;
 
-select * from relationship;
-select * from tscelsi.tblUsers;
-
-
-drop procedure spListFriendRequests;
-drop procedure spSendFriendRequest;
-drop procedure spListFriends;
-
-
 Update relationship Set `status`= 2
 where (user_one_id = (select user_id from `tscelsi`.`tblUsers` where email = "evan@gmail.com")
 	  And 
@@ -106,17 +97,4 @@ where (user_one_id = (select user_id from `tscelsi`.`tblUsers` where email = "ev
       (user_two_id = (select user_id from `tscelsi`.`tblUsers` where email = "evan@gmail.com")
 	  And 
       user_one_id = (select user_id from `tscelsi`.`tblUsers` where username = "walternam"));
-      
-select * from relationship 
-inner join tblUsers on relationship.user_two_id = tblUsers.user_id;
-call spListFriends("evan@gmail.com");
-call spListFriendRequests("grace@gmail.com");
-call spSendFriendRequest("evan@gmail.com", "georgee" );
-call ListAllFriendLocations("grace@gmail.com");
 
-
-
-(select distinct( user_one_id)as Users, status  from relationship where user_two_id = 3) union 
-(select distinct(user_two_id),status from relationship where user_one_id = 3) order by Users;
-
-select distinct(user_two_id) from relationship;

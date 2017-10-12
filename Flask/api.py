@@ -93,13 +93,7 @@ class ListFriends(Resource):
             if len(data) is not 0:
                 conn.commit()
                 friend_list = {}
-<<<<<<< Updated upstream
-                for (user_id, friend, status) in data:
-=======
                 for (user_id,friend, status) in data:
-                    print friend
-                    print status
->>>>>>> Stashed changes
                     friend_list.update({user_id:(friend,status)})
                 
                 return friend_list
@@ -196,16 +190,18 @@ class UpdateLocation(Resource):
             # Parse the arguments
             parser = reqparse.RequestParser()
             parser.add_argument('email', type=str, help='Email address of user who is sending request')
-            parser.add_argument('location', type=str, help='Location of user')
+            parser.add_argument('longitude', type=str, help='Longitude of user')
+            parser.add_argument('latitude', type=str, help='Latitude of user')
             args = parser.parse_args()
 
             
             _userEmail = args['email']
-            _userLocation = args['location']
+            _userLatitude = args['latitude']
+            _userLongitude = args['longitude']
 
             conn = mysql.connect()
             cursor = conn.cursor()
-            cursor.callproc('spUpdateLocation',(_userEmail,_userLocation))
+            cursor.callproc('spUpdateLocation',(_userEmail,_userLatitude,_userLongitude))
             data = cursor.fetchall()
             
             if data == ():
@@ -238,8 +234,8 @@ class ListAllFriendLocations(Resource):
             if len(data) is not 0:
                 conn.commit()
                 friend_list = {}
-                for (ids, location) in data:
-                    friend_list.update({ids:location})
+                for (ids, latitude,longitude) in data:
+                    friend_list.update({ids:(latitude,longitude)})
                 
                 return friend_list
             else:
@@ -268,8 +264,11 @@ class FriendLocation(Resource):
                 
                 conn.commit()
                 friend_list = {}
-                for (ids, location) in data:
-                    friend_list.update({ids:location})
+                
+                for (ids, longitude,latitude) in data:
+                    friend_list.update({"user":ids  })
+                    friend_list.update({"latitude":latitude})
+                    friend_list.update({"longitude":longitude})
                 
                 return friend_list
             else:
@@ -290,8 +289,5 @@ api.add_resource(FriendLocation, '/FriendLocation')
 
 
 if __name__ == '__main__':
-<<<<<<< Updated upstream
-=======
-    
->>>>>>> Stashed changes
+
     app.run(debug=True,host='0.0.0.0')

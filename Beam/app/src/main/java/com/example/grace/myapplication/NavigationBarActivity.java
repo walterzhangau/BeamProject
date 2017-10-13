@@ -102,6 +102,7 @@ public class NavigationBarActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
+                intent.putExtra("FIRST_NAME", "Chat Room");
                 startActivity(intent);
                 finish();
 

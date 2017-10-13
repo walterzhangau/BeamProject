@@ -288,7 +288,9 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
-    private Button beamButton(final String friend_username, int Status){
+
+    private Button beamButton(String friend_username,int Status){
+
 
         Button button = new Button(this);
 
@@ -297,10 +299,6 @@ public class FriendsActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    Intent intent = new Intent(FriendsActivity.this, SampleCamActivity.class);
-                    intent.putExtra("user", friend_username);
-                    startActivity(intent);
                 }
             });
 

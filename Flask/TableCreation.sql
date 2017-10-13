@@ -21,16 +21,8 @@ CREATE TABLE IF NOT EXISTS `relationship` (
 ALTER TABLE `relationship`
 ADD UNIQUE KEY `unique_users_id` (`user_one_id`,`user_two_id`);
 
-select * from `tscelsi`.`tblUsers`;
-select * from `tblUsers`;
+ALTER TABLE `tblUsers`
+ADD `longitude` varchar(20);
+ALTER TABLE `tblUsers`
+ADD `latitude` varchar(20);
 
-select * from `relationship`;
-DROP procedure spCreateUser;
-select * from relationship;
-
-CALL spCreateUser("George","kk","george@gmail.com");
-
-CALL spUserLogin("evan@gmail.com","123");
-
-drop procedure spUserLogin;
-drop table relationship;

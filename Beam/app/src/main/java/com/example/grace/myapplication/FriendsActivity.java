@@ -20,6 +20,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.grace.ARchitect.SampleCamActivity;
 import com.example.grace.UserInformation.UserCredentials;
 import com.example.grace.servercommunication.*;
 
@@ -287,7 +288,9 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
+
     private Button beamButton(String friend_username,int Status){
+
 
         Button button = new Button(this);
 
@@ -296,12 +299,6 @@ public class FriendsActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    // Intent intent = new Intent(ARActivity.class)
-                    //intent.putExtra("user", friend_username)
-                    //start(intent)
-                    //finish();
-
                 }
             });
 

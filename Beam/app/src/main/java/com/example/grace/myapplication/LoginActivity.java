@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -65,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public String email;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,7 +113,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+
+
     }
+
+
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
@@ -330,7 +338,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-
         @Override
         protected Boolean doInBackground(Void... params) {
 
@@ -367,16 +374,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Intent intent = new Intent(LoginActivity.this, NavigationBarActivity.class);
                 UserCredentials.email = email;
                 JSONResponse.response = null;
-                startActivity(intent);
-                System.out.println("The email is " + UserCredentials.email);
-                finish();
+                    startActivity(intent);
+                    System.out.println("The email is " + UserCredentials.email);
+                    finish();
+
             } else {
                 JSONResponse.response = null;
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }
-
         }
+
 
         @Override
         protected void onCancelled() {
@@ -384,6 +392,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+
+
 
 }
 

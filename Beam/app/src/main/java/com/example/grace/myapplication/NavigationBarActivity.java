@@ -1,10 +1,15 @@
 package com.example.grace.myapplication;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.audiofx.BassBoost;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,10 +21,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 //import com.example.grace.messaging.MessagingActivity;
 
 public class NavigationBarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ArrayList<String> needPermissions;
+    private ArrayList<String> permissions;
+    private static final int LOCATION_PERMISSION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +59,28 @@ public class NavigationBarActivity extends AppCompatActivity
 
 
         SetupActivityButtons();
+        if (Build.VERSION.SDK_INT >= 23) {
+            for (String permission : needPermissions) {
+                checkPermission(permission);
+            }
+            ActivityCompat.requestPermissions(NavigationBarActivity.this, permissions.toArray(new String[permissions.size()]), LOCATION_PERMISSION);
+        }
+    }
+
+    private void checkPermission(String permission) {
+        if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(permission);
+        }
+        return;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case LOCATION_PERMISSION: {
+
+            }
+        }
     }
 
     private void SetupActivityButtons(){

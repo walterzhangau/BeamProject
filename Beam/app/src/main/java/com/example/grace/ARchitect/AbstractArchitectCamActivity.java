@@ -114,8 +114,6 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		/* set samples content view */
 		this.setContentView( this.getContentViewId() );
 
-
-
 		/*
 		 *	this enables remote debugging of a WebView on Android 4.4+ when debugging = true in AndroidManifest.xml
 		 *	If you get a compile time error here, ensure to have SDK 19+ used in your ADT/Eclipse.

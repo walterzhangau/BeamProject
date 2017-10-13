@@ -12,10 +12,10 @@
   <component name="ChangeListManager">
     <list default="true" id="666fcad8-6602-4456-a731-c4fdfced395e" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/SampleCamActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/LocationProvider.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/AbstractArchitectCamActivity.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/grace/util/LocationService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/LocationProvider.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/ArchitectViewHolderInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/AbstractArchitectCamActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
@@ -54,13 +54,9 @@
       <file leaf-file-name="FriendsActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/FriendsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
+            <state relative-caret-position="0">
               <caret line="302" column="42" selection-start-line="302" selection-start-column="42" selection-end-line="302" selection-end-column="42" />
-              <folding>
-                <element signature="e#8742#8767#0" expanded="true" />
-                <element signature="e#8808#9144#0" expanded="true" />
-                <element signature="e#9143#9144#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -68,12 +64,19 @@
       <file leaf-file-name="AbstractArchitectCamActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/AbstractArchitectCamActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="246" column="5" selection-start-line="246" selection-start-column="5" selection-end-line="246" selection-end-column="5" />
-              <folding>
-                <element signature="e#6423#6961#0" expanded="true" />
-                <element signature="e#6960#6961#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="358">
+              <caret line="179" column="107" selection-start-line="179" selection-start-column="107" selection-end-line="179" selection-end-column="107" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="poiatlocation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/08_Point$Of$Interest_1_Poi$At$Location/js/poiatlocation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1732,7 +1735,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$PROJECT_DIR$" value="4523338063000" />
-        <entry key="D:\AndroidDevelopment\HouseLannister\Beam" value="4522977378835" />
+        <entry key="D:\AndroidDevelopment\HouseLannister\Beam" value="4523587306949" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2188,7 +2191,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/LocationService.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/com/example/grace/myapplication/AbstractArchitectCamActivityTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/AbstractArchitectCamActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/assets/08_Point$Of$Interest_1_Poi$At$Location/js/poiatlocation.js" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/ARActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/SampleCamActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
@@ -2197,6 +2199,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/NavigationBarActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/FriendsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/08_Point$Of$Interest_1_Poi$At$Location/js/poiatlocation.js" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/AbstractArchitectCamActivity.java" />
       </list>
     </option>
@@ -2230,7 +2233,29 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beam" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beam" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2369,28 +2394,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beam" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beam" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2407,22 +2410,22 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.example.grace.myapplication" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.grace.util" />
-      <recent name="com.example.grace.ARchitect" />
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.example.grace.myapplication" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.grace.util" />
+      <recent name="com.example.grace.ARchitect" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\AndroidDevelopment\HouseLannister\Beam\app\src\main\assets" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/assets" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication" />
-      <recent name="$PROJECT_DIR$/app/src/main/assets/GeoLocation/assets" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -2936,7 +2939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-260">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2959,7 +2961,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/SampleCamActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/LocationProvider.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/AbstractArchitectCamActivity.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/08_Point$Of$Interest_1_Poi$At$Location/js/poiatlocation.js" />
     <entry file="file://$PROJECT_DIR$/app/src/test/java/com/example/grace/myapplication/AbstractArchitectCamActivityTest.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/ARActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -3041,7 +3042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3076,24 +3076,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/grace/myapplication/FriendsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="0">
           <caret line="302" column="42" selection-start-line="302" selection-start-column="42" selection-end-line="302" selection-end-column="42" />
-          <folding>
-            <element signature="e#8742#8767#0" expanded="true" />
-            <element signature="e#8808#9144#0" expanded="true" />
-            <element signature="e#9143#9144#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/08_Point$Of$Interest_1_Poi$At$Location/js/poiatlocation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="62" column="32" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/grace/ARchitect/AbstractArchitectCamActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="246" column="5" selection-start-line="246" selection-start-column="5" selection-end-line="246" selection-end-column="5" />
-          <folding>
-            <element signature="e#6423#6961#0" expanded="true" />
-            <element signature="e#6960#6961#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="358">
+          <caret line="179" column="107" selection-start-line="179" selection-start-column="107" selection-end-line="179" selection-end-column="107" />
+          <folding />
         </state>
       </provider>
     </entry>

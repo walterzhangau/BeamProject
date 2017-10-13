@@ -177,7 +177,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 				boolean success = getFriendLocation();
 				//call setLocation(lon, lat) with friends location IF location has changed
 				if (newLocation.getLatitude() != oldLocation.getLatitude() || newLocation.getLongitude() != oldLocation.getLongitude()) {
-					AbstractArchitectCamActivity.this.architectView.setLocation(newLocation.getLongitude(), newLocation.getLatitude(), 100);
+					AbstractArchitectCamActivity.this.architectView.setLocation(newLocation.getLatitude(), newLocation.getLongitude(), 100);
 					oldLocation = newLocation;
 					newLocation = null;
 				}

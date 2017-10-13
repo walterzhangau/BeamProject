@@ -139,6 +139,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
 		Bundle extras = getIntent().getExtras();
 		friendName = extras.getString("user");
+
 		/* pass SDK key if you have one, this one is only valid for this package identifier and must not be used somewhere else */
 		final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration();
 		config.setLicenseKey(this.getWikitudeSDKLicenseKey());
@@ -497,55 +498,6 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
 	}
 
-	@Override
-	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-		switch (requestCode) {
-			case REQUEST_PERMISSIONS: {
-				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-					this.locationListener = new LocationListener() {
-
-						@Override
-						public void onStatusChanged(String provider, int status, Bundle extras ) {
-						}
-
-						@Override
-						public void onProviderEnabled( String provider ) {
-						}
-
-						@Override
-						public void onProviderDisabled( String provider ) {
-						}
-
-						@Override
-						public void onLocationChanged( final Location location ) {
-							// forward location updates fired by LocationProvider to architectView, you can set lat/lon from any location-strategy
-							if (location!=null) {
-								// sore last location as member, in case it is needed somewhere (in e.g. your adjusted project)
-								AbstractArchitectCamActivity.this.lastKnownLocaton = location;
-								if ( AbstractArchitectCamActivity.this.architectView != null ) {
-									// check if location has altitude at certain accuracy level & call right architect method (the one with altitude information)
-									if ( location.hasAltitude() && location.hasAccuracy() && location.getAccuracy()<7) {
-										AbstractArchitectCamActivity.this.architectView.setLocation( location.getLatitude(), location.getLongitude(), location.getAltitude(), location.getAccuracy() );
-									} else {
-										AbstractArchitectCamActivity.this.architectView.setLocation( location.getLatitude(), location.getLongitude(), location.hasAccuracy() ? location.getAccuracy() : 1000 );
-									}
-								}
-							}
-						}
-					};
-
-					// locationProvider used to fetch user position
-					this.locationProvider = getLocationProvider( this.locationListener );
-				} else {
-					finish();
-				}
-
-			}
-
-
-		}
-	}
-
 	public class FriendLocationTask extends AsyncTask<Void, Void, Boolean> {
 
 
@@ -557,7 +509,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			try {
 				while(JSONResponse.response == null) {
 					Thread.sleep(20);
-					Log.e("Wating", "waiting");
+					Log.e("Waiting", "waiting");
 				}
 
 				return true;

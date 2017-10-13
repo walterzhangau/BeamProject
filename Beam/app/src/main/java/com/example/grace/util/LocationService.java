@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.grace.UserInformation.UserCredentials;
+import com.example.grace.servercommunication.ServerConnection;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -16,6 +18,8 @@ import com.google.android.gms.location.FusedLocationProviderApi;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+
+import java.util.ArrayList;
 
 /**
  * Created by thomas on 9/10/2017.
@@ -61,7 +65,17 @@ public class LocationService extends Service implements LocationListener,
         if (location != null) {
             Log.e(TAG, "onLocationChanged");
             //send new location to server
-
+            ServerConnection serverConnection = new ServerConnection();
+            ArrayList<String> keyTags = new ArrayList<String>();
+            ArrayList<String> keys = new ArrayList<String>();
+            keyTags.add("email");
+            // what order shoud these be in
+            keyTags.add("latitude");
+            keyTags.add("longitude");
+            keys.add(UserCredentials.email);
+            keys.add(Double.toString(location.getLatitude()));
+            keys.add(Double.toString(location.getLongitude()));
+            serverConnection.makeServerRequest("UpdateLocation", keyTags, keys, 0, this, false);
         }
     }
 

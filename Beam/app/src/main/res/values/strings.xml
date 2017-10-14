@@ -139,7 +139,7 @@
     <string name="table_4">Visible</string>
 
     <string name= "friendRequest_button_text">Accept</string>>
-    <string name= "message_button_text">Chat Room</string>>
+    <string name= "message_button_text">Message</string>>
     <string name= "beam_button_text">Beam</string>>
     <string name= "block_button_text">Block</string>>
 
@@ -151,6 +151,6 @@
 
     <string name= "settings_activity_button_text">Settings</string>
     <string name= "friends_activity_button_text">Friends</string>
-    <string name= "message_activity_button_text">Message</string>
+    <string name= "message_activity_button_text">Chat Room</string>
 
 </resources>

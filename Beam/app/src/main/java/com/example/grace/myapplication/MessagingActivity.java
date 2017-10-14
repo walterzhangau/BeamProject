@@ -113,6 +113,7 @@ public class MessagingActivity extends AppCompatActivity {
                 message = data.getString("message");
                 chatMessages.add(new ChatMessage(message, !isMine));
 //                System.out.println(message);
+                adapter.notifyDataSetChanged();
             } catch (JSONException e) {
                 return;
             }

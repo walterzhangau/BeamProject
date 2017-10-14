@@ -69,7 +69,9 @@ public class NavigationBarActivity extends AppCompatActivity
             for (String permission : needPermissions) {
                 checkPermission(permission);
             }
-            ActivityCompat.requestPermissions(NavigationBarActivity.this, permissions.toArray(new String[permissions.size()]), LOCATION_PERMISSION);
+            if (permissions.size() > 0) {
+                ActivityCompat.requestPermissions(NavigationBarActivity.this, permissions.toArray(new String[permissions.size()]), LOCATION_PERMISSION);
+            }
         }
     }
 

@@ -1,6 +1,0 @@
-import mysql.connector
-
-cnx = mysql.connector.connect(user= 'tscelsi', password= 'tscelsi_2017',
-                              host='info20003db.eng.unimelb.edu.au',
-                              database='tscelsi')
-cnx.close()

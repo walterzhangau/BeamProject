@@ -14,10 +14,19 @@ public class ChatMessage {
 
     private String content;
     private boolean isMine;
+    private String targetUser;
 
     public ChatMessage(String content, boolean isMine) {
         this.content = content;
         this.isMine = isMine;
+    }
+
+    public ChatMessage(String content, boolean isMine, String targetUser){
+        this.content = content;
+        this.isMine = isMine;
+        this.targetUser = targetUser;
+
+
     }
 
     public String getContent() {

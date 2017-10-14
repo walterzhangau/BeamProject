@@ -1,5 +1,6 @@
 package com.example.grace.myapplication;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.audiofx.BassBoost;
@@ -28,8 +29,11 @@ import java.util.ArrayList;
 public class NavigationBarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ArrayList<String> needPermissions;
-    private ArrayList<String> permissions;
+     ArrayList<String> needPermissions = new ArrayList<>();
+
+    private ArrayList<String> permissions = new ArrayList<>();
+
+
     private static final int LOCATION_PERMISSION = 1;
 
     @Override
@@ -60,6 +64,8 @@ public class NavigationBarActivity extends AppCompatActivity
 
         SetupActivityButtons();
         if (Build.VERSION.SDK_INT >= 23) {
+            needPermissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+            needPermissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
             for (String permission : needPermissions) {
                 checkPermission(permission);
             }

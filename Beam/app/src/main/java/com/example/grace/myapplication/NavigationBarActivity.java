@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,6 +23,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.example.grace.util.LocationService;
+
 import java.util.ArrayList;
 
 //import com.example.grace.messaging.MessagingActivity;
@@ -32,8 +35,8 @@ public class NavigationBarActivity extends AppCompatActivity
      ArrayList<String> needPermissions = new ArrayList<>();
 
     private ArrayList<String> permissions = new ArrayList<>();
-
-
+    private static final String TAG = "NavigationBarActivity";
+    private boolean alreadyCalled = false;
     private static final int LOCATION_PERMISSION = 1;
 
     @Override
@@ -71,8 +74,13 @@ public class NavigationBarActivity extends AppCompatActivity
             }
             if (permissions.size() > 0) {
                 ActivityCompat.requestPermissions(NavigationBarActivity.this, permissions.toArray(new String[permissions.size()]), LOCATION_PERMISSION);
+                alreadyCalled = true;
+            }
+            if(!alreadyCalled) {
+                startService(new Intent(this, LocationService.class));
             }
         }
+
     }
 
     private void checkPermission(String permission) {
@@ -86,7 +94,12 @@ public class NavigationBarActivity extends AppCompatActivity
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case LOCATION_PERMISSION: {
-
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    startService(new Intent(this, LocationService.class));
+                } else {
+                    Log.e(TAG, "Permissions denied.");
+                }
             }
         }
     }

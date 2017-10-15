@@ -228,9 +228,6 @@ Beam/.idea/libraries/robolectric_utils_3_0.xml
 Beam/.idea/libraries/shadows_core_3_0.xml
 Beam/.idea/libraries/sqlite4java_0_282.xml
 Beam/.idea/libraries/vtd_xml_2_11.xml
-
-Would skip repository Beam/volley/
-<<<<<<< HEAD
 .idea/modules/s
 Beam/.idea/libraries/android_android_26.xml
 Beam/.idea/libraries/volley_1_0_0.xml

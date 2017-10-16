@@ -36,7 +36,11 @@ public class MessagingActivity extends AppCompatActivity {
     private List<ChatMessage> chatMessages;
     private ArrayAdapter<ChatMessage> adapter;
     ListView MessagelistView;
-    boolean isMine = true;
+    final boolean isMine = true;
+    String message;
+    String receiverUsername;
+    String senderUsername;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +106,6 @@ public class MessagingActivity extends AppCompatActivity {
         public void call(final Object... args) {
             System.out.println("Inside Emitter");
             JSONObject data;
-            String message;
 
             try {
                 //Get the message from JSON data and save in messages array
@@ -111,15 +114,25 @@ public class MessagingActivity extends AppCompatActivity {
                 System.out.println("MESSAGE RECEIVED - " + data.toString());
 
                 message = data.getString("message");
-                String receiverUsername = data.getString("receiverID");
-                String senderUsername = data.getString("senderID");
+                receiverUsername = data.getString("receiverID");
+                senderUsername = data.getString("senderID");
 
                 // if message is from current chat friend and target is you
                 if (UserCredentials.username.equals(receiverUsername) && senderUsername.equals(getIntent().getStringExtra("MESSAGE_AUDIENCE"))
                         //Or in chat room and sender wasn't yourself
                         || "Chat Room".equals(getIntent().getStringExtra("MESSAGE_AUDIENCE")) && !senderUsername.equals(UserCredentials.username)){
                     //Make chat bubble
-                    chatMessages.add(new ChatMessage(message, !isMine, senderUsername));
+                    chatMessages.add(new ChatMessage(message, false, senderUsername));
+
+                //notify adapter
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+
+
 //                System.out.println(message);
                 }
             } catch (JSONException e) {

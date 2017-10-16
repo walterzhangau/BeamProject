@@ -51,8 +51,10 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
 
         if (chatMessage.isMine()) {
             layoutResource = R.layout.item_chat_left;
+            System.out.println("SIDE IS RIGHT");
         } else {
             layoutResource = R.layout.item_chat_right;
+            System.out.println("SIDE IS LEFT");
         }
 
         if (convertView != null) {
@@ -79,7 +81,10 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
     @Override
     public int getItemViewType(int position) {
         // return a value between 0 and (getViewTypeCount - 1)
-        return position % 2;
+        if (getItem(position).isMine()){
+            return 1;
+        }
+        else{return 0;}
     }
 
     private class ViewHolder {

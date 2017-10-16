@@ -14,9 +14,11 @@ public class ChatMessage {
 
     private String content;
     private boolean isMine;
-    private String sender
-            ;
+    private String sender;
+
     public ChatMessage(String content, boolean isMine, String sender) {
+        System.out.println("It is mine is " + isMine);
+
         this.content = content;
         this.isMine = isMine;
         this.sender = sender;

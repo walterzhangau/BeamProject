@@ -84,7 +84,7 @@ public class MessagingActivity extends AppCompatActivity {
                 //Get the text from the input and save in message
                 String message_input = message_text_view.getText().toString();
                 Message msg = new Message(UserCredentials.username, message_audience, message_input);
-                chatMessages.add(new ChatMessage(message_input, isMine));
+                chatMessages.add(new ChatMessage(message_input, isMine, UserCredentials.username));
                 adapter.notifyDataSetChanged();
                 message_text_view.setText("");
                 //      Turn the data in a JSON object
@@ -119,7 +119,7 @@ public class MessagingActivity extends AppCompatActivity {
                         //Or in chat room and sender wasn't yourself
                         || "Chat Room".equals(getIntent().getStringExtra("MESSAGE_AUDIENCE")) && !senderUsername.equals(UserCredentials.username)){
                     //Make chat bubble
-                    chatMessages.add(new ChatMessage(message, !isMine));
+                    chatMessages.add(new ChatMessage(message, !isMine, senderUsername));
 //                System.out.println(message);
                 }
             } catch (JSONException e) {

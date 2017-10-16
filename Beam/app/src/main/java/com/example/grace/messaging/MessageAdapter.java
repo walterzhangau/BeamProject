@@ -21,8 +21,12 @@ import android.widget.TextView;
 
 import com.example.grace.myapplication.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
+
+//Taken from
 //http://www.devexchanges.info/2016/03/design-chat-bubble-ui-in-android.html
 
 public class MessageAdapter extends ArrayAdapter<ChatMessage> {
@@ -61,7 +65,7 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
 
         //set message content
         holder.msg.setText(chatMessage.getContent());
-
+        holder.sender.setText(chatMessage.getSender());
         return convertView;
     }
 
@@ -80,9 +84,11 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
 
     private class ViewHolder {
         private TextView msg;
+        private TextView sender;
 
         public ViewHolder(View v) {
             msg = v.findViewById(R.id.txt_msg);
+            sender = v.findViewById(R.id.msg_sender);
         }
     }
 }

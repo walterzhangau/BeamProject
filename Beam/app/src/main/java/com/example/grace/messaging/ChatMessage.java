@@ -14,10 +14,12 @@ public class ChatMessage {
 
     private String content;
     private boolean isMine;
-
-    public ChatMessage(String content, boolean isMine) {
+    private String sender
+            ;
+    public ChatMessage(String content, boolean isMine, String sender) {
         this.content = content;
         this.isMine = isMine;
+        this.sender = sender;
     }
 
     public String getContent() {
@@ -26,5 +28,9 @@ public class ChatMessage {
 
     public boolean isMine() {
         return isMine;
+    }
+
+    public String getSender() {
+        return sender;
     }
 }

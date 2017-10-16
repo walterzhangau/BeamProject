@@ -117,7 +117,7 @@
 
     <string name="add_friend_text">ADD FRIEND</string>
     <string name="button_text">Send</string>
-
+    <string name="send_to_button_text">Send to %1$s</string>
 
     <string name= "accountCreationUsername">Username</string>
 

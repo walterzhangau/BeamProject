@@ -79,7 +79,7 @@ public class MessagingActivity extends AppCompatActivity {
 
         //Change button to display who recipient is if it has already been selected
         if (message_audience != null ) {
-            message_button_view.setText("Send to " + message_audience);
+            message_button_view.setText(getString(R.string.send_to_button_text, message_audience));
         }
 
         

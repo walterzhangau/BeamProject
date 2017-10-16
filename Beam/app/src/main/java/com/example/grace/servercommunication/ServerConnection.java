@@ -36,7 +36,7 @@ public class ServerConnection {
 
         final RequestQueue MyRequestQueue = Volley.newRequestQueue(context);
 
-        String url = "http://10.0.2.2:5000/" + urlAffix;
+        String url = "http://10.0.2.2:4444/" + urlAffix;
 
         System.out.println("The url is " + url);
         System.out.println("the affix is " + urlAffix);
@@ -58,13 +58,13 @@ public class ServerConnection {
                 }
 
 
-                String statusCode = null;
-                try {
-                    statusCode = obj.getString("StatusCode");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(statusCode);
+                //String statusCode = null;
+                //try {
+                //    statusCode = obj.getString("StatusCode");
+                //} catch (JSONException e) {
+                //    e.printStackTrace();
+                //}
+                //System.out.println(statusCode);
             }
 
 

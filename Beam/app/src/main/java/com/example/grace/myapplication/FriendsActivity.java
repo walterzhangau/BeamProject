@@ -251,7 +251,7 @@ public class FriendsActivity extends AppCompatActivity {
                     Intent intent = new Intent(FriendsActivity.this, MessagingActivity.class);
 
                     // Inform messaging activity of recipients name
-                    intent.putExtra("FIRST_NAME", (FirstName));
+                    intent.putExtra("MESSAGE_AUDIENCE", (FirstName));
                     startActivity(intent);
                     finish();
 

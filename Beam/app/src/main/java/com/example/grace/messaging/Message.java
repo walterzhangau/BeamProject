@@ -9,11 +9,11 @@ package com.example.grace.messaging;
 public class Message {
 
     private String senderID;
-    private int receiverID;
+    private String receiverID;
     private String messageBody;
 
 
-    public Message(String senderID, int receiverID, String messageBody){
+    public Message(String senderID, String receiverID, String messageBody){
         this.senderID = senderID;
         this.receiverID = receiverID;
         this.messageBody = messageBody;
@@ -33,11 +33,11 @@ public class Message {
         this.senderID = senderID;
     }
 
-    public int getReceiverID() {
+    public String getReceiverID() {
         return receiverID;
     }
 
-    public void setReceiverID(int receiverID) {
+    public void setReceiverID(String receiverID) {
         this.receiverID = receiverID;
     }
 

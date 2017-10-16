@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
-
+    private getUsernameTask usernametask = null;
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
@@ -374,9 +374,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Intent intent = new Intent(LoginActivity.this, NavigationBarActivity.class);
                 UserCredentials.email = email;
                 JSONResponse.response = null;
-                    startActivity(intent);
-                    System.out.println("The email is " + UserCredentials.email);
-                    finish();
+                setUsername();
+                startActivity(intent);
+                System.out.println("The email is " + UserCredentials.email);
+                finish();
 
             } else {
                 JSONResponse.response = null;
@@ -394,6 +395,66 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
 
+    public void setUsername(){
+        ServerConnection serverConnection = new ServerConnection();
+        ArrayList<String> KeyTags = new ArrayList<String>();
+        KeyTags.add("email");
+
+        ArrayList<String> Keys = new ArrayList<String>();
+        Keys.add(email);
+
+
+        serverConnection.makeServerRequest("GetUsername", KeyTags, Keys, 1,  this, false);
+        usernametask = new getUsernameTask();
+        usernametask.execute((Void) null);
+
+
+    }
+
+    public class getUsernameTask extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+
+            try {
+                while(JSONResponse.response == null){
+                    Thread.sleep(20);
+                }
+
+
+        }                catch(Exception e){}
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            usernametask = null;
+            showProgress(false);
+
+
+            if (success) {
+                try {
+                    System.out.println("USERNAME SET TO" + JSONResponse.response.getString("username"));
+                    UserCredentials.username = JSONResponse.response.getString("username");
+                }catch(Exception e){e.printStackTrace();}
+                    JSONResponse.response = null;
+                finish();
+
+            } else {
+                JSONResponse.response = null;
+                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                mPasswordView.requestFocus();
+            }
+        }
+
+
+        @Override
+        protected void onCancelled() {
+            usernametask = null;
+            showProgress(false);
+        }
+    }
 
 }
 

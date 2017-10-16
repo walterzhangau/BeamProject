@@ -7,4 +7,5 @@ package com.example.grace.UserInformation;
 public class UserCredentials {
 
     public static String email;
+    public static String username;
 }

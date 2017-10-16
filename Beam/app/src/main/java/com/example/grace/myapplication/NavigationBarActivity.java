@@ -3,7 +3,6 @@ package com.example.grace.myapplication;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.audiofx.BassBoost;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -87,7 +86,6 @@ public class NavigationBarActivity extends AppCompatActivity
         if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
             permissions.add(permission);
         }
-        return;
     }
 
     @Override

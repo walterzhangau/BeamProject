@@ -2,8 +2,6 @@ package com.example.grace.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,8 +13,6 @@ import android.widget.ListView;
 import android.widget.ArrayAdapter;
 
 import com.example.grace.UserInformation.UserCredentials;
-import com.example.grace.myapplication.NavigationBarActivity;
-import com.example.grace.myapplication.R;
 import com.example.grace.messaging.ChatMessage;
 import com.example.grace.messaging.MessageAdapter;
 import com.example.grace.messaging.Message;
@@ -115,18 +111,19 @@ public class MessagingActivity extends AppCompatActivity {
                 System.out.println("MESSAGE RECEIVED - " + data.toString());
 
                 message = data.getString("message");
-                String receiverusername = data.getString("receiverID");
-                String senderusername = data.getString("senderID");
+                String receiverUsername = data.getString("receiverID");
+                String senderUsername = data.getString("senderID");
 
                 // if message is from current chat friend and target is you
-                if (UserCredentials.username.equals(receiverusername) && senderusername.equals(getIntent().getStringExtra("MESSAGE_AUDIENCE"))
+                if (UserCredentials.username.equals(receiverUsername) && senderUsername.equals(getIntent().getStringExtra("MESSAGE_AUDIENCE"))
                         //Or in chat room and sender wasn't yourself
-                        || "Chat Room".equals(getIntent().getStringExtra("MESSAGE_AUDIENCE")) && !senderusername.equals(UserCredentials.username)){
-                    //Make chatbubble
+                        || "Chat Room".equals(getIntent().getStringExtra("MESSAGE_AUDIENCE")) && !senderUsername.equals(UserCredentials.username)){
+                    //Make chat bubble
                     chatMessages.add(new ChatMessage(message, !isMine));
 //                System.out.println(message);
                 }
             } catch (JSONException e) {
+                e.printStackTrace();
             }
 
         }

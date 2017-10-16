@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -184,11 +182,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
         ServerConnection serverConnection = new ServerConnection();
-        ArrayList<String> KeyTags = new ArrayList<String>();
+        ArrayList<String> KeyTags = new ArrayList<>();
         KeyTags.add("email");
         KeyTags.add("password");
 
-        ArrayList<String> Keys = new ArrayList<String>();
+        ArrayList<String> Keys = new ArrayList<>();
         Keys.add(email);
         Keys.add(password);
 
@@ -233,14 +231,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-    }
 
     /**
      * Shows the progress UI and hides the login form.
@@ -250,7 +243,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
         // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
@@ -270,12 +262,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
                 }
             });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
+
     }
 
     @Override
@@ -329,14 +316,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         };
 
         int ADDRESS = 0;
-        int IS_PRIMARY = 1;
     }
 
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    private class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         @Override
         protected Boolean doInBackground(Void... params) {
@@ -354,14 +340,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 e.printStackTrace();
             }
 
-            if (correct.equals("Login success")) {
-                return true;
-
-            }
-            else{
-
-                return false;
-            }
+            return (correct.equals("Login success"));
         }
 
         @Override
@@ -397,10 +376,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public void setUsername(){
         ServerConnection serverConnection = new ServerConnection();
-        ArrayList<String> KeyTags = new ArrayList<String>();
+        ArrayList<String> KeyTags = new ArrayList<>();
         KeyTags.add("email");
 
-        ArrayList<String> Keys = new ArrayList<String>();
+        ArrayList<String> Keys = new ArrayList<>();
         Keys.add(email);
 
 
@@ -411,7 +390,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
-    public class getUsernameTask extends AsyncTask<Void, Void, Boolean> {
+    private class getUsernameTask extends AsyncTask<Void, Void, Boolean> {
 
         @Override
         protected Boolean doInBackground(Void... params) {
@@ -422,7 +401,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
 
 
-        }                catch(Exception e){}
+        }                catch(Exception e){e.printStackTrace();}
 
             return true;
         }

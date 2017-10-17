@@ -66,7 +66,7 @@ public class MessagingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         MessagelistView = (ListView) findViewById(R.id.list_msg);
-        adapter = new MessageAdapter(this, R.layout.item_chat_left, chatMessages);
+        adapter = new MessageAdapter(this, R.layout.item_chat_right, chatMessages);
         MessagelistView.setAdapter(adapter);
 
 
@@ -120,7 +120,7 @@ public class MessagingActivity extends AppCompatActivity {
                 // if message is from current chat friend and target is you
                 if (UserCredentials.username.equals(receiverUsername) && senderUsername.equals(getIntent().getStringExtra("MESSAGE_AUDIENCE"))
                         //Or in chat room and sender wasn't yourself
-                        || "Chat Room".equals(getIntent().getStringExtra("MESSAGE_AUDIENCE")) && !senderUsername.equals(UserCredentials.username)){
+                        || "Chat Room".equals(getIntent().getStringExtra("MESSAGE_AUDIENCE")) && !senderUsername.equals(UserCredentials.username)&&"Chat Room".equals(receiverUsername)){
                     //Make chat bubble
                     chatMessages.add(new ChatMessage(message, false, senderUsername));
 

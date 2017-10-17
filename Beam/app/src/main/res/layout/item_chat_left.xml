@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--http://www.devexchanges.info/2016/03/design-chat-bubble-ui-in-android.html-->
-<!--Chat left/in-->
+<!--Chat right/out-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -8,9 +8,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/inbubble"
+        android:background="@drawable/outbubble"
         android:orientation="vertical"
         android:paddingBottom="10dp">
 
@@ -20,9 +20,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="100dp"
             android:padding="5dp"
-            android:textColor="@color/colorRed" />
-
-
+            android:textColor="@color/colorGreen" />
         <TextView
             android:id="@+id/msg_sender"
             android:layout_width="wrap_content"
@@ -31,7 +29,6 @@
             android:padding="5dp"
             android:textColor="@color/colorBlack"
             />
-
 
     </LinearLayout>
 

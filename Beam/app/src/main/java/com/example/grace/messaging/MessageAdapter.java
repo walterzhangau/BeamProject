@@ -21,8 +21,6 @@ import android.widget.TextView;
 
 import com.example.grace.myapplication.R;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 
@@ -50,11 +48,9 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
         int viewType = getItemViewType(position);
 
         if (chatMessage.isMine()) {
-            layoutResource = R.layout.item_chat_left;
-            System.out.println("SIDE IS RIGHT");
-        } else {
             layoutResource = R.layout.item_chat_right;
-            System.out.println("SIDE IS LEFT");
+        } else {
+            layoutResource = R.layout.item_chat_left;
         }
 
         if (convertView != null) {

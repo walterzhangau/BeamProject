@@ -39,6 +39,7 @@ public class LocationService extends Service implements LocationListener,
 
     @Override
     public void onCreate() {
+        Log.d(TAG, "onCreate");
         super.onCreate();
 
 
@@ -48,6 +49,7 @@ public class LocationService extends Service implements LocationListener,
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "onStartCommand");
         if (!currentlyProcessingLocation) {
             currentlyProcessingLocation = true;
             startTracking();
@@ -64,18 +66,26 @@ public class LocationService extends Service implements LocationListener,
     public void onLocationChanged(Location location) {
         if (location != null) {
             Log.e(TAG, "onLocationChanged");
+
+            //update myLatitude and myLongitude
+            MyLocation.myLatitude = location.getLatitude();
+            MyLocation.myLongitude = location.getLongitude();
+
             //send new location to server
             ServerConnection serverConnection = new ServerConnection();
             ArrayList<String> keyTags = new ArrayList<String>();
             ArrayList<String> keys = new ArrayList<String>();
             keyTags.add("email");
             // what order shoud these be in
-            keyTags.add("latitude");
             keyTags.add("longitude");
+            keyTags.add("latitude");
             keys.add(UserCredentials.email);
-            keys.add(Double.toString(location.getLatitude()));
             keys.add(Double.toString(location.getLongitude()));
-            serverConnection.makeServerRequest("UpdateLocation", keyTags, keys, 0, this, false);
+            keys.add(Double.toString(location.getLatitude()));
+
+            serverConnection.makeServerRequest("UpdateLocation", keyTags, keys, 3, this, true);
+        } else {
+            Log.e(TAG, "Location is null");
         }
     }
 

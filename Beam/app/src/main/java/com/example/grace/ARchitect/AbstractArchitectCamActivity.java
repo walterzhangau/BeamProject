@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.grace.servercommunication.JSONResponse;
 import com.example.grace.servercommunication.ServerConnection;
+import com.example.grace.util.MyLocation;
 import com.google.android.gms.tasks.Task;
 import com.wikitude.architect.ArchitectJavaScriptInterfaceListener;
 import com.wikitude.architect.ArchitectStartupConfiguration;
@@ -96,11 +97,15 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
 	private String friendLocation;
 
-	private Location oldLocation, newLocation;
+	private Location location = null;
 
 	protected String friendName;
 
 	public FriendLocationTask friendLocationTask;
+
+	private static final String TAG = "AbstractCamActivity";
+
+	private FriendLocationTask mFriendLocationTask = null;
 
 	/** Called when the activity is first created. */
 	@SuppressLint("NewApi")
@@ -162,10 +167,6 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		// set accuracy listener if implemented, you may e.g. show calibration prompt for compass using this listener
 		this.sensorAccuracyListener = this.getSensorAccuracyListener();
 
-		// create timer and a new timer task that gets the location of friend
-		// from server and calls setLocation() with thecorrect longitude and latitude
-		createTimer();
-
 		}
 
 	protected void createTimer() {
@@ -175,25 +176,25 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			public void run() {
 				//get friends location from server
 				boolean success = getFriendLocation();
-				//call setLocation(lon, lat) with friends location IF location has changed
-				if (newLocation.getLatitude() != oldLocation.getLatitude() || newLocation.getLongitude() != oldLocation.getLongitude()) {
-					AbstractArchitectCamActivity.this.architectView.setLocation(newLocation.getLatitude(), newLocation.getLongitude(), 100);
-					oldLocation = newLocation;
-					newLocation = null;
-				}
 			}
 		}, 0, 5000);
 
 	}
 
 	private boolean getFriendLocation() {
+		Log.e(TAG, "getFriendLocation");
+		ServerConnection serverConnection = new ServerConnection();
+
 		ArrayList<String> keyTags = new ArrayList<>();
 		keyTags.add("user");
 		ArrayList<String> keys = new ArrayList<>();
 		keys.add(friendName);
+		Log.e(TAG, friendName);
 		//query server for friends data
-		ServerConnection serverConnection = new ServerConnection();
+
 		serverConnection.makeServerRequest("FriendLocation", keyTags, keys, 1, this, false);
+		mFriendLocationTask = new FriendLocationTask();
+		mFriendLocationTask.execute((Void) null);
 		return true;
 	}
 
@@ -243,6 +244,9 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+			// create timer and a new timer task that gets the location of friend
+			// from server and calls setLocation() with the correct longitude and latitude
+			createTimer();
 		}
 	}
 
@@ -503,7 +507,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
 		@Override
 		protected Boolean doInBackground(Void... params) {
-
+			Log.e(TAG, "doInBackground");
 			try {
 				while(JSONResponse.response == null) {
 					Thread.sleep(20);
@@ -522,11 +526,16 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
 		@Override
 		protected void onPostExecute(final Boolean success) {
-
+			Log.e(TAG, "onPostExecute");
+			mFriendLocationTask = null;
 			try {
-				newLocation.setLatitude(Double.parseDouble(JSONResponse.response.getString("latitude")));
-				newLocation.setLongitude(Double.parseDouble(JSONResponse.response.getString("longitude")));
+				//location.setLatitude(Double.parseDouble(JSONResponse.response.getString("latitude")));
+				//location.setLongitude(Double.parseDouble(JSONResponse.response.getString("longitude")));
+				Log.e(TAG, "setLocation about to be called");
+				architectView.setLocation(MyLocation.myLatitude, MyLocation.myLongitude, 100);
+				architectView.callJavascript("World.requestDataFromServer(Gypsy)");
 			} catch (Exception e) {
+				Log.e(TAG, "Exception caught.");
 				e.printStackTrace();
 			}
 
@@ -536,6 +545,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
 		@Override
 		protected void onCancelled() {
+			Log.e(TAG, "onCancelled");
 			friendLocationTask = null;
 
 		}

@@ -1,5 +1,7 @@
 // implementation of AR-Experience (aka "World")
 var World = {
+
+
 	// true once data was fetched
 	initiallyLoadedData: false,
 
@@ -57,16 +59,20 @@ var World = {
 		*/
 		if (!World.initiallyLoadedData) {
 			// creates a poi object with a random location near the user's location
+
 			var poiData = {
 				"id": 1,
-				"longitude": (lon),
-				"latitude": (lat)),
+				"longitude": (lon + (Math.random() / 5 - 0.1)),
+				"latitude": (lat + (Math.random() / 5 - 0.1)),
 				"altitude": 100.0
 			};
 
 			World.loadPoisFromJsonData(poiData);
 			World.initiallyLoadedData = true;
+		} else {
+
 		}
+
 	},
 };
 

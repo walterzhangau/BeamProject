@@ -68,11 +68,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".ARActivity" android:configChanges="screenSize|orientation"/>
-        <activity android:name="com.example.grace.ARchitect.SampleCamActivity" />
+        <activity android:name="com.example.grace.ARchitect.SampleCamActivity" android:configChanges="orientation|keyboardHidden|screenSize" />
 
 
-
-
+        <service android:name="com.example.grace.util.LocationService" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

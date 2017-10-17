@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="100dp"
             android:padding="5dp"
-            android:textColor="@color/colorGreen" />
+            android:textColor="@color/colorRed" />
         <TextView
             android:id="@+id/msg_sender"
             android:layout_width="wrap_content"

@@ -8,4 +8,5 @@
     <color name="colorYellow">#FFE000</color>
     <color name="colorBlack">#000000</color>
     <color name="colorTransparent">#CCFF0000</color>
+    <color name="colorBlue">#007F9F</color>
 </resources>

@@ -54,8 +54,7 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".NavigationBarActivity"
-            android:label="@string/title_activity_navigation_bar"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_navigation_bar"/>
         <activity
             android:name=".FriendsActivity"
             android:label="@string/title_activity_friends"/>

@@ -23,6 +23,8 @@ import com.example.grace.myapplication.R;
 
 import java.util.List;
 
+
+//Taken from
 //http://www.devexchanges.info/2016/03/design-chat-bubble-ui-in-android.html
 
 public class MessageAdapter extends ArrayAdapter<ChatMessage> {
@@ -46,9 +48,9 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
         int viewType = getItemViewType(position);
 
         if (chatMessage.isMine()) {
-            layoutResource = R.layout.item_chat_left;
-        } else {
             layoutResource = R.layout.item_chat_right;
+        } else {
+            layoutResource = R.layout.item_chat_left;
         }
 
         if (convertView != null) {
@@ -61,7 +63,7 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
 
         //set message content
         holder.msg.setText(chatMessage.getContent());
-
+        holder.sender.setText(chatMessage.getSender());
         return convertView;
     }
 
@@ -75,14 +77,19 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
     @Override
     public int getItemViewType(int position) {
         // return a value between 0 and (getViewTypeCount - 1)
-        return position % 2;
+        if (getItem(position).isMine()){
+            return 1;
+        }
+        else{return 0;}
     }
 
     private class ViewHolder {
         private TextView msg;
+        private TextView sender;
 
         public ViewHolder(View v) {
             msg = v.findViewById(R.id.txt_msg);
+            sender = v.findViewById(R.id.msg_sender);
         }
     }
 }

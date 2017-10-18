@@ -64,7 +64,7 @@ class Login(Resource):
             cursor = conn.cursor()
             cursor.callproc('spUserLogin',(_userEmail,_userPassword))
             data = cursor.fetchall()
-            print data[0][0] == "Success"
+            print(data[0][0] == "Success")
             if data[0][0] == "Success":
                 conn.commit()
                 return {'StatusCode':'201','Message': 'Login success'}
@@ -93,7 +93,7 @@ class ListFriends(Resource):
             if len(data) is not 0:
                 conn.commit()
                 friend_list = {}
-                for (user_id,friend, status) in data:
+                for (user_id, friend, status) in data:
                     friend_list.update({user_id:(friend,status)})
 
                 return friend_list
@@ -198,10 +198,9 @@ class UpdateLocation(Resource):
             _userEmail = args['email']
             _userLatitude = args['latitude']
             _userLongitude = args['longitude']
-
             conn = mysql.connect()
             cursor = conn.cursor()
-            cursor.callproc('spUpdateLocation',(_userEmail,_userLatitude,_userLongitude))
+            cursor.callproc('spUpdateLocation',(_userEmail,_userLocation))
             data = cursor.fetchall()
 
             if data == ():
@@ -261,18 +260,46 @@ class FriendLocation(Resource):
             cursor = conn.cursor()
             cursor.callproc('spFriendLocation', [_userUser] )
             data = cursor.fetchall()
-            print data
+
             if len(data) is not 0:
 
                 conn.commit()
                 friend_list = {}
-
                 for (ids, longitude,latitude) in data:
                     friend_list.update({"user":ids  })
                     friend_list.update({"latitude":latitude})
                     friend_list.update({"longitude":longitude})
 
                 return friend_list
+            else:
+                return {'StatusCode':'1005','Message':"NO Location"}
+
+        except Exception as e:
+            return {'error': str(e)}
+        
+class GetUsername(Resource):
+    def post(self):
+        try:
+            # Parse the arguments
+            parser = reqparse.RequestParser()
+            parser.add_argument('email', type=str, help='email of username to find')
+            args = parser.parse_args()
+
+            
+            _userEmail = args['email']
+            
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('spUsernamefromEmail', [_userEmail] )
+            data = cursor.fetchall()
+
+            if len(data) is not 0:
+
+                conn.commit()
+                username = {}
+                username.update({"username":data[0][0]})
+            
+                return username
             else:
                 return {'StatusCode':'1005','Message':"NO Location"}
 
@@ -288,8 +315,10 @@ api.add_resource(AcceptFriendRequest, '/AcceptFriendRequest')
 api.add_resource(UpdateLocation, '/UpdateLocation')
 api.add_resource(ListAllFriendLocations, '/ListAllFriendLocations')
 api.add_resource(FriendLocation, '/FriendLocation')
+api.add_resource(GetUsername, '/GetUsername')
 
 
 if __name__ == '__main__':
+    app.run(debug=True,host='0.0.0.0', port = 4444)
 
-    app.run(debug=True,host='0.0.0.0')
+

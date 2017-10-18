@@ -2,8 +2,6 @@ package com.example.grace.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,8 +12,7 @@ import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
 
-import com.example.grace.myapplication.NavigationBarActivity;
-import com.example.grace.myapplication.R;
+import com.example.grace.UserInformation.UserCredentials;
 import com.example.grace.messaging.ChatMessage;
 import com.example.grace.messaging.MessageAdapter;
 import com.example.grace.messaging.Message;
@@ -39,7 +36,11 @@ public class MessagingActivity extends AppCompatActivity {
     private List<ChatMessage> chatMessages;
     private ArrayAdapter<ChatMessage> adapter;
     ListView MessagelistView;
-    boolean isMine = true;
+    final boolean isMine = true;
+    String message;
+    String receiverUsername;
+    String senderUsername;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class MessagingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         MessagelistView = (ListView) findViewById(R.id.list_msg);
-        adapter = new MessageAdapter(this, R.layout.item_chat_left, chatMessages);
+        adapter = new MessageAdapter(this, R.layout.item_chat_right, chatMessages);
         MessagelistView.setAdapter(adapter);
 
 
@@ -73,21 +74,21 @@ public class MessagingActivity extends AppCompatActivity {
         message_text_view = (TextView) findViewById(R.id.message_input);
 
         //Get message target
-        String first_name = getIntent().getStringExtra("FIRST_NAME");
+        final String message_audience = getIntent().getStringExtra("MESSAGE_AUDIENCE");
 
 
         //Change button to display who recipient is if it has already been selected
-        if (first_name != null ) {
-            message_button_view.setText("Send to " + first_name);
+        if (message_audience != null ) {
+            message_button_view.setText(getString(R.string.send_to_button_text, message_audience));
         }
 
         
         message_button_view.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Get the text from the input and save in message
-                String toPrint = message_text_view.getText().toString();
-                Message msg = new Message("Grace", 2, toPrint);
-                chatMessages.add(new ChatMessage(toPrint, isMine));
+                String message_input = message_text_view.getText().toString();
+                Message msg = new Message(UserCredentials.username, message_audience, message_input);
+                chatMessages.add(new ChatMessage(message_input, isMine, UserCredentials.username));
                 adapter.notifyDataSetChanged();
                 message_text_view.setText("");
                 //      Turn the data in a JSON object
@@ -105,17 +106,37 @@ public class MessagingActivity extends AppCompatActivity {
         public void call(final Object... args) {
             System.out.println("Inside Emitter");
             JSONObject data;
-            String message;
 
             try {
                 //Get the message from JSON data and save in messages array
                 data = new JSONObject((String) args[0]);
+
+                System.out.println("MESSAGE RECEIVED - " + data.toString());
+
                 message = data.getString("message");
-                chatMessages.add(new ChatMessage(message, !isMine));
+                receiverUsername = data.getString("receiverID");
+                senderUsername = data.getString("senderID");
+
+                // if message is from current chat friend and target is you
+                if (UserCredentials.username.equals(receiverUsername) && senderUsername.equals(getIntent().getStringExtra("MESSAGE_AUDIENCE"))
+                        //Or in chat room and sender wasn't yourself
+                        || "Chat Room".equals(getIntent().getStringExtra("MESSAGE_AUDIENCE")) && !senderUsername.equals(UserCredentials.username)&&"Chat Room".equals(receiverUsername)){
+                    //Make chat bubble
+                    chatMessages.add(new ChatMessage(message, false, senderUsername));
+
+                //notify adapter
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+
+
 //                System.out.println(message);
-                adapter.notifyDataSetChanged();
+                }
             } catch (JSONException e) {
-                return;
+                e.printStackTrace();
             }
 
         }

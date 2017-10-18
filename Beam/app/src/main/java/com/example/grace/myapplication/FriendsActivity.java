@@ -62,18 +62,6 @@ public class FriendsActivity extends AppCompatActivity {
         setupFriendsTable();
 
         setupAddFriends();
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         setupActionBar();
 
     }
@@ -251,7 +239,7 @@ public class FriendsActivity extends AppCompatActivity {
                     Intent intent = new Intent(FriendsActivity.this, MessagingActivity.class);
 
                     // Inform messaging activity of recipients name
-                    intent.putExtra("FIRST_NAME", (FirstName));
+                    intent.putExtra("MESSAGE_AUDIENCE", (FirstName));
                     startActivity(intent);
                     finish();
 
@@ -295,6 +283,7 @@ public class FriendsActivity extends AppCompatActivity {
         Button button = new Button(this);
 
         if(Status == FRIEND) {
+            button.setBackgroundResource(R.drawable.ic_beam_button);
             button.setText(R.string.beam_button_text);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override

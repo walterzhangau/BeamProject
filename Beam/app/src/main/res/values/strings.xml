@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Beam</string>
     <string name="compass_accuracy_low">Please re-calibrate compass by waving your device in a figure 8 motion.</string>
 
     <!-- Strings related to login -->
@@ -117,7 +117,7 @@
 
     <string name="add_friend_text">ADD FRIEND</string>
     <string name="button_text">Send</string>
-
+    <string name="send_to_button_text">Send to %1$s</string>
 
     <string name= "accountCreationUsername">Username</string>
 

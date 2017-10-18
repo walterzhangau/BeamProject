@@ -64,7 +64,7 @@ public class LocationService extends Service implements LocationListener,
 
     @Override
     public void onLocationChanged(Location location) {
-        if (location != null) {
+        if (location != null && UserCredentials.email != null) {
             Log.e(TAG, "onLocationChanged");
 
             //update myLatitude and myLongitude

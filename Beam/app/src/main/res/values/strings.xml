@@ -154,5 +154,7 @@
     <string name= "message_activity_button_text">Chat Room</string>
 
     <string name= "colour_preference">ColourPreference</string>
+    <string name="google_maps_key">AIzaSyA53-sAQ6xP0mmBsPo4rRHHeYxmhBn0ULU</string>
+
 
 </resources>

@@ -310,7 +310,9 @@ public class FriendsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                Intent intent = new Intent(FriendsActivity.this, MapsMarkerActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         });

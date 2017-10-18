@@ -33,7 +33,8 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 
 	@Override
 	public String getARchitectWorldPath() {
-		return "08_Point$Of$Interest_1_Poi$At$Location";
+		return "08_Point$Of$Interest_1_Poi$At$Location/index.html";
+		//return "ARchitectWorld/index.html";
 	}
 
 	@Override
@@ -178,4 +179,6 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
             }
         }
     }
+
+
 }

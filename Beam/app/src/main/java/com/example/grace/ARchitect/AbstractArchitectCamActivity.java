@@ -167,6 +167,10 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		// set accuracy listener if implemented, you may e.g. show calibration prompt for compass using this listener
 		this.sensorAccuracyListener = this.getSensorAccuracyListener();
 
+		// create timer and a new timer task that gets the location of friend
+		// from server and calls setLocation() with the correct longitude and latitude
+		createTimer();
+
 		}
 
 	protected void createTimer() {
@@ -244,9 +248,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			// create timer and a new timer task that gets the location of friend
-			// from server and calls setLocation() with the correct longitude and latitude
-			createTimer();
+
 		}
 	}
 
@@ -529,11 +531,10 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			Log.e(TAG, "onPostExecute");
 			mFriendLocationTask = null;
 			try {
-				//location.setLatitude(Double.parseDouble(JSONResponse.response.getString("latitude")));
-				//location.setLongitude(Double.parseDouble(JSONResponse.response.getString("longitude")));
 				Log.e(TAG, "setLocation about to be called");
 				architectView.setLocation(MyLocation.myLatitude, MyLocation.myLongitude, 100);
-				architectView.callJavascript("World.requestDataFromServer(Gypsy)");
+
+				//architectView.callJavascript("World.loadPoisFromJsonData");
 			} catch (Exception e) {
 				Log.e(TAG, "Exception caught.");
 				e.printStackTrace();

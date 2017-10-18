@@ -533,8 +533,11 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			try {
 				Log.e(TAG, "setLocation about to be called");
 				architectView.setLocation(MyLocation.myLatitude, MyLocation.myLongitude, 100);
-
-				//architectView.callJavascript("World.loadPoisFromJsonData");
+				//	System.out.print("=============World.loadPoisFromJsonData(" + JSONResponse.JSON + ");");
+				String latitude = JSONResponse.response.getString("latitude");
+				String longitude = JSONResponse.response.getString("longitude");
+				//System.out.println("=================== LATITUDE AS STRING: " + latitude);
+				architectView.callJavascript("World.loadPoisFromJsonData(" + latitude + ", " + longitude + ");");
 			} catch (Exception e) {
 				Log.e(TAG, "Exception caught.");
 				e.printStackTrace();

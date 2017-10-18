@@ -49,7 +49,7 @@ public class MessagingActivity extends AppCompatActivity {
         {
             // Open the socket
             try {
-                bSocket = IO.socket("http://10.0.2.2:5000");
+                bSocket = IO.socket("http://10.13.151.202:5000");
 
                 System.out.println("Connection established");
             } catch (java.net.URISyntaxException e) {

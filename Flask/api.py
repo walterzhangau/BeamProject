@@ -37,7 +37,7 @@ class CreateUser(Resource):
             cursor = conn.cursor()
             cursor.callproc('spCreateUser',(_userUsername,_userPassword,_userEmail))
             data = cursor.fetchall()
-            
+
             if len(data) is 0:
                 conn.commit()
                 return {'StatusCode':'200','Message': 'User creation success'}
@@ -46,7 +46,7 @@ class CreateUser(Resource):
 
         except Exception as e:
             return {'error': str(e)}
-        
+
 class Login(Resource):
     def post(self):
         try:
@@ -56,7 +56,7 @@ class Login(Resource):
             parser.add_argument('password', type=str, help='Password to match Email')
             args = parser.parse_args()
 
-            
+
             _userEmail = args['email']
             _userPassword = args['password']
 
@@ -73,7 +73,7 @@ class Login(Resource):
 
         except Exception as e:
             return {'error': str(e)}
-        
+
 class ListFriends(Resource):
     def post(self):
         try:
@@ -82,27 +82,27 @@ class ListFriends(Resource):
             parser.add_argument('email', type=str, help='Email address for friends')
             args = parser.parse_args()
 
-            
+
             _userEmail = args['email']
-            
+
             conn = mysql.connect()
             cursor = conn.cursor()
             cursor.callproc('spListFriends', [_userEmail] )
             data = cursor.fetchall()
-            
+
             if len(data) is not 0:
                 conn.commit()
                 friend_list = {}
                 for (user_id, friend, status) in data:
                     friend_list.update({user_id:(friend,status)})
-                
+
                 return friend_list
             else:
                 return {'StatusCode':'1002','Message':"NO FRIENDS"}
 
         except Exception as e:
             return {'error': str(e)}
-        
+
 class ListFriendRequests(Resource):
     def post(self):
         try:
@@ -111,25 +111,25 @@ class ListFriendRequests(Resource):
             parser.add_argument('email', type=str, help='friend requests')
             args = parser.parse_args()
             _userEmail = args['email']
-            
+
             conn = mysql.connect()
             cursor = conn.cursor()
             cursor.callproc('spListFriendRequests', [_userEmail] )
             data = cursor.fetchall()
-            
+
             if len(data) is not 0:
                 conn.commit()
                 friend_list = {}
                 for (friend, ids) in data:
                     friend_list.update({ids:friend})
-                
+
                 return friend_list
             else:
                 return {'StatusCode':'1003','Message':"NO Requests"}
 
         except Exception as e:
             return {'error': str(e)}
-        
+
 class SendFriendRequest(Resource):
     def post(self):
         try:
@@ -139,7 +139,7 @@ class SendFriendRequest(Resource):
             parser.add_argument('user', type=str, help='Username of of person who is recieving request')
             args = parser.parse_args()
 
-            
+
             _userEmail = args['email']
             _userUser = args['user']
 
@@ -147,7 +147,7 @@ class SendFriendRequest(Resource):
             cursor = conn.cursor()
             cursor.callproc('spSendFriendRequest',(_userEmail,_userUser))
             data = cursor.fetchall()
-            
+
             if data == ():
                 conn.commit()
                 return {'StatusCode':'202','Message': 'Friend Request Sent'}
@@ -156,7 +156,7 @@ class SendFriendRequest(Resource):
 
         except Exception as e:
             return {'error': str(e)}
-        
+
 class AcceptFriendRequest(Resource):
     def post(self):
         try:
@@ -166,7 +166,7 @@ class AcceptFriendRequest(Resource):
             parser.add_argument('user', type=str, help='Username of of person who is recieving request')
             args = parser.parse_args()
 
-            
+
             _userEmail = args['email']
             _userUser = args['user']
 
@@ -174,7 +174,7 @@ class AcceptFriendRequest(Resource):
             cursor = conn.cursor()
             cursor.callproc('spAcceptFriendRequest',(_userEmail,_userUser))
             data = cursor.fetchall()
-            
+
             if data == ():
                 conn.commit()
                 return {'StatusCode':'203','Message': 'Accepted Friend Request'}
@@ -194,7 +194,7 @@ class UpdateLocation(Resource):
             parser.add_argument('latitude', type=str, help='Latitude of user')
             args = parser.parse_args()
 
-            
+
             _userEmail = args['email']
             _userLatitude = args['latitude']
             _userLongitude = args['longitude']
@@ -202,8 +202,10 @@ class UpdateLocation(Resource):
             cursor = conn.cursor()
             cursor.callproc('spUpdateLocation',(_userEmail,_userLocation))
             data = cursor.fetchall()
-            
+
             if data == ():
+                print _userEmail
+                print _userLatitude
                 conn.commit()
                 return {'StatusCode':'204','Message': 'Updated Location'}
             else:
@@ -211,9 +213,9 @@ class UpdateLocation(Resource):
 
         except Exception as e:
             return {'error': str(e)}
-        
-        
-        
+
+
+
 class ListAllFriendLocations(Resource):
     def post(self):
         try:
@@ -222,27 +224,27 @@ class ListAllFriendLocations(Resource):
             parser.add_argument('email', type=str, help='Email address for friends location')
             args = parser.parse_args()
 
-            
+
             _userEmail = args['email']
-            
+
             conn = mysql.connect()
             cursor = conn.cursor()
             cursor.callproc('spListAllFriendLocations', [_userEmail] )
             data = cursor.fetchall()
-            
+
             if len(data) is not 0:
                 conn.commit()
                 friend_list = {}
                 for (ids, latitude,longitude) in data:
                     friend_list.update({ids:(latitude,longitude)})
-                
+
                 return friend_list
             else:
                 return {'StatusCode':'1005','Message':"NO FRIEND LOCATION"}
 
         except Exception as e:
             return {'error': str(e)}
-        
+
 class FriendLocation(Resource):
     def post(self):
         try:
@@ -251,23 +253,23 @@ class FriendLocation(Resource):
             parser.add_argument('user', type=str, help='user to find location of')
             args = parser.parse_args()
 
-            
+
             _userUser = args['user']
-            
+
             conn = mysql.connect()
             cursor = conn.cursor()
             cursor.callproc('spFriendLocation', [_userUser] )
             data = cursor.fetchall()
-            print(data)
+
             if len(data) is not 0:
-                
+
                 conn.commit()
                 friend_list = {}
                 for (ids, longitude,latitude) in data:
                     friend_list.update({"user":ids  })
                     friend_list.update({"latitude":latitude})
                     friend_list.update({"longitude":longitude})
-                
+
                 return friend_list
             else:
                 return {'StatusCode':'1005','Message':"NO Location"}

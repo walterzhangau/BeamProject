@@ -8,11 +8,12 @@ import org.json.JSONObject;
 
 public class JSONResponse {
     public static JSONObject response = null;
+    public static String JSON = null;
 
    public static void SetResponse(String JSONresponse){
         try {
 
-
+            JSON = JSONresponse;
             response = new JSONObject(JSONresponse);
         }
             catch(Exception e){}

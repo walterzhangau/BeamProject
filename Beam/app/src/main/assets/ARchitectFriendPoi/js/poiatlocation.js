@@ -9,8 +9,12 @@ var World = {
 	markerDrawable_idle: null,
 
 	// called to inject new POI data
-	loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
+	loadPoisFromJsonData: function loadPoisFromJsonDataFn(lat, lon) {
 
+		var latitude = parseFloat(lat);
+		var longitude = parseFloat(lon);
+        AR.logger.debug("latitude: " + latitude);
+        AR.logger.debug("longitude: " + longitude);
 		/*
 			Loads an AR.ImageResource when the World variable was defined. It will be reused for each marker that we will create afterwards.
 		*/
@@ -19,7 +23,7 @@ var World = {
 		/*
 			For creating the marker a new object AR.GeoObject will be created at the specified geolocation. An AR.GeoObject connects one or more AR.GeoLocations with multiple AR.Drawables. The AR.Drawables can be defined for multiple targets. A target can be the camera, the radar or a direction indicator. Both the radar and direction indicators will be covered in more detail in later examples.
 		*/
-		var markerLocation = new AR.GeoLocation(poiData.latitude, poiData.longitude, poiData.altitude);
+		var markerLocation = new AR.GeoLocation(latitude, longitude, 100);
 		var markerImageDrawable_idle = new AR.ImageDrawable(World.markerDrawable_idle, 2.5, {
 			zOrder: 0,
 			opacity: 1.0
@@ -59,15 +63,6 @@ var World = {
 		*/
 		if (!World.initiallyLoadedData) {
 			// creates a poi object with a random location near the user's location
-
-			var poiData = {
-				"id": 1,
-				"longitude": (lon + (Math.random() / 5 - 0.1)),
-				"latitude": (lat + (Math.random() / 5 - 0.1)),
-				"altitude": 100.0
-			};
-
-			World.loadPoisFromJsonData(poiData);
 			World.initiallyLoadedData = true;
 		} else {
 

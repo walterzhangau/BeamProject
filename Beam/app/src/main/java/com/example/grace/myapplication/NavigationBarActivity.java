@@ -43,10 +43,13 @@ public class NavigationBarActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_bar);
 
+
         SetupActivityButtons();
         if (Build.VERSION.SDK_INT >= 23) {
+            Log.e(TAG, "permissions check starting");
             needPermissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
             needPermissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
+            needPermissions.add(Manifest.permission.CAMERA);
             for (String permission : needPermissions) {
                 checkPermission(permission);
             }
@@ -55,8 +58,12 @@ public class NavigationBarActivity extends AppCompatActivity
                 alreadyCalled = true;
             }
             if(!alreadyCalled) {
+                Log.d(TAG, "service starting...");
                 startService(new Intent(this, LocationService.class));
             }
+        } else {
+            Log.e(TAG, "service starting build version < 23");
+            startService(new Intent(this, LocationService.class));
         }
 
     }

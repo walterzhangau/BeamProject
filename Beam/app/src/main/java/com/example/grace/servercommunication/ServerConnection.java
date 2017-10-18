@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class ServerConnection {
 
-
+    private static final String TAG = "ServerConnection";
     // Sends a post to the server
     //url affix, appened to the url of the server, e.g "Login", "CreateUser"
     //KeyTags, unorderered array of keys for server e.g. "email", "friendstatus", location
@@ -31,10 +31,10 @@ public class ServerConnection {
     //ignore_response, if false the response is stored in JSONResponse
     public void makeServerRequest(String urlAffix, final ArrayList<String> keyTags, final ArrayList<String> Keys, final int len, android.content.Context context, final Boolean ignore_response) {
 
-
         // Store values at the time of the login attempt.
 
         final RequestQueue MyRequestQueue = Volley.newRequestQueue(context);
+
 
         String url = "http://10.12.182.159:4444/" + urlAffix;
 
@@ -57,14 +57,15 @@ public class ServerConnection {
                     e.printStackTrace();
                 }
 
-
-                //String statusCode = null;
-                //try {
-                //    statusCode = obj.getString("StatusCode");
-                //} catch (JSONException e) {
-                //    e.printStackTrace();
-                //}
-                //System.out.println(statusCode);
+                String statusCode = null;
+                try {
+                    statusCode = obj.getString("StatusCode");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (statusCode != null) {
+                    System.out.println(statusCode);
+                }
             }
 
 
@@ -86,11 +87,13 @@ public class ServerConnection {
             @Override
             protected Map<String, String> getParams()
             {
+                Log.e(TAG, "getParams");
                 Map<String, String>  params = new HashMap<String, String>();
                 for(int i = 0; i < len; i ++) {
                     params.put(keyTags.get(i), Keys.get(i));
                     System.out.println(params);
                 }
+
                 return params;
             }
         };

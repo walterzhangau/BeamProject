@@ -189,6 +189,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     @Override
                     public boolean onPreferenceClick(Preference preference) {
                         UserCredentials.email = null;
+                        UserCredentials.username = null;
                         Context context = preference.getContext();
 
                         Intent intent = new Intent(context, LoginActivity.class);

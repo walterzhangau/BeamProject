@@ -149,7 +149,7 @@
 
     <string name= "logoutPreference">LogoutPreference</string>
 
-    <string name= "settings_activity_button_text">Settings</string>
+    <string name= "settings_activity_button_text">Logout</string>
     <string name= "friends_activity_button_text">Friends</string>
     <string name= "message_activity_button_text">Chat Room</string>
 

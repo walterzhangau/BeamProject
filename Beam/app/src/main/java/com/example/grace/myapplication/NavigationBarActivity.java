@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.example.grace.UserInformation.UserCredentials;
 import com.example.grace.util.LocationService;
 
 import java.util.ArrayList;
@@ -96,7 +97,9 @@ public class NavigationBarActivity extends AppCompatActivity
         SettingsActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NavigationBarActivity.this, SettingsActivity.class);
+                UserCredentials.email = null;
+                UserCredentials.username = null;
+                Intent intent = new Intent(NavigationBarActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

@@ -7,7 +7,7 @@
         android:defaultValue="180"
         android:entries="@array/pref_beam_colour_titles"
         android:entryValues="@array/pref_beam_colour_values"
-        android:key="beam_colour"
+        android:key="@string/colour_preference"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:title="@string/pref_title_beam_colour" />

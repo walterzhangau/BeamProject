@@ -153,4 +153,6 @@
     <string name= "friends_activity_button_text">Friends</string>
     <string name= "message_activity_button_text">Chat Room</string>
 
+    <string name= "colour_preference">ColourPreference</string>
+
 </resources>

@@ -179,7 +179,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			@Override
 			public void run() {
 				//get friends location from server
-				boolean success = getFriendLocation();
+				getFriendLocation();
 			}
 		}, 0, 5000);
 

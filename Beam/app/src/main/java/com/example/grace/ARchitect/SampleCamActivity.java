@@ -8,8 +8,12 @@ import android.location.LocationListener;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+
+
+import com.example.grace.myapplication.FriendsActivity;
 import com.example.grace.myapplication.R;
 import com.wikitude.architect.ArchitectJavaScriptInterfaceListener;
 import com.wikitude.architect.ArchitectView;
@@ -42,7 +46,6 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 	public ArchitectJavaScriptInterfaceListener getArchitectJavaScriptInterfaceListener() {
 		return null;
 	}
-
 
 	@Override
 	public int getContentViewId() {

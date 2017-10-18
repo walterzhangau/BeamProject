@@ -66,6 +66,11 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
     private void setupFriendsTable(){
 
 
@@ -283,7 +288,7 @@ public class FriendsActivity extends AppCompatActivity {
         Button button = new Button(this);
 
         if(Status == FRIEND) {
-            button.setBackgroundResource(R.drawable.ic_beam_button);
+            //button.setBackgroundResource(R.drawable.ic_beam_button);
             button.setText(R.string.beam_button_text);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override

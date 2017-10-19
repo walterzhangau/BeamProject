@@ -19,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Toast;
@@ -179,7 +180,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			@Override
 			public void run() {
 				//get friends location from server
-				boolean success = getFriendLocation();
+				getFriendLocation();
 			}
 		}, 0, 5000);
 
@@ -500,6 +501,18 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			return true;
 		}
 
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		Log.e(TAG, "onKeyDown");
+		Log.e(TAG, Integer.toString(KeyEvent.KEYCODE_BACK));
+		Log.e(TAG, "keyCode = " + Integer.toString(keyCode));
+		if (keyCode == KeyEvent.KEYCODE_BACK && architectView != null) {
+			finish();
+			return true;
+		}
+		return false;
 	}
 
 	public class FriendLocationTask extends AsyncTask<Void, Void, Boolean> {

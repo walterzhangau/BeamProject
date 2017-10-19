@@ -66,6 +66,11 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
     private void setupFriendsTable(){
 
 
@@ -94,6 +99,10 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
 
     public void setupAddFriends(){
@@ -127,10 +136,6 @@ public class FriendsActivity extends AppCompatActivity {
 
             }
              });
-
-
-
-
     }
 
 
@@ -291,7 +296,6 @@ public class FriendsActivity extends AppCompatActivity {
                     Intent intent = new Intent(FriendsActivity.this, SampleCamActivity.class);
                     intent.putExtra("user", friend_username);
                     startActivity(intent);
-                    finish();
                 }
             });
 

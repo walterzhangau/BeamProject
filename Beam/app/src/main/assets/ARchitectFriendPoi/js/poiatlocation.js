@@ -30,7 +30,7 @@ var World = {
 //                    $("#radarContainer").click(PoiRadar.clickedRadar);
 //        }
 
-        if (World.markerObject != null) {
+        if (World.markerObject != null && parseFloat(lat) != latitude && parseFloat(lon) != longitude) {
             World.markerObject.destroy();
         }
 		var latitude = parseFloat(lat);

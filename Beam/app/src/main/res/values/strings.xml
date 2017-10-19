@@ -141,7 +141,7 @@
     <string name= "friendRequest_button_text">Accept</string>>
     <string name= "message_button_text">Message</string>>
     <string name= "beam_button_text">Beam</string>>
-    <string name= "block_button_text">Block</string>>
+    <string name= "block_button_text">Map</string>>
 
     <string name= "txt_msg">TextMessage</string>
     <string name= "list_msg">MessageList</string>
@@ -149,8 +149,12 @@
 
     <string name= "logoutPreference">LogoutPreference</string>
 
-    <string name= "settings_activity_button_text">Settings</string>
+    <string name= "settings_activity_button_text">Logout</string>
     <string name= "friends_activity_button_text">Friends</string>
     <string name= "message_activity_button_text">Chat Room</string>
+
+    <string name= "colour_preference">ColourPreference</string>
+    <string name="google_maps_key">AIzaSyA53-sAQ6xP0mmBsPo4rRHHeYxmhBn0ULU</string>
+
 
 </resources>

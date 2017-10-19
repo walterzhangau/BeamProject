@@ -163,7 +163,16 @@ public class FriendsActivity extends AppCompatActivity {
             values = responseString.split(",");
             int j;
 
-            if(!values[1].equals(NOFRIENDSERROR)) {
+            boolean good = true;
+            if (values.length > 3){
+                if (values[3].equals(NOFRIENDSERROR)){
+                    good = false;
+
+                }
+
+            }
+
+            if(good) {
 
                 for (j = 0; j < values.length; j += 3) {
                     friends.add(values[j + 1]);
@@ -202,7 +211,7 @@ public class FriendsActivity extends AppCompatActivity {
             row.addView(qty);
             row.addView(messageButton(FirstName, Status));
             row.addView(beamButton(FirstName, Status));
-            row.addView(blockButton(FirstName));
+            row.addView(blockButton(FirstName, Status));
             tableLayoutA.addView(row,i);
 
         }
@@ -307,23 +316,24 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
-    private Button blockButton(final String friend_username){
+    private Button blockButton(final String friend_username, int status){
 
 
         Button button = new Button(this);
-        button.setText(R.string.block_button_text);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if (status == FRIEND) {
+            button.setText(R.string.block_button_text);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-                Intent intent = new Intent(FriendsActivity.this, MapsMarkerActivity.class);
+                    Intent intent = new Intent(FriendsActivity.this, MapsMarkerActivity.class);
 
-                intent.putExtra("user", friend_username);
-                startActivity(intent);
+                    intent.putExtra("user", friend_username);
+                    startActivity(intent);
 
-            }
-        });
-
+                }
+            });
+        }
         return button;
 
     }

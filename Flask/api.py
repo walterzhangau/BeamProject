@@ -200,7 +200,7 @@ class UpdateLocation(Resource):
             _userLongitude = args['longitude']
             conn = mysql.connect()
             cursor = conn.cursor()
-            cursor.callproc('spUpdateLocation',(_userEmail,_userLocation))
+            cursor.callproc('spUpdateLocation',(_userEmail,_userLatitude,_userLongitude))
             data = cursor.fetchall()
 
             if data == ():

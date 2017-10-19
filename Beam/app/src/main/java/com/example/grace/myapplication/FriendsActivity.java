@@ -194,7 +194,7 @@ public class FriendsActivity extends AppCompatActivity {
             row.addView(qty);
             row.addView(messageButton(FirstName, Status));
             row.addView(beamButton(FirstName, Status));
-            row.addView(blockButton());
+            row.addView(blockButton(FirstName));
             tableLayoutA.addView(row,i);
 
         }
@@ -301,7 +301,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
-    private Button blockButton(){
+    private Button blockButton(final String friend_username){
 
 
         Button button = new Button(this);
@@ -310,7 +310,11 @@ public class FriendsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(FriendsActivity.this, MapsMarkerActivity.class);
 
+                intent.putExtra("user", friend_username);
+                startActivity(intent);
+                finish();
 
             }
         });

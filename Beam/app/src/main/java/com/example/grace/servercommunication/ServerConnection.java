@@ -36,7 +36,7 @@ public class ServerConnection {
         final RequestQueue MyRequestQueue = Volley.newRequestQueue(context);
 
 
-        String url = "http://10.12.182.159:4444/" + urlAffix;
+        String url = "http://10.13.152.154:4444/" + urlAffix;
 
         System.out.println("The url is " + url);
         System.out.println("the affix is " + urlAffix);

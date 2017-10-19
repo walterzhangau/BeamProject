@@ -110,7 +110,6 @@ public class NavigationBarActivity extends AppCompatActivity
                 Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
                 intent.putExtra("MESSAGE_AUDIENCE", "Chat Room");
                 startActivity(intent);
-                finish();
 
             }
         });
@@ -120,7 +119,7 @@ public class NavigationBarActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(NavigationBarActivity.this, FriendsActivity.class);
                 startActivity(intent);
-                finish();
+
 
             }
         });

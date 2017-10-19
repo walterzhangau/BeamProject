@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +32,7 @@ import org.json.JSONException;
 
 public class MessagingActivity extends AppCompatActivity {
 
+    private static final String TAG = "MessagingActivity";
     TextView message_text_view;
     Button message_button_view;
     Socket bSocket;
@@ -151,6 +154,18 @@ public class MessagingActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.e(TAG, "onKeyDown");
+        Log.e(TAG, Integer.toString(KeyEvent.KEYCODE_BACK));
+        Log.e(TAG, "keyCode = " + Integer.toString(keyCode));
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            finish();
+            return true;
+        }
+        return false;
     }
 
     @Override

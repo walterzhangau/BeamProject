@@ -356,7 +356,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 setUsername();
                 startActivity(intent);
                 System.out.println("The email is " + UserCredentials.email);
-                finish();
+
 
             } else {
                 JSONResponse.response = null;

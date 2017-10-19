@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +33,8 @@ import java.util.Iterator;
 
 
 public class FriendsActivity extends AppCompatActivity {
+
+    private final static String TAG = "FriendsActivity";
     final int PENDING = 2;
     final int FRIEND = 3;
     final String NOFRIENDSERROR = "1002";
@@ -246,7 +249,6 @@ public class FriendsActivity extends AppCompatActivity {
                     // Inform messaging activity of recipients name
                     intent.putExtra("MESSAGE_AUDIENCE", (FirstName));
                     startActivity(intent);
-                    finish();
 
                 }
             });
@@ -326,6 +328,18 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.e(TAG, "onKeyDown");
+        Log.e(TAG, Integer.toString(KeyEvent.KEYCODE_BACK));
+        Log.e(TAG, "keyCode = " + Integer.toString(keyCode));
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            finish();
+            return true;
+        }
+        return false;
+    }
 
     private void setupActionBar() {
         ActionBar actionBar = getSupportActionBar();

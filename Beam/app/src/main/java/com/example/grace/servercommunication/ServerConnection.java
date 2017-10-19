@@ -37,7 +37,7 @@ public class ServerConnection {
 
 
 
-        String url = "http://10.12.48.154:4444/" + urlAffix;
+        String url = "http://10.13.152.154:4444/" + urlAffix;
 
 
         System.out.println("The url is " + url);

@@ -33,22 +33,21 @@ public class MapsMarkerActivity extends AppCompatActivity
 
     public MapFriendLocationTask friendLocationTask;
     public MapFriendLocationTask mFriendLocationTask = null;
-
+    public MapsMarkerActivity thisMapsMarker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        thisMapsMarker = this;
         Bundle extras = getIntent().getExtras();
         friendsName = extras.getString("user");
 
+        boolean success = getFriendLocation();
         super.onCreate(savedInstanceState);
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_maps);
         // Get the SupportMapFragment and request notification
         // when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
     }
     private boolean getFriendLocation() {
 
@@ -107,6 +106,9 @@ public class MapsMarkerActivity extends AppCompatActivity
                 System.out.println("LATITUDE IS = " + friendsLatitude);
                 System.out.println("LONGITUDE IS = " + friendsLongitude);
                 //System.out.println("=================== LATITUDE AS STRING: " + latitude);
+                SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.map);
+                mapFragment.getMapAsync(thisMapsMarker);
             } catch (Exception e) {
 
                 System.out.println("NOT IN POSTEXECUTE");
@@ -132,13 +134,11 @@ public class MapsMarkerActivity extends AppCompatActivity
      * Play services inside the SupportMapFragment. The API invokes this method after the user has
      * installed Google Play services and returned to the app.
      */
-    @Override
+/*    @Override
     public void onMapReady(GoogleMap googleMap) {
         // Add a marker in Sydney, Australia,
         // and move the map's camera to the same location.
 
-        boolean success = getFriendLocation();
-        if (success) {
             System.out.println("LATITUDE IN ON MAP IS = " + friendsLatitude);
             System.out.println("LONGITUDE IS = " + friendsLongitude);
             LatLng sydney = new LatLng(-37.814, 144.96332);
@@ -146,10 +146,9 @@ public class MapsMarkerActivity extends AppCompatActivity
                     .title(friendsNameToPrint + "'s Location"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        }
 
-    }
-/*    @Override
+    }*/
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         // Add a marker in Sydney, Australia,
         // and move the map's camera to the same location.
@@ -158,7 +157,7 @@ public class MapsMarkerActivity extends AppCompatActivity
         googleMap.addMarker(new MarkerOptions().position(sydney)
                 .title(friendsName + "'s Location"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }*/
+    }
 
 
 }

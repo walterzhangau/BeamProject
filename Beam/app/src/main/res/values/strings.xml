@@ -141,7 +141,7 @@
     <string name= "friendRequest_button_text">Accept</string>>
     <string name= "message_button_text">Message</string>>
     <string name= "beam_button_text">Beam</string>>
-    <string name= "block_button_text">Block</string>>
+    <string name= "block_button_text">Map</string>>
 
     <string name= "txt_msg">TextMessage</string>
     <string name= "list_msg">MessageList</string>

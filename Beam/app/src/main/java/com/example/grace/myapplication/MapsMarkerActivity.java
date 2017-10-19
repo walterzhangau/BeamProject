@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 
 import com.example.grace.ARchitect.AbstractArchitectCamActivity;
 import com.example.grace.servercommunication.JSONResponse;
@@ -25,6 +26,8 @@ import static com.example.grace.myapplication.R.id.architectView;
  */
 public class MapsMarkerActivity extends AppCompatActivity
         implements OnMapReadyCallback {
+
+    private static final String TAG = "MapsMarkerActivity";
 
     public String friendsLatitude;
     public String friendsLongitude;
@@ -49,6 +52,19 @@ public class MapsMarkerActivity extends AppCompatActivity
         // when the map is ready to be used.
 
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.e(TAG, "onKeyDown");
+        Log.e(TAG, Integer.toString(KeyEvent.KEYCODE_BACK));
+        Log.e(TAG, "keyCode = " + Integer.toString(keyCode));
+        if (keyCode == KeyEvent.KEYCODE_BACK && thisMapsMarker != null) {
+            finish();
+            return true;
+        }
+        return false;
+    }
+
     private boolean getFriendLocation() {
 
         System.out.println("conencitng to SERVER ------------------------------------------------------------------------------------------------");

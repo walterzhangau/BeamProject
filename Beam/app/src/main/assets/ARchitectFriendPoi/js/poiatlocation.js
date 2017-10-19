@@ -40,7 +40,7 @@ var World = {
 		/*
 			Loads an AR.ImageResource when the World variable was defined. It will be reused for each marker that we will create afterwards.
 		*/
-		World.markerDrawable_idle = new AR.ImageResource("assets/egemen-tanin.jpg");
+		World.markerDrawable_idle = new AR.ImageResource("assets/BEAM1.jpg");
 
         World.directionIndicator = new AR.ImageResource("assets/indi.png");
 		/*

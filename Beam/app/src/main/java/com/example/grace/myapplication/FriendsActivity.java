@@ -318,7 +318,6 @@ public class FriendsActivity extends AppCompatActivity {
 
                 intent.putExtra("user", friend_username);
                 startActivity(intent);
-                finish();
 
             }
         });

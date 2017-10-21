@@ -39,6 +39,9 @@ Other Server:
 More other stuff
 ```
 
+## Running servers
+Run Api.py with Python 2 or 3
+Run messageApi.py with Python 2 or 3
 
 
 ## Running the tests
@@ -54,6 +57,16 @@ Give an example
 ```
 
 ## Deployment
+
+On one machine 
+(Can split servers between machines)
+
+Run VPN connecting to remote.unimelb.edu.au 
+
+Change final string IP in ServerCommunication directory, serverConnection.java to IP of machine running Api.py
+
+Change final string IP in myAPllication directory, messagingActivity.java to IP of machine running messageApi.py
+
 
 HMMMMMMM :/
 

@@ -74,10 +74,14 @@ HMMMMMMM :/
 ## Authors
 
 * **Grace Geddes** 
+* **Evan Lewis**
 
 
 
 ## Acknowledgments
 
 * ReadMe Template borrowed from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+* MessageAdapter.Java based on code from 'Design Chat Bubble UI in Android' by Hong Thai
+* Link - /http://www.devexchanges.info/2016/03/design-chat-bubble-ui-in-android.html
+
 * Thanks to our tutor, William

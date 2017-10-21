@@ -34,6 +34,14 @@ public class FriendsActivity extends AppCompatActivity {
     final int FRIEND = 3;
     final String NOFRIENDSERROR = "1002";
     final String REQUESTSENT = "Friend Request Sent";
+    final String AFFIX_LIST_FRIENDS = "ListFriends";
+    final String AFFIX_SEND_FRIEND_REQUEST = "SendFriendRequest";
+    final String AFFIX_ACCEPT_FRIEND_REQUEST = "AcceptFriendRequest";
+    final String USER = "user";
+    final String EMAIL = "email";
+    final String INTENT_TAG_MESSAGING = "MESSAGE_AUDIENCE";
+    final String RESPONSE_TAG_MESSAGE = "Message";
+
 
     Button add_friend_button;
     TextView add_friend_input;
@@ -80,9 +88,9 @@ public class FriendsActivity extends AppCompatActivity {
         ArrayList<String> Keys = new ArrayList<>();
         ArrayList<String> KeyTags = new ArrayList<>();
         Keys.add(email);
-        KeyTags.add("email");
+        KeyTags.add(EMAIL);
 
-        serverConnection.makeServerRequest("ListFriends", KeyTags, Keys, 1, this, false);
+        serverConnection.makeServerRequest(AFFIX_LIST_FRIENDS, KeyTags, Keys, 1, this, false);
 
 
         showProgress(true);
@@ -98,54 +106,51 @@ public class FriendsActivity extends AppCompatActivity {
     }
 
 
-    public void setupAddFriends(){
-        add_friend_button = (Button)findViewById(R.id.add_friends_button);
-        add_friend_input = (TextView)findViewById(R.id.add_friends_input);
+    public void setupAddFriends() {
+        add_friend_button = (Button) findViewById(R.id.add_friends_button);
+        add_friend_input = (TextView) findViewById(R.id.add_friends_input);
         add_friend_button.setOnClickListener(new View.OnClickListener() {
             @Override
-                    public void onClick(View view){
+            public void onClick(View view) {
                 String add_friend_username = add_friend_input.getText().toString();
 
                 add_friend_input.setText("");
 
-                ArrayList<String> Keys = new ArrayList<String>();
-                ArrayList<String> KeyTags = new ArrayList<String>();
+                ArrayList<String> Keys = new ArrayList<>();
+                ArrayList<String> KeyTags = new ArrayList<>();
 
                 Keys.add(email);
-                KeyTags.add("email");
+                KeyTags.add(EMAIL);
 
                 Keys.add(add_friend_username);
-                KeyTags.add("user");
+                KeyTags.add(USER);
 
                 ServerConnection serverConnection = new ServerConnection();
-                serverConnection.makeServerRequest("SendFriendRequest", KeyTags, Keys, 2, FriendsActivity.this, false);
+                serverConnection.makeServerRequest(AFFIX_SEND_FRIEND_REQUEST, KeyTags, Keys, 2, FriendsActivity.this, false);
 
                 showProgress(true);
                 addFriendTask = new AddFriendTask();
                 addFriendTask.execute();
 
 
-
-
             }
-             });
+        });
     }
 
 
+    public void drawFriendsTable() {
+        String FirstName;
+        int Status;
 
-    public void drawFriendsTable(){
-        String FirstName = null;
-        int Status = 0;
-
-        ArrayList<String>  friends  = new ArrayList<>();
+        ArrayList<String> friends = new ArrayList<>();
         String[] values;
         ArrayList<Integer> statuses = new ArrayList<>();
 
         JSONObject response = JSONResponse.response;
         try {
             String responseString = response.toString();
-            responseString = responseString.replace("{",  "");
-            responseString = responseString.replace("}",  "");
+            responseString = responseString.replace("{", "");
+            responseString = responseString.replace("}", "");
             responseString = responseString.replace("\"", "");
             responseString = responseString.replace(":", ",");
             responseString = responseString.replace("[", "");
@@ -154,46 +159,44 @@ public class FriendsActivity extends AppCompatActivity {
             int j;
 
             boolean good = true;
-            if (values.length > 3){
-                if (values[3].equals(NOFRIENDSERROR)){
+            if (values.length > 3) {
+                if (values[3].equals(NOFRIENDSERROR)) {
                     good = false;
 
                 }
 
             }
 
-            if(good) {
+            if (good) {
 
                 for (j = 0; j < values.length; j += 3) {
                     friends.add(values[j + 1]);
                     statuses.add(Integer.parseInt(values[j + 2]));
                 }
             }
-            System.out.println("The response for friends list is "+ responseString);
+            System.out.println("The response for friends list is " + responseString);
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
 
         TableLayout tableLayoutA;
-        tableLayoutA= (TableLayout)findViewById(R.id.friends_table);
+        tableLayoutA = (TableLayout) findViewById(R.id.friends_table);
 
 
         TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
 
 
-
-
         int i;
-        for (i = 0; i < friends.size(); i++){
+        for (i = 0; i < friends.size(); i++) {
             TableRow row = new TableRow(this);
             row.setLayoutParams(lp);
 
             TextView qty = new TextView(this);
 
             FirstName = friends.get(i);
-            Status    = statuses.get(i);
+            Status = statuses.get(i);
 
             qty.setText(FirstName);
 
@@ -202,7 +205,7 @@ public class FriendsActivity extends AppCompatActivity {
             row.addView(messageButton(FirstName, Status));
             row.addView(beamButton(FirstName, Status));
             row.addView(blockButton(FirstName, Status));
-            tableLayoutA.addView(row,i);
+            tableLayoutA.addView(row, i);
 
         }
 
@@ -246,30 +249,29 @@ public class FriendsActivity extends AppCompatActivity {
                     Intent intent = new Intent(FriendsActivity.this, MessagingActivity.class);
 
                     // Inform messaging activity of recipients name
-                    intent.putExtra("MESSAGE_AUDIENCE", (FirstName));
+                    intent.putExtra(INTENT_TAG_MESSAGING, (FirstName));
                     startActivity(intent);
 
                 }
             });
-        }
-        else{
+        } else {
             messageFriend = new Button(this);
             messageFriend.setText(R.string.friendRequest_button_text);
             messageFriend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    ArrayList<String> Keys = new ArrayList<String>();
-                    ArrayList<String> KeyTags = new ArrayList<String>();
+                    ArrayList<String> Keys = new ArrayList<>();
+                    ArrayList<String> KeyTags = new ArrayList<>();
 
                     Keys.add(email);
-                    KeyTags.add("email");
+                    KeyTags.add(EMAIL);
 
                     Keys.add(FirstName);
-                    KeyTags.add("user");
+                    KeyTags.add(USER);
 
                     ServerConnection serverConnection = new ServerConnection();
-                    serverConnection.makeServerRequest("AcceptFriendRequest", KeyTags, Keys, 2, FriendsActivity.this, true);
+                    serverConnection.makeServerRequest(AFFIX_ACCEPT_FRIEND_REQUEST, KeyTags, Keys, 2, FriendsActivity.this, true);
                     finish();
                     startActivity(getIntent());
 
@@ -283,19 +285,19 @@ public class FriendsActivity extends AppCompatActivity {
     }
 
 
-    private Button beamButton(final String friend_username, int Status){
+    private Button beamButton(final String friend_username, int Status) {
 
 
         Button button = new Button(this);
 
-        if(Status == FRIEND) {
+        if (Status == FRIEND) {
             //button.setBackgroundResource(R.drawable.ic_beam_button);
             button.setText(R.string.beam_button_text);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(FriendsActivity.this, SampleCamActivity.class);
-                    intent.putExtra("user", friend_username);
+                    intent.putExtra(USER, friend_username);
                     startActivity(intent);
                 }
             });
@@ -306,7 +308,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     }
 
-    private Button blockButton(final String friend_username, int status){
+    private Button blockButton(final String friend_username, int status) {
 
 
         Button button = new Button(this);
@@ -318,7 +320,7 @@ public class FriendsActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(FriendsActivity.this, MapsMarkerActivity.class);
 
-                    intent.putExtra("user", friend_username);
+                    intent.putExtra(USER, friend_username);
                     startActivity(intent);
 
                 }
@@ -351,7 +353,7 @@ public class FriendsActivity extends AppCompatActivity {
         }
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(FriendsActivity.this, NavigationBarActivity.class);
         startActivity(intent);
         finish();
@@ -363,20 +365,22 @@ public class FriendsActivity extends AppCompatActivity {
      * Represents an asynchronous friendslist task used to authenticate
      * the user.
      */
-    public class FriendsListTask extends AsyncTask<Void, Void, Boolean> {
+    private class FriendsListTask extends AsyncTask<Void, Void, Boolean> {
 
 
         @Override
         protected Boolean doInBackground(Void... params) {
 
             try {
-                while(JSONResponse.response == null){
+                while (JSONResponse.response == null) {
                     Thread.sleep(20);
                 }
-                }catch(Exception e){}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
 
-                return true;
+            return true;
 
         }
 
@@ -411,7 +415,7 @@ public class FriendsActivity extends AppCompatActivity {
                     Log.e("Waiting", "waiting");
                 }
 
-                return (JSONResponse.response.getString("Message").equals(REQUESTSENT));
+                return (JSONResponse.response.getString(RESPONSE_TAG_MESSAGE).equals(REQUESTSENT));
 
 
             } catch (Exception e) {
@@ -422,22 +426,14 @@ public class FriendsActivity extends AppCompatActivity {
         }
 
 
-
-            }catch(Exception e){e.printStackTrace();}
-
-        return false;
-        }
-
-
         @Override
         protected void onPostExecute(final Boolean success) {
 
-            if(success){
-                add_friend_input.setText("Request Sent");
+            if (success) {
+                add_friend_input.setText(getText(R.string.friend_request_success));
 
-            }
-            else{
-                add_friend_input.setText("User does not exist");
+            } else {
+                add_friend_input.setText(getText(R.string.friend_request_failure));
 
             }
 
@@ -462,39 +458,27 @@ public class FriendsActivity extends AppCompatActivity {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
         // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+        int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-            mFriendsListForm.setVisibility(show ? View.GONE : View.VISIBLE);
-            mFriendsListForm.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mFriendsListForm.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
+        mFriendsListForm.setVisibility(show ? View.GONE : View.VISIBLE);
+        mFriendsListForm.animate().setDuration(shortAnimTime).alpha(
+                show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mFriendsListForm.setVisibility(show ? View.GONE : View.VISIBLE);
+            }
+        });
 
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
+        mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+        mProgressView.animate().setDuration(shortAnimTime).alpha(
+                show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            }
+        });
 
-
-
-
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mFriendsListForm.setVisibility(show ? View.GONE : View.VISIBLE);
-
-        }
     }
-
 
 
 }

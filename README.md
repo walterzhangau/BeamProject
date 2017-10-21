@@ -33,10 +33,13 @@ pip install flask-socketio
 ```
 
 
-Other Server:
+In order to use the server which holds access to the database (api.py),
+the following needs to be installed
 
 ```
-More other stuff
+pip install Flask
+pip install Flask-RESTful
+pip install flask-mysql
 ```
 
 ## Running servers
@@ -46,11 +49,17 @@ Run messageApi.py with Python 2 or 3
 
 ## Running the tests
 
-Did we even do this?
+To run the tests for api.py, api.py needs to be running, then on a seperate terminal or computor
+run:
+```
+python apitest.py
+```
 
 ### Break down into end to end tests
 
 Explain what these tests test and why
+
+apitest.py tests if 
 
 ```
 Give an example
@@ -75,6 +84,7 @@ HMMMMMMM :/
 
 * **Grace Geddes** 
 * **Evan Lewis**
+* **Walter Zhang**
 
 
 

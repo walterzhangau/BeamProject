@@ -64,7 +64,6 @@ class Login(Resource):
             cursor = conn.cursor()
             cursor.callproc('spUserLogin',(_userEmail,_userPassword))
             data = cursor.fetchall()
-            print(data[0][0] == "Success")
             if data[0][0] == "Success":
                 conn.commit()
                 return {'StatusCode':'201','Message': 'Login success'}
@@ -204,8 +203,6 @@ class UpdateLocation(Resource):
             data = cursor.fetchall()
 
             if data == ():
-                print _userEmail
-                print _userLatitude
                 conn.commit()
                 return {'StatusCode':'204','Message': 'Updated Location'}
             else:

@@ -4,7 +4,9 @@ The Beam App is an Augmented Reality (AR) app that allows users to locate their 
 
 ## Getting Started
 
-Download It???
+* Clone the Project
+* Open Android Studio, chose File > Import project, select the root folder of the project.
+
 
 ### Prerequisites
 
@@ -12,6 +14,12 @@ Chat Server
 
 ```
 Flask-SocketIO
+```
+
+Server
+
+```
+Some other stuff
 ```
 
 ### Installing
@@ -28,10 +36,10 @@ pip install flask-socketio
 Other Server:
 
 ```
-until finished
+More other stuff
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+
 
 ## Running the tests
 
@@ -45,37 +53,18 @@ Explain what these tests test and why
 Give an example
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Deployment
 
 HMMMMMMM :/
-
-## Built With
-
-
-## Contributing
-
-
-
-## Versioning
-
 
 
 ## Authors
 
 * **Grace Geddes** 
 
-## License
-
 
 
 ## Acknowledgments
 
 * ReadMe Template borrowed from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+* Thanks to our tutor, William

@@ -10,14 +10,16 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_incorrect_password">Password and email don\'t match</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+
     <!-- Strings related to Settings -->
 
-    <!-- Example General settings -->
+    <!-- General settings -->
     <string name="pref_header_general">General</string>
 
     <string name="pref_title_logout">Logout</string>
@@ -47,7 +49,7 @@
         <item>-1</item>
     </string-array>
 
-    <!-- Example settings for Beam -->
+    <!-- settings for Beam -->
     <string name="pref_header_beam">Beam</string>
 
     <string name="pref_title_beam_colour">Beam colour</string>
@@ -84,7 +86,7 @@
 
     <string name="pref_title_beam_settings">System beam settings</string>
 
-    <!-- Example settings for Notifications -->
+    <!-- settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
 
     <string name="pref_title_new_message_notifications">New message notifications</string>
@@ -98,26 +100,56 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+
+    <!--Activity Strings-->
     <string name="action_settings">Settings</string>
     <string name="action_friends">Friends</string>
     <string name="action_messaging">Messaging</string>
     <string name="action_accountCreation">AccountCreation</string>
-
-    <string name="message_input_hint">Type Here Please</string>
-    <string name="add_friend_input_hint">Search by username</string>
-
-
-    <string name="message_input">Message_input</string>
-    <string name="message_button">Message_button</string>
 
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_friends">Friends</string>
     <string name="title_activity_messaging">Messaging</string>
     <string name="title_activity_accountCreation">AccountCreation</string>
 
+
+    <!--Strings related to Messaging Activity-->
+    <string name="message_input_hint">Type Here Please</string>
+    <string name="message_input">Message_input</string>
+    <string name="message_button">Message_button</string>
+
+    <string name= "txt_msg">TextMessage</string>
+    <string name= "list_msg">MessageList</string>
+    <string name= "list_layout">ListLayout</string>
+
+
+
+    <!--Strings related to Friends Activity -->
+
+
+    <string name="add_friend_input_hint">Search by username</string>
     <string name="add_friend_text">ADD FRIEND</string>
     <string name="button_text">Send</string>
     <string name="send_to_button_text">Send to %1$s</string>
+    <string name="table_heading_1"><b>Friend</b></string>
+    <string name="table_heading_2"><b>Visibility</b></string>
+
+    <string name= "friendRequest_button_text">Accept</string>
+
+    <string name= "message_button_text">Message</string>
+    <string name= "beam_button_text">Beam</string>
+    <string name= "block_button_text">Map</string>
+
+    <string name="friends_list_header_name">Username    </string>
+    <string name="friends_list_header_message">message</string>
+    <string name="friends_list_header_beam">beam</string>
+    <string name="friends_list_header_map">map</string>
+
+    <string name="friend_request_success">Request Sent</string>
+    <string name="friend_request_failure">User does not exist</string>
+
+
+    <!--Strings related to Account Creation Activity-->
 
     <string name= "accountCreationUsername">Username</string>
 
@@ -133,19 +165,9 @@
     <string name="accountCreation_input_Password1">accountCreation_input_Password1</string>
     <string name="accountCreation_input_Password2">accountCreation_input_Password2</string>
 
-    <string name="table_heading_1"><b>Friend</b></string>
-    <string name="table_heading_2"><b>Visibility</b></string>
-    <string name="table_3">Bobby Mc Bobface</string>
-    <string name="table_4">Visible</string>
+    <string name="username_taken">USERNAME TAKEN</string>
 
-    <string name= "friendRequest_button_text">Accept</string>>
-    <string name= "message_button_text">Message</string>>
-    <string name= "beam_button_text">Beam</string>>
-    <string name= "block_button_text">Map</string>>
-
-    <string name= "txt_msg">TextMessage</string>
-    <string name= "list_msg">MessageList</string>
-    <string name= "list_layout">ListLayout</string>
+    <!--Strings related to Main Menu-->
 
     <string name= "logoutPreference">LogoutPreference</string>
 
@@ -153,8 +175,14 @@
     <string name= "friends_activity_button_text">Friends</string>
     <string name= "message_activity_button_text">Chat Room</string>
 
+
+
+    <!--OTHER STRINGS-->
+
     <string name= "colour_preference">ColourPreference</string>
     <string name="google_maps_key">AIzaSyA53-sAQ6xP0mmBsPo4rRHHeYxmhBn0ULU</string>
+
+
 
 
 </resources>

@@ -43,12 +43,17 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    DBAccess instance = new DBAccess();
-
     /**
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+
+    final String USERNAME = "username";
+    final String EMAIL = "email";
+    final String PASSWORD = "password";
+
+    final String URL_AFFIX_GET_USERNAME = "GetUsername";
+    final String LOGIN_SUCCESS = "Login success";
 
 
 
@@ -183,8 +188,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         ServerConnection serverConnection = new ServerConnection();
         ArrayList<String> KeyTags = new ArrayList<>();
-        KeyTags.add("email");
-        KeyTags.add("password");
+        KeyTags.add(EMAIL);
+        KeyTags.add(PASSWORD);
 
         ArrayList<String> Keys = new ArrayList<>();
         Keys.add(email);
@@ -327,20 +332,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
 
-            String correct = "";
             try {
                 while(JSONResponse.response == null){
                     Thread.sleep(20);
                 }
 
-
-                correct =  JSONResponse.response.getString("Message");
+                return  JSONResponse.response.getString("Message").equals(LOGIN_SUCCESS);
             }
             catch(Exception e){
                 e.printStackTrace();
+                return false;
             }
 
-            return (correct.equals("Login success"));
         }
 
         @Override
@@ -377,13 +380,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void setUsername(){
         ServerConnection serverConnection = new ServerConnection();
         ArrayList<String> KeyTags = new ArrayList<>();
-        KeyTags.add("email");
+        KeyTags.add(EMAIL);
 
         ArrayList<String> Keys = new ArrayList<>();
         Keys.add(email);
 
 
-        serverConnection.makeServerRequest("GetUsername", KeyTags, Keys, 1,  this, false);
+        serverConnection.makeServerRequest(URL_AFFIX_GET_USERNAME, KeyTags, Keys, 1,  this, false);
         usernametask = new getUsernameTask();
         usernametask.execute((Void) null);
 
@@ -414,8 +417,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 try {
-                    System.out.println("USERNAME SET TO" + JSONResponse.response.getString("username"));
-                    UserCredentials.username = JSONResponse.response.getString("username");
+                    System.out.println("USERNAME SET TO" + JSONResponse.response.getString(USERNAME));
+                    UserCredentials.username = JSONResponse.response.getString(USERNAME);
                 }catch(Exception e){e.printStackTrace();}
                     JSONResponse.response = null;
                 finish();

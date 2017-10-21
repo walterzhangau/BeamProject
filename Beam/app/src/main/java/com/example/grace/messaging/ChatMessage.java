@@ -11,7 +11,10 @@ package com.example.grace.messaging;
  */
 
 public class ChatMessage {
-
+/***
+ * Information for the display of text message
+ *
+ * ***/
     private String content;
     private boolean isMine;
     private String sender;

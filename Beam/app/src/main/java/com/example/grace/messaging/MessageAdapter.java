@@ -13,6 +13,7 @@ package com.example.grace.messaging;
  */
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,8 @@ import com.example.grace.myapplication.R;
 import java.util.List;
 
 
-//Taken from
+//based on MessageAdapter.Java in 'Design Chat Bubble UI in Android' by Hong Thai
+//
 //http://www.devexchanges.info/2016/03/design-chat-bubble-ui-in-android.html
 
 public class MessageAdapter extends ArrayAdapter<ChatMessage> {
@@ -39,7 +41,7 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         ViewHolder holder;
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
@@ -87,7 +89,7 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
         private TextView msg;
         private TextView sender;
 
-        public ViewHolder(View v) {
+        private ViewHolder(View v) {
             msg = v.findViewById(R.id.txt_msg);
             sender = v.findViewById(R.id.msg_sender);
         }

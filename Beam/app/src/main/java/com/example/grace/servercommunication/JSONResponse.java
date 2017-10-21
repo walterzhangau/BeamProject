@@ -7,16 +7,17 @@ import org.json.JSONObject;
  */
 
 public class JSONResponse {
+    /***
+     *
+     * ***/
     public static JSONObject response = null;
-    public static String JSON = null;
 
-   public static void SetResponse(String JSONresponse){
+    static void SetResponse(String JSONResponse) {
         try {
-
-            JSON = JSONresponse;
-            response = new JSONObject(JSONresponse);
+            response = new JSONObject(JSONResponse);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-            catch(Exception e){}
 
     }
 }

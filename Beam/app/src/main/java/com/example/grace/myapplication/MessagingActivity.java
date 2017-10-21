@@ -33,6 +33,11 @@ import org.json.JSONException;
 public class MessagingActivity extends AppCompatActivity {
 
     private static final String TAG = "MessagingActivity";
+    final String MESSAGIN_SERVER_IP_ADDRESS = "http://10.13.151.202:5000";
+    final String SOCKET_STRING = "message";
+    final String INTENT_TAG_MESSAGING = "MESSAGE_AUDIENCE";
+    final String CHAT_ROOM = "Chat Room";
+
     TextView message_text_view;
     Button message_button_view;
     Socket bSocket;
@@ -52,7 +57,7 @@ public class MessagingActivity extends AppCompatActivity {
         {
             // Open the socket
             try {
-                bSocket = IO.socket("http://10.13.151.202:5000");
+                bSocket = IO.socket(MESSAGIN_SERVER_IP_ADDRESS);
 
                 System.out.println("Connection established");
             } catch (java.net.URISyntaxException e) {
@@ -60,7 +65,7 @@ public class MessagingActivity extends AppCompatActivity {
             }
             //Connect to socket
             bSocket.connect();
-            bSocket.on("message", onReceiving);
+            bSocket.on(SOCKET_STRING, onReceiving);
         }
 
 
@@ -77,15 +82,15 @@ public class MessagingActivity extends AppCompatActivity {
         message_text_view = (TextView) findViewById(R.id.message_input);
 
         //Get message target
-        final String message_audience = getIntent().getStringExtra("MESSAGE_AUDIENCE");
+        final String message_audience = getIntent().getStringExtra(INTENT_TAG_MESSAGING);
 
 
         //Change button to display who recipient is if it has already been selected
-        if (message_audience != null ) {
+        if (message_audience != null) {
             message_button_view.setText(getString(R.string.send_to_button_text, message_audience));
         }
 
-        
+
         message_button_view.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Get the text from the input and save in message
@@ -121,13 +126,17 @@ public class MessagingActivity extends AppCompatActivity {
                 senderUsername = data.getString("senderID");
 
                 // if message is from current chat friend and target is you
-                if (UserCredentials.username.equals(receiverUsername) && senderUsername.equals(getIntent().getStringExtra("MESSAGE_AUDIENCE"))
+                if (UserCredentials.username.equals(receiverUsername)
+                        && senderUsername.equals(getIntent().getStringExtra(INTENT_TAG_MESSAGING))
+
                         //Or in chat room and sender wasn't yourself
-                        || "Chat Room".equals(getIntent().getStringExtra("MESSAGE_AUDIENCE")) && !senderUsername.equals(UserCredentials.username)&&"Chat Room".equals(receiverUsername)){
+                        || CHAT_ROOM.equals(getIntent().getStringExtra(INTENT_TAG_MESSAGING)) && !senderUsername.equals(UserCredentials.username)
+                        && CHAT_ROOM.equals(receiverUsername)) {
+
                     //Make chat bubble
                     chatMessages.add(new ChatMessage(message, false, senderUsername));
 
-                //notify adapter
+                    //notify adapter
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -173,7 +182,7 @@ public class MessagingActivity extends AppCompatActivity {
         super.onDestroy();
 
         bSocket.disconnect();
-        bSocket.off("message", onReceiving);
+        bSocket.off(SOCKET_STRING, onReceiving);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -183,9 +192,6 @@ public class MessagingActivity extends AppCompatActivity {
         return true;
 
     }
-
-
-//Add button listening here
 
 
 }

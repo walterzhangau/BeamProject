@@ -6,18 +6,14 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 
 import com.example.grace.UserInformation.UserCredentials;
@@ -27,8 +23,8 @@ import java.util.ArrayList;
 
 //import com.example.grace.messaging.MessagingActivity;
 
-public class NavigationBarActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class NavigationBarActivity extends AppCompatActivity{
+
 
      ArrayList<String> needPermissions = new ArrayList<>();
 
@@ -36,6 +32,8 @@ public class NavigationBarActivity extends AppCompatActivity
     private static final String TAG = "NavigationBarActivity";
     private boolean alreadyCalled = false;
     private static final int LOCATION_PERMISSION = 1;
+    final String INTENT_TAG_MESSAGING = "MESSAGE_AUDIENCE";
+    final String CHAT_ROOM = "Chat Room";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +106,7 @@ public class NavigationBarActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
-                intent.putExtra("MESSAGE_AUDIENCE", "Chat Room");
+                intent.putExtra(INTENT_TAG_MESSAGING, CHAT_ROOM);
                 startActivity(intent);
 
             }
@@ -148,63 +146,4 @@ public class NavigationBarActivity extends AppCompatActivity
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            Intent intent = new Intent(NavigationBarActivity.this, SettingsActivity.class);
-//            startActivity(intent);
-//            //finish();
-//            return true;
-//        }
-//
-//        if (id == R.id.title_activity_friends) {
-//            Intent intent = new Intent(NavigationBarActivity.this, FriendsActivity.class);
-//
-//            startActivity(intent);
-//            finish();
-//            return true;
-//        }
-//
-//
-//        if (id == R.id.title_activity_messaging) {
-//            Intent intent = new Intent(NavigationBarActivity.this, MessagingActivity.class);
-//            startActivity(intent);
-//            finish();
-//            return true;
-//        }
-//
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 }

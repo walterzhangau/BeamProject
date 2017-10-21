@@ -15,16 +15,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.example.grace.servercommunication.*;
-
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AccountCreation extends AppCompatActivity {
 
     final String USERCREATED = "User creation success";
     final String PASSWORDMISMATCH = "Passwords must match";
+    final String USERNAME = "username";
+    final String PASSWORD = "password";
+    final String EMAIL = "email";
 
     TextView email_input;
     AccountCreationTask ACtask;
@@ -35,7 +34,6 @@ public class AccountCreation extends AppCompatActivity {
     // View for loading screen
     View ACprogress;
 
-
     //Tells user account was created
     View AccountCreatedDisplay;
 
@@ -44,20 +42,20 @@ public class AccountCreation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        //Set up Bar with back button
         setupActionBar();
+
         setContentView(R.layout.activity_account_creation);
         setViews();
         SetUpCreateAccountButton();
 
     }
 
-    private void setViews(){
+    private void setViews() {
         ACform = findViewById(R.id.AccountCreation_form);
         ACprogress = findViewById(R.id.AccountCreation_progress);
 
     }
-
 
 
     private void setupActionBar() {
@@ -70,8 +68,9 @@ public class AccountCreation extends AppCompatActivity {
         }
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //On back button pressed go back to login
 
-    public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(AccountCreation.this, LoginActivity.class);
         startActivity(intent);
         finish();
@@ -80,10 +79,10 @@ public class AccountCreation extends AppCompatActivity {
     }
 
 
-    private void SetUpCreateAccountButton(){
+    private void SetUpCreateAccountButton() {
         //On pressing submit for account creation
 
-        final Button CreateAccountButton   = (Button)   findViewById(R.id.accountCreation_Button);
+        final Button CreateAccountButton = (Button) findViewById(R.id.accountCreation_Button);
 
         email_input = (TextView) findViewById(R.id.accountCreation_Email);
         final TextView username_input = (TextView) findViewById(R.id.accountCreation_Username);
@@ -101,20 +100,25 @@ public class AccountCreation extends AppCompatActivity {
 
 
                 if (password1.equals(password2)) {
-                    ArrayList<String> KeyTags = new ArrayList<String>();
-                    ArrayList<String> Keys = new ArrayList<String>();
+                    //Set values to send to server/database
+                    ArrayList<String> KeyTags = new ArrayList<>();
+                    ArrayList<String> Keys = new ArrayList<>();
 
-                    KeyTags.add("username");
-                    KeyTags.add("email");
-                    KeyTags.add("password");
+                    //Tags
+                    KeyTags.add(USERNAME);
+                    KeyTags.add(EMAIL);
+                    KeyTags.add(PASSWORD);
 
+                    //Values
                     Keys.add(username);
                     Keys.add(email);
                     Keys.add(password1);
 
 
                     CreateAccount(KeyTags, Keys);
-                }else{
+
+                } else {
+                    //delete passwords and warn user of error
                     password1_input.setText("");
                     password2_input.setText("");
 
@@ -123,15 +127,13 @@ public class AccountCreation extends AppCompatActivity {
 
                 }
 
-
             }
         });
     }
 
 
-
-    public void CreateAccount(ArrayList<String> KeyTags, ArrayList<String> Keys){
-
+    public void CreateAccount(ArrayList<String> KeyTags, ArrayList<String> Keys) {
+        //Send request to server and display loading until response is received
 
         ServerConnection serverConnection = new ServerConnection();
         serverConnection.makeServerRequest("CreateUser", KeyTags, Keys, 3, this, false);
@@ -141,31 +143,24 @@ public class AccountCreation extends AppCompatActivity {
     }
 
 
-
-
-    public class AccountCreationTask extends AsyncTask<Void, Void, Boolean> {
-
+    private class AccountCreationTask extends AsyncTask<Void, Void, Boolean> {
+    //Waits for server response and displays success or failure
 
         @Override
         protected Boolean doInBackground(Void... params) {
 
             try {
-                while(JSONResponse.response == null) {
+                while (JSONResponse.response == null) {
                     Thread.sleep(20);
-                    Log.e("Wating", "waiting");
+                    Log.e("Waiting", "waiting");
                 }
 
-                if (JSONResponse.response.getString("Message").equals(USERCREATED)){
-                    return true;
-
-                }
-                else{
-                    return false;
-                }
+                return (JSONResponse.response.getString("Message").equals(USERCREATED));
 
 
-
-            }catch(Exception e){e.printStackTrace();}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             return false;
         }
@@ -174,17 +169,20 @@ public class AccountCreation extends AppCompatActivity {
         @Override
         protected void onPostExecute(final Boolean success) {
 
-            if(success){
+            if (success) {
                 AccountCreatedDisplay.setVisibility(View.VISIBLE);
 
-            }
-            else{
-                email_input.setText("USERNAME TAKEN");
+            } else {
+                email_input.setText(getText(R.string.username_taken));
 
             }
 
             ACtask = null;
+
+            //End loading screen
             showProgress(false);
+
+            //Erase server response
             JSONResponse.response = null;
         }
 
@@ -197,14 +195,13 @@ public class AccountCreation extends AppCompatActivity {
 
 
     /**
-     * Shows the progress UI and hides the friendslist form.
+     * Shows the progress UI and hides the friendsList form.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
         // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
             ACform.setVisibility(show ? View.GONE : View.VISIBLE);
@@ -224,16 +221,5 @@ public class AccountCreation extends AppCompatActivity {
                     ACprogress.setVisibility(show ? View.VISIBLE : View.GONE);
                 }
             });
-
-
-
-
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            ACprogress.setVisibility(show ? View.VISIBLE : View.GONE);
-            ACform.setVisibility(show ? View.GONE : View.VISIBLE);
-
-        }
     }
 }

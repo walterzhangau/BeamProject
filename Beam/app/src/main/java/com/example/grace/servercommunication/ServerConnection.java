@@ -16,13 +16,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by evanl on 2/10/2017.
- */
 
 public class ServerConnection {
+    /**
+     * The app's communication with server
+     * Sends request with given values to given address
+     * Receives response and stores in JSONResponse
+     */
 
     private static final String TAG = "ServerConnection";
+    private final String URL_START = "http://";
+    private final String COLON = ":";
+    private final String URL_END = "/";
+
+
+    private final String IP = "10.13.152.154";
+    private final String PORT = "4444";
+
+
+    private final String SERVER_URL = URL_START + IP + COLON + PORT + URL_END;
+
     // Sends a post to the server
     //url affix, appened to the url of the server, e.g "Login", "CreateUser"
     //KeyTags, unorderered array of keys for server e.g. "email", "friendstatus", location
@@ -36,9 +49,7 @@ public class ServerConnection {
         final RequestQueue MyRequestQueue = Volley.newRequestQueue(context);
 
 
-
-        String url = "http://10.13.152.154:4444/" + urlAffix;
-
+        String url = SERVER_URL + urlAffix;
 
         System.out.println("The url is " + url);
         System.out.println("the affix is " + urlAffix);
@@ -87,11 +98,10 @@ public class ServerConnection {
 
         {
             @Override
-            protected Map<String, String> getParams()
-            {
+            protected Map<String, String> getParams() {
                 Log.e(TAG, "getParams");
-                Map<String, String>  params = new HashMap<String, String>();
-                for(int i = 0; i < len; i ++) {
+                Map<String, String> params = new HashMap<>();
+                for (int i = 0; i < len; i++) {
                     params.put(keyTags.get(i), Keys.get(i));
                     System.out.println(params);
                 }

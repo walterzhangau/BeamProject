@@ -67,7 +67,6 @@ that means there is seamless connection with the SQL database.
 ## Deployment
 
 On one machine 
-(Can split servers between machines)
 
 Run VPN connecting to remote.unimelb.edu.au 
 
@@ -75,6 +74,7 @@ Change final string IP in ServerCommunication directory, serverConnection.java t
 
 Change final string IP in myAPllication directory, messagingActivity.java to IP of machine running messageApi.py
 
+(Can split servers between machines if you run vpn on both)
 
 ## Authors
 

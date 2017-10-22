@@ -19,7 +19,10 @@ Flask-SocketIO
 Server
 
 ```
-Some other stuff
+Flask
+flask_restful
+flaskext.mysql
+json
 ```
 
 ### Installing
@@ -59,7 +62,9 @@ python apitest.py
 
 Explain what these tests test and why
 
-apitest.py tests if 
+apitest.py uses known pre-existing data and calls SQL created procedures to these, 
+there are tests for adding data, updating data and retrieving data. If all tests pass
+that means there is seamless connection with the SQL database.
 
 ```
 Give an example

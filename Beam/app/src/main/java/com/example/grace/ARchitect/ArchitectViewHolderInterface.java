@@ -20,11 +20,6 @@ public interface ArchitectViewHolderInterface {
 	public String getARchitectWorldPath();
 	
 	/**
-	 * JS interface listener fired once e.g. 'AR.platform.sendJSONObject({foo:"bar", bar:123})' is called in JS
-	 */
-	ArchitectJavaScriptInterfaceListener getArchitectJavaScriptInterfaceListener();
-	
-	/**
 	 * @return layout id of your layout.xml that holds an ARchitect View, e.g. R.layout.camview
 	 */
 	public int getContentViewId();
@@ -39,16 +34,6 @@ public interface ArchitectViewHolderInterface {
 	 */
 	public int getArchitectViewId();
 
-	/**
-	 * 
-	 * @return Implementation of a Location
-	 */
-	public ILocationProvider getLocationProvider(final LocationListener locationListener);
-	
-	/**
-	 * @return Implementation of Sensor-Accuracy-Listener. That way you can e.g. show prompt to calibrate compass
-	 */
-	public SensorAccuracyChangeListener getSensorAccuracyListener();
 	
 	/**
 	 * sets maximum distance to render places. In case your places are more than 50km away from the user you must adjust this value (compare 'AR.context.scene.cullingDistance').
@@ -57,24 +42,7 @@ public interface ArchitectViewHolderInterface {
 	 */
 	public float getInitialCullingDistanceMeters();
 	
-	/**
-	 * Interface for a location-provider implementation
-	 * feel free to implement your very own Location-Service, that handles GPS/Network positions more sophisticated but still takes care of
-	 * life-cycle events
-	 */
-	public static interface ILocationProvider {
 
-		/**
-		 * Call when host-activity is resumed (usually within systems life-cycle method)
-		 */
-		public void onResume();
-
-		/**
-		 * Call when host-activity is paused (usually within systems life-cycle method)
-		 */
-		public void onPause();
-
-	}
 
 	/**
 	 * @return Implementation of ArchitectWorldLoadedListener. That way you know when a AR world is finished loading or when it failed to load.

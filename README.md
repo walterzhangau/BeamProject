@@ -60,15 +60,9 @@ python apitest.py
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
-
 apitest.py uses known pre-existing data and calls SQL created procedures to these, 
 there are tests for adding data, updating data and retrieving data. If all tests pass
 that means there is seamless connection with the SQL database.
-
-```
-Give an example
-```
 
 ## Deployment
 
@@ -80,9 +74,6 @@ Run VPN connecting to remote.unimelb.edu.au
 Change final string IP in ServerCommunication directory, serverConnection.java to IP of machine running Api.py
 
 Change final string IP in myAPllication directory, messagingActivity.java to IP of machine running messageApi.py
-
-
-HMMMMMMM :/
 
 
 ## Authors

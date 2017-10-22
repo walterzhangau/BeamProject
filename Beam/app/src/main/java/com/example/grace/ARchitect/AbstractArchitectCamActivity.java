@@ -249,12 +249,6 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 	public abstract String getARchitectWorldPath();
 
 	/**
-	 * JS interface listener fired once e.g. 'AR.platform.sendJSONObject({foo:"bar", bar:123})' is called in JS
-	 */
-	@Override
-	public abstract ArchitectJavaScriptInterfaceListener getArchitectJavaScriptInterfaceListener();
-
-	/**
 	 * @return layout id of your layout.xml that holds an ARchitect View, e.g. R.layout.camview
 	 */
 	@Override

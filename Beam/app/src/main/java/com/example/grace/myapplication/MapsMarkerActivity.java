@@ -9,7 +9,6 @@ import android.view.KeyEvent;
 import com.example.grace.ARchitect.AbstractArchitectCamActivity;
 import com.example.grace.servercommunication.JSONResponse;
 import com.example.grace.servercommunication.ServerConnection;
-import com.example.grace.util.MyLocation;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

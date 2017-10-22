@@ -35,12 +35,6 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 		return "ARchitectFriendPoi/index.html";
 	}
 
-	// can be used to pass JavaScript from ARWorld to java, unused in this instance
-	@Override
-	public ArchitectJavaScriptInterfaceListener getArchitectJavaScriptInterfaceListener() {
-		return null;
-	}
-
 	/* returns the camera activity for AR
 	* */
 	@Override
